@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>预测</string>
+		<string>首页</string>
 		<key>selectedImageName</key>
 		<string>toolbar_icon_xihu-pre</string>
 		<key>normalImageName</key>
@@ -12,7 +12,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>走势</string>
+		<string>彩票网点</string>
 		<key>selectedImageName</key>
 		<string>toolbar_icon_xiaoguanjia_pre</string>
 		<key>normalImageName</key>
@@ -20,7 +20,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>开奖公告</string>
+		<string>开奖</string>
 		<key>selectedImageName</key>
 		<string>toolbar_icon_HI-_pre</string>
 		<key>normalImageName</key>
@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>发现</string>
+		<string>走势图</string>
 		<key>selectedImageName</key>
 		<string>label_bar_taopiaopiao_selected</string>
 		<key>normalImageName</key>
@@ -36,7 +36,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>投注站</string>
+		<string>我的</string>
 		<key>selectedImageName</key>
 		<string>toolbar_icon_wode-_pre</string>
 		<key>normalImageName</key>

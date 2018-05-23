@@ -155,27 +155,6 @@
 }
 
 #pragma mark - 数据处理
-/** 处理资讯数组数据 */
-- (void)processNewsList {
-    // 获取指定广告
-    NSArray * advertModels = [[DS_AdvertShare share] advertModelsWithAdvertIDs:@[@"4", @"5"]];
-
-    if (!_tableViewList) {
-        _tableViewList = [NSMutableArray array];
-    }
-    [_tableViewList removeAllObjects];
-    
-    // 每三条资讯插入一条广告
-    NSInteger advertIndex = 0;
-    for (NSInteger i = 0; i < _newsListModel.articleList.count; i++) {
-        [_tableViewList addObject:_newsListModel.articleList[i]];
-        if (i % 2 != 0 && i != 0 && advertIndex < [advertModels count]) {
-            [_tableViewList addObject:advertModels[advertIndex]];
-            advertIndex++;
-        }
-    }
-}
-
 /** 资讯数据填充（给无图资讯增加广告模型） */
 - (void)newsDataFilling:(NSMutableArray *)newsArray {
     for (DS_NewsModel * model in newsArray) {

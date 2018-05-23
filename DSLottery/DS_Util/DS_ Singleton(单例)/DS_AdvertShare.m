@@ -102,12 +102,16 @@ static DS_AdvertShare * advertObject;
 - (DS_AdvertModel *)randomAdverModel:(NSArray<NSString *> *)adverIDs {
     DS_AdvertModel * model = nil;
     if (!adverIDs) {
-        NSInteger index = arc4random() % [_advertListModel.advertList count];
-        model = _advertListModel.advertList[index];
+        if ([_advertListModel.advertList count] > 0) {
+            NSInteger index = arc4random() % [_advertListModel.advertList count];
+            model = _advertListModel.advertList[index];
+        }
     } else {
         NSArray * array = [self advertModelsWithAdvertIDs:adverIDs];
-        NSInteger index = arc4random() % [array count];
-        model = array[index];
+        if ([array count] > 0) {
+            NSInteger index = arc4random() % [array count];
+            model = array[index];
+        }
     }
     return model;
 }

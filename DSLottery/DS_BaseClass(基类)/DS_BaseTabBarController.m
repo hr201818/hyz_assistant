@@ -15,8 +15,9 @@
 #import "DS_HomeViewController.h"
 #import "DS_ChartsViewController.h"
 #import "DS_LotteryNoticeViewController.h"
-#import "DS_FindViewController.h"
+#import "DS_UserViewController.h"
 #import "DS_ShopsViewController.h"
+
 @interface DS_BaseTabBarController ()
 
 @property (strong, nonatomic) DS_BaseTabBar * Dtabbar;
@@ -44,17 +45,19 @@
     DS_HomeViewController * vc1 = [[DS_HomeViewController alloc] init];
     DS_BaseNavigationController * nav1 = [[DS_BaseNavigationController alloc] initWithRootViewController:vc1];
 
-    DS_ChartsViewController * vc2 = [[DS_ChartsViewController alloc] init];
+    DS_ShopsViewController * vc2 = [[DS_ShopsViewController alloc] init];
     DS_BaseNavigationController * nav2 = [[DS_BaseNavigationController alloc] initWithRootViewController:vc2];
 
     DS_LotteryNoticeViewController * vc3 = [[DS_LotteryNoticeViewController alloc] init];
     DS_BaseNavigationController * nav3 = [[DS_BaseNavigationController alloc] initWithRootViewController:vc3];
-
-    DS_FindViewController * vc4 = [[DS_FindViewController alloc] init];
+    
+    DS_ChartsViewController * vc4 = [[DS_ChartsViewController alloc] init];
     DS_BaseNavigationController * nav4 = [[DS_BaseNavigationController alloc] initWithRootViewController:vc4];
 
-    DS_ShopsViewController * vc5 = [[DS_ShopsViewController alloc] init];
+    DS_UserViewController * vc5 = [[DS_UserViewController alloc] init];
     DS_BaseNavigationController * nav5 = [[DS_BaseNavigationController alloc] initWithRootViewController:vc5];
+
+    
 
     [self setViewControllers: @[nav1, nav2, nav3, nav4, nav5]];
 }

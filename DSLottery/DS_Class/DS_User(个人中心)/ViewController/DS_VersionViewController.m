@@ -20,6 +20,12 @@
 
 @implementation DS_VersionViewController
 
+- (instancetype)init {
+    if ([super init]) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

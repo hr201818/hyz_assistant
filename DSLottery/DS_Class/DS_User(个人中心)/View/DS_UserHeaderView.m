@@ -8,16 +8,29 @@
 
 #import "DS_UserHeaderView.h"
 #import "UIButton+GraphicLayout.h"
-
+#import "DS_UserShare.h"
 @interface DS_UserHeaderView ()
+
+/** 操作按钮（头像、登录、注册、箭头的父视图） */
+@property (strong, nonatomic) UIButton * operationBtn;
+
+/** 头像 */
+@property (strong, nonatomic) UIImageView * portraitImageView;
+
+/** 用户昵称（注册/登录） */
+@property (strong, nonatomic) UILabel     * nameLab;
+
+/** 箭头 */
+@property (strong, nonatomic) UIImageView * arrowImageView;
+
 
 @end
 
 @implementation DS_UserHeaderView
 
 
-- (instancetype)init {
-    if ([super init]) {
+- (instancetype)initWithFrame:(CGRect)frame {
+    if ([super initWithFrame:frame]) {
         [self layoutView];
     }
     return self;
@@ -28,118 +41,94 @@
 - (void)layoutView {
     self.backgroundColor = [UIColor whiteColor];
     
-    NSArray * titles = [self titles];
-    NSArray * imageNames = [self imageNames];
+    UIImageView * backImageView = [[UIImageView alloc] init];
+    backImageView.frame = self.bounds;
+    backImageView.image = DS_UIImageName(@"user_head_back");
+    [self addSubview:backImageView];
     
-    // 循环设置图片
-    CGFloat width = Screen_WIDTH / 3.0;
-    CGFloat height = 80;
-    CGFloat x = 0;
-    CGFloat y = 0;
-    for (int i = 0; i < [titles count]; i++) {
-        UIButton * button = [self buttonWithTitle:titles[i] imageName:imageNames[i]];
-        if (i % 3 == 0 && i != 0) {
-            y = height * 1;
-        }
-        x = i % 3 * width;
-        button.frame = CGRectMake(x, y, width, height);
-        [button setImagePosition:DS_ImagePositionTop spacing:5.0f];
-        [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-        button.tag = 1000 + i;
-        [self addSubview:button];
-    }
+    [self addSubview:self.operationBtn];
+    [_operationBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(45);
+        make.top.mas_equalTo(60);
+    }];
     
-    // 分割线
-    UIView * line_1 = [[UIView alloc] init];
-    line_1.backgroundColor = COLOR_Line;
-    line_1.frame = CGRectMake(0, height, Screen_WIDTH, 1);
-    [self addSubview:line_1];
+    [_operationBtn addSubview:self.portraitImageView];
+    [_portraitImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(15);
+        make.width.height.mas_equalTo(45);
+    }];
     
-    // 分割线
-    UIView * line_2 = [[UIView alloc] init];
-    line_2.backgroundColor = COLOR_Line;
-    line_2.frame = CGRectMake(0, height * 2, Screen_WIDTH, 1);
-    [self addSubview:line_2];
+    [_operationBtn addSubview:self.nameLab];
+    [_nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.mas_equalTo(0);
+        make.left.mas_equalTo(_portraitImageView.mas_right).offset(15);
+        make.right.mas_equalTo(-40);
+    }];
     
+    [_operationBtn addSubview:self.arrowImageView];
+    [_arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.width.height.mas_equalTo(20);
+        make.centerY.mas_equalTo(_operationBtn);
+    }];
 }
 
 #pragma mark - 按钮事件
 - (void)buttonAction:(UIButton *)sender {
-    // 判断点击的按钮类型
-    NSInteger tag = sender.tag - 1000;
-    DS_UserHeaderViewButtonType type;
-    switch (tag) {
-        case 0:
-            type = DS_UserHeaderViewButtonType_Customer;
-            break;
-        case 1:
-            type = DS_UserHeaderViewButtonType_Acount;
-            break;
-        case 2:
-            type = DS_UserHeaderViewButtonType_Version;
-            break;
-        case 3:
-            type = DS_UserHeaderViewButtonType_Cache;
-            break;
-        case 4:
-            if ([DS_UserShare share].userID) {
-                type = DS_UserHeaderViewButtonType_Logout;
-            } else {
-                type = DS_UserHeaderViewButtonType_Login;
-            }
-            break;
-        case 5:
-            type = DS_UserHeaderViewButtonType_Register;
-            break;
-        default:
-            type = 0;
-            break;
-    }
-    
-    // 按钮回调
-    if (self.headerButtonBlock) {
-        self.headerButtonBlock(type);
+    if (self.loginOrLogoutBlock) {
+        self.loginOrLogoutBlock();
     }
 }
 
 #pragma mark - public
 /** 重新布局界面 */
 - (void)refreshView {
-    for (UIView * view in self.subviews) {
-        [view removeFromSuperview];
-    }
-    [self layoutView];
-}
-
-#pragma mark - private
-
-#pragma mark - getter
-/** 获取标题 */
-- (NSArray *)titles {
     if ([DS_UserShare share].userID) {
-        return @[@"在线客服",@"关于我们",@"版本记录",@"清除缓存",@"注销"];
+        _nameLab.text = DS_STRINGS(@"kLogout");
     } else {
-        return @[@"在线客服",@"关于我们",@"版本记录",@"清除缓存",@"登录",@"注册"];
+        _nameLab.text = DS_STRINGS(@"kLoginOrRegister");
     }
 }
 
-/** 获取图标图片名 */
-- (NSArray *)imageNames {
-    if ([DS_UserShare share].userID) {
-        return @[@"customer_icon",@"abount_icon",@"version_icon",@"cache_icon",@"login_icon"];
-    } else {
-        return @[@"customer_icon",@"abount_icon",@"version_icon",@"cache_icon",@"login_icon",@"register_icon"];
+#pragma mark - 懒加载
+- (UIButton *)operationBtn {
+    if (!_operationBtn) {
+        _operationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_operationBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+    return _operationBtn;
 }
 
-#pragma mark - 便利构造
-- (UIButton *)buttonWithTitle:(NSString *)title imageName:(NSString *)imageName {
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.titleLabel.font = FONT(15.0f);
-    return button;
+- (UIImageView *)portraitImageView {
+    if (!_portraitImageView) {
+        _portraitImageView = [[UIImageView alloc] init];
+        _portraitImageView.image = DS_UIImageName(@"user_icon");
+    }
+    return _portraitImageView;
+}
+
+- (UILabel *)nameLab {
+    if (!_nameLab) {
+        _nameLab = [[UILabel alloc] init];
+        if ([DS_UserShare share].userID) {
+            _nameLab.text = DS_STRINGS(@"kLogout");
+        } else {
+            _nameLab.text = DS_STRINGS(@"kLoginOrRegister");
+        }
+        _nameLab.font = FONT(15.0f);
+        _nameLab.textColor = [UIColor whiteColor];
+    }
+    return _nameLab;
+}
+
+- (UIImageView *)arrowImageView {
+    if (!_arrowImageView) {
+        _arrowImageView = [[UIImageView alloc] init];
+        _arrowImageView.image = DS_UIImageName(@"personal_arrow");
+    }
+    return _arrowImageView;
 }
 
 

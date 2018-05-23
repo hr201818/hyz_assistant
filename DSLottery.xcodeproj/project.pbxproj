@@ -15,6 +15,7 @@
 		0810B65020942005005D908D /* DS_RequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0810B64F20942005005D908D /* DS_RequestTool.m */; };
 		0810B65A20944A36005D908D /* SZKCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0810B65920944A36005D908D /* SZKCleanCache.m */; };
 		0810B66720947C16005D908D /* DS_WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0810B66620947C16005D908D /* DS_WebViewController.m */; };
+		0835A3E120B5C309009FB94A /* DS_UserOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835A3E020B5C309009FB94A /* DS_UserOperationView.m */; };
 		0835A88820A3CFDA003E459A /* DS_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835A88720A3CFDA003E459A /* DS_LoginViewController.m */; };
 		0835A88B20A3D038003E459A /* DS_InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835A88A20A3D037003E459A /* DS_InputView.m */; };
 		084316B1209066FB00A3183A /* DS_BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 084316B0209066FB00A3183A /* DS_BaseTabBarController.m */; };
@@ -130,6 +131,8 @@
 		0810B65920944A36005D908D /* SZKCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZKCleanCache.m; sourceTree = "<group>"; };
 		0810B66520947C16005D908D /* DS_WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_WebViewController.h; sourceTree = "<group>"; };
 		0810B66620947C16005D908D /* DS_WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_WebViewController.m; sourceTree = "<group>"; };
+		0835A3DF20B5C309009FB94A /* DS_UserOperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_UserOperationView.h; sourceTree = "<group>"; };
+		0835A3E020B5C309009FB94A /* DS_UserOperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_UserOperationView.m; sourceTree = "<group>"; };
 		0835A88620A3CFDA003E459A /* DS_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LoginViewController.h; sourceTree = "<group>"; };
 		0835A88720A3CFDA003E459A /* DS_LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LoginViewController.m; sourceTree = "<group>"; };
 		0835A88920A3D037003E459A /* DS_InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_InputView.h; sourceTree = "<group>"; };
@@ -908,7 +911,6 @@
 			isa = PBXGroup;
 			children = (
 				08FCD8B920A2F299002E93F5 /* ViewController */,
-				08FCD8B820A2F299002E93F5 /* Model */,
 				08FCD8B620A2F298002E93F5 /* View */,
 				08FCD8B720A2F298002E93F5 /* ViewModel */,
 			);
@@ -922,6 +924,8 @@
 				0835A88A20A3D037003E459A /* DS_InputView.m */,
 				08FCD8C620A2F5CD002E93F5 /* DS_UserHeaderView.h */,
 				08FCD8C720A2F5CD002E93F5 /* DS_UserHeaderView.m */,
+				0835A3DF20B5C309009FB94A /* DS_UserOperationView.h */,
+				0835A3E020B5C309009FB94A /* DS_UserOperationView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -933,13 +937,6 @@
 				08D0437020A67410006C01F5 /* DS_UserViewModel.m */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		08FCD8B820A2F299002E93F5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		08FCD8B920A2F299002E93F5 /* ViewController */ = {
@@ -999,6 +996,7 @@
 				085865D52090612300F270D5 /* Frameworks */,
 				085865D62090612300F270D5 /* Resources */,
 				65A02981BAC4C8D1FDD5B23D /* [CP] Copy Pods Resources */,
+				2A86D568ED276CF3450D1FE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1128,6 +1126,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2A86D568ED276CF3450D1FE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DSLottery/Pods-DSLottery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5083D9ABE80B1589D9B7BD95 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1143,7 +1156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		65A02981BAC4C8D1FDD5B23D /* [CP] Copy Pods Resources */ = {
@@ -1178,6 +1191,7 @@
 				08F56E1920AAB17900C47D37 /* DS_ShopTableViewCell.m in Sources */,
 				0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */,
 				084DC33C20919CF900E2C996 /* DS_Networking.m in Sources */,
+				0835A3E120B5C309009FB94A /* DS_UserOperationView.m in Sources */,
 				08B8B2EE20A6D9A60074533E /* DS_NewsDetailViewController.m in Sources */,
 				084DC33920917C6900E2C996 /* DS_DataTool.m in Sources */,
 				08FCD8A820A2C68A002E93F5 /* DS_CategoryListModel.m in Sources */,

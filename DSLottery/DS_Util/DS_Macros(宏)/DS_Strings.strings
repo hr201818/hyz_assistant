@@ -18,9 +18,10 @@
 "kKefuTitle"     = "在线客服";
 "kAbountUsTitle" = "关于我们";
 "kShops"         = "附近投注站";
-"kVersion"       = "版本记录";
+"kVersion"       = "版本";
 "kLogin"         = "登录";
 "kRegister"      = "注册";
+"kClearCache"    = "清除缓存";
 
 /** 首页 */
 "kLotteryHall"   = "购彩大厅";

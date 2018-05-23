@@ -14,6 +14,7 @@
 /** view */
 #import "DS_UserHeaderView.h"
 #import "DS_AdvertView.h"
+#import "DS_UserOperationView.h"
 
 /** viewController */
 #import "DS_WebViewController.h"
@@ -27,8 +28,13 @@
 
 @interface DS_UserViewController ()
 
+@property (strong, nonatomic) UIScrollView * scrollView;
+
 /** 头部按钮视图 */
 @property (strong, nonatomic) DS_UserHeaderView * headerView;
+
+/** 操作视图 */
+@property (strong, nonatomic) DS_UserOperationView * operationView;
 
 /** 广告视图 */
 @property (strong, nonatomic) DS_AdvertView     * advertView;
@@ -46,7 +52,7 @@
 
 - (instancetype)init {
     if ([super init]) {
-        self.hidesBottomBarWhenPushed = YES;
+    
     }
     return self;
 }
@@ -63,12 +69,13 @@
 
 #pragma mark - 界面
 - (void)layoutView {
+    self.navigationBar.hidden = YES;
     self.title = DS_STRINGS(@"kPersonalTitle");
-    
     self.view.backgroundColor = COLOR_BACK;
     
-    [self navLeftItem:[DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)]];
-    [self.view addSubview:self.headerView];
+    [self.view addSubview:self.scrollView];
+    [_scrollView addSubview:self.headerView];
+    [_scrollView addSubview:self.operationView];
     
     [self.view addSubview:self.advertView];
     [_advertView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -137,30 +144,6 @@
 }
 
 #pragma mark - private
-/**
- 头视图的按钮事件
- @param type 按钮类型
- */
-- (void)headerViewButtonAction:(DS_UserHeaderViewButtonType)type {
-    switch (type) {
-        case DS_UserHeaderViewButtonType_Customer:
-            [self openCustomerService]; break;
-        case DS_UserHeaderViewButtonType_Acount:
-            [self openAbountWe]; break;
-        case DS_UserHeaderViewButtonType_Version:
-            [self openVersion]; break;
-        case DS_UserHeaderViewButtonType_Cache:
-            [self openCache]; break;
-        case DS_UserHeaderViewButtonType_Login:
-            [self openLogin]; break;
-        case DS_UserHeaderViewButtonType_Logout:
-            [self askLogout]; break;
-        case DS_UserHeaderViewButtonType_Register:
-            [self openRegister]; break;
-        default: break;
-    }
-}
-
 /** 客服 */
 - (void)openCustomerService {
     [self showhud];
@@ -239,16 +222,57 @@
 }
 
 #pragma mark - 懒加载
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] init];
+        _scrollView.frame = CGRectMake(0, 0, Screen_WIDTH, Screen_HEIGHT - TABBAR_HEIGHT);
+    }
+    return _scrollView;
+}
+
 - (DS_UserHeaderView *)headerView {
     if (!_headerView) {
-        _headerView = [[DS_UserHeaderView alloc] init];
-        _headerView.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, self.view.width, 160);
+        _headerView = [[DS_UserHeaderView alloc] initWithFrame:CGRectMake(0, -STATUSBAR_HEIGHT, Screen_WIDTH, IOS_SiZESCALE(305 / 2.0))];
+        
         weakifySelf
-        _headerView.headerButtonBlock = ^(DS_UserHeaderViewButtonType type) {
-            [weakSelf headerViewButtonAction:type];
+        _headerView.loginOrLogoutBlock = ^{
+            strongifySelf
+            if ([DS_UserShare share].userID) {
+                [self askLogout];
+            } else {
+                [self openLogin];
+            }
         };
     }
     return _headerView;
+}
+
+- (DS_UserOperationView *)operationView {
+    if (!_operationView) {
+        _operationView = [[DS_UserOperationView alloc] initWithFrame:CGRectMake(0, _headerView.bottom, Screen_WIDTH, IOS_SiZESCALE(190))];
+        
+        weakifySelf
+        _operationView.operationBlock = ^(DS_OperationType type) {
+            strongifySelf
+            switch (type) {
+                case DS_OperationType_CustomerService:
+                    [self openCustomerService];
+                    break;
+                case DS_OperationType_AboutWe:
+                    [self openAbountWe];
+                    break;
+                case DS_OperationType_Version:
+                    [self openVersion];
+                    break;
+                case DS_OperationType_Cache:
+                    [self openCache];
+                    break;
+                default:
+                    break;
+            }
+        };
+    }
+    return _operationView;
 }
 
 - (DS_AdvertView *)advertView {
