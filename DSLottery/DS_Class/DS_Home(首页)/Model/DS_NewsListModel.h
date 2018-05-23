@@ -50,4 +50,7 @@
 /** 观看数 */
 @property (copy, nonatomic) NSString * readerNumb;
 
+/** 存放广告模型 */
+@property (strong, nonatomic) id adverModel;
+
 @end

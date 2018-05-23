@@ -310,7 +310,24 @@
     return [NSString stringWithFormat:@"%@%@", prefix, weekStr];
 }
 
-#pragma mark - 相关数据获取
+/**
+ 计算时间timeInterval与当前时间的间隔
+ @param timeInterval 要比较的时间(秒)
+ @return 相差间隔
+ */
++ (NSInteger)timeOffsetWithTimeInterval:(NSTimeInterval)timeInterval {
+    // 获取当前时间
+    NSDate * nowDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSInteger nowTimeInterval = [nowDate timeIntervalSince1970];
+    
+    // 计算间隔时间
+    NSTimeInterval offsetTime = nowTimeInterval - timeInterval;
+    
+    offsetTime = (NSTimeInterval)abs((int)offsetTime);
+    return offsetTime;
+}
+
+#pragma mark - 彩种数据获取
 /**
  通过图片ID获取彩种图片名
  @param imageID 图片ID
@@ -371,6 +388,69 @@
         case 26: // 吉林时时彩
             return @"jilin";
         default: return @"";
+    }
+}
+
+/**
+ 获取彩种字体颜色
+ @param lotteryID 彩种ID
+ @return 颜色
+ */
++ (UIColor *)lotteryColorWithLotteryID:(NSString *)lotteryID {
+    switch ([lotteryID integerValue]) {
+        case 1: // 重庆时时彩
+            return [UIColor redColor];
+        case 2: // 天津时时彩
+            return COLOR_HexRGB(@"F3692A");
+        case 3: // 新疆时时彩
+            return [UIColor redColor];
+        case 4: // 体彩排列3
+            return COLOR_HexRGB(@"#31CB3F");
+        case 5: // 福彩3D
+            return COLOR_HexRGB(@"DFA433");
+        case 6: // 六合彩
+            return [UIColor redColor];
+        case 7: // 北京28
+            return [UIColor redColor];
+        case 8: // 北京快乐8
+            return [UIColor redColor];
+        case 9: // 北京PK10
+            return [UIColor redColor];
+        case 10: // 重庆幸运农场
+            return COLOR_HexRGB(@"#E13095");
+        case 11: // 广东快乐十分
+            return [UIColor redColor];
+        case 12: // 双色球
+            return [UIColor redColor];
+        case 13: // 三分时时彩
+            return [UIColor redColor];
+        case 14: // 幸运飞艇
+            return [UIColor redColor];
+        case 15: // 分分时时彩
+            return [UIColor redColor];
+        case 16: // 两分时时彩
+            return [UIColor redColor];
+        case 17: // 五分时时彩
+            return [UIColor redColor];
+        case 18: // 江苏快3
+            return [UIColor redColor];
+        case 19: // 湖北快3
+            return [UIColor redColor];
+        case 20: // 安徽快3
+            return [UIColor redColor];
+        case 21: // 吉林快3
+            return [UIColor redColor];
+        case 22: // 10分六合彩
+            return [UIColor redColor];
+        case 23: // 极速PK10
+            return [UIColor redColor];
+        case 24: // 广东十一选五
+            return [UIColor redColor];
+        case 25: // 北京时时彩
+            return [UIColor redColor];
+        case 26: // 吉林时时彩
+            return [UIColor redColor];
+        default: return [UIColor redColor];
     }
 }
 

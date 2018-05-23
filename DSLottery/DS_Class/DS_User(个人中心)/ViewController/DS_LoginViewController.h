@@ -10,4 +10,7 @@
 /** 登录 */
 @interface DS_LoginViewController : DS_BaseViewController
 
+/** 是否为模态进入 */
+@property (assign, nonatomic) BOOL isPresent;
+
 @end

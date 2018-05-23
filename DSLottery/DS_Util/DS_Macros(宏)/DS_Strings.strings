@@ -24,6 +24,9 @@
 
 /** 首页 */
 "kLotteryHall"   = "购彩大厅";
+"kBuyLottery"    = "购彩";
+"kLotteryNews"   = "彩票资讯";
+"kBetting"       = "投注";
 
 /** 投注站 */
 "kSelectedShops" = "请选择附近的彩票网点进行投注";
@@ -34,5 +37,11 @@
 
 /** 登录界面 */
 "kLoginOrRegister" = "登录/注册";
-"kLogout"          = "退出登录";
+"kLogout"          = "注销";
 "kCompnyInfo" = "湖北福益彩票文化传播有限公司";
+
+/** 提示内容 */
+"kLoginSuccess" = "登录成功";
+"kLogoutSuccess" = "注销成功";
+"kNetworkError"  = "请检查网络";
+

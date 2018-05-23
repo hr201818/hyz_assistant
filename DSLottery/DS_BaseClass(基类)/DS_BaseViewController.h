@@ -17,6 +17,9 @@
 /* 导航条 */
 @property (nonatomic, strong) UIView * navigationBar;
 
+/** 导航条title图片 */
+@property (strong, nonatomic) UIImage * navigationBarImage;
+
 /**
  导航栏左侧视图
  @param leftItem 左侧元素

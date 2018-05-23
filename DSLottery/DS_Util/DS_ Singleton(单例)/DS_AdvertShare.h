@@ -43,6 +43,13 @@
 - (NSArray <DS_AdvertModel *> *)advertModelsWithAdvertIDs:(NSArray <NSString *> *)advertIDs;
 
 /**
+ 从指定的ID数组中，随机获取一个广告
+ @param adverIDs 指定的ID数组。如果传nil，则在所有广告中随机
+ @return 广告模型
+ */
+- (DS_AdvertModel *)randomAdverModel:(NSArray<NSString *> *)adverIDs;
+
+/**
  获取轮播广告数组
  @return 轮播广告模型数组
  */

@@ -15,6 +15,9 @@
 /* 标题名称 */
 @property (strong, nonatomic) UILabel * titleName;
 
+/** 标题图片（不能与titleName共用） */
+@property (strong, nonatomic) UIImageView * titleImageView;
+
 @end
 
 @implementation DS_BaseViewController
@@ -36,10 +39,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.view addSubview:self.navigationBar];
         [_navigationBar addSubview:self.titleName];
+        [_navigationBar addSubview:self.titleImageView];
         //        UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, self.navBar.height - 0.5, PhoneScreen_WIDTH, 0.5)];
         //        line.backgroundColor = COLOR_Alpha(53, 53, 53, 0.5);
         //        [self.navBar addSubview:line];
-        
     });
 }
 
@@ -48,11 +51,22 @@
     if (title) {
         _title = title;
         _titleName.text = title;
+        _titleImageView.hidden = YES;
+        _titleName.hidden = NO;
     }
 }
 
 - (NSString *)title {
     return _title;
+}
+
+- (void)setNavigationBarImage:(UIImage *)navigationBarImage {
+    if (navigationBarImage) {
+        _navigationBarImage = navigationBarImage;
+        _titleImageView.hidden = NO;
+        _titleName.hidden = YES;
+        _titleImageView.image = navigationBarImage;
+    }
 }
 
 #pragma mark - public
@@ -123,6 +137,26 @@
         _titleName.text = _title;
     }
     return _titleName;
+}
+
+- (UIImageView *)titleImageView {
+    if (!_titleImageView) {
+        _titleImageView = [[UIImageView alloc] init];
+        _titleImageView.width = 110;
+        _titleImageView.height = 30;
+        _titleImageView.centerX = _navigationBar.width / 2;
+        _titleImageView.centerY = _navigationBar.height / 2 + 10;
+        if (_navigationBarImage) {
+            _titleImageView.image = _navigationBarImage;
+            _titleImageView.hidden = NO;
+            _titleName.hidden = YES;
+        } else {
+            _titleImageView.hidden = YES;
+            _titleName.hidden = NO;
+        }
+        
+    }
+    return _titleImageView;
 }
 
 @end

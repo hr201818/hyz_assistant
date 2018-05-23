@@ -7,6 +7,10 @@
 //
 
 
+#pragma mark - 十六进制颜色
+#define COLOR_HexRGB(color) [UIColor colorFromHexRGB:color]
+
+#pragma mark - 色值
 #define COLOR(r,g,b) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1]
 #define COLOR_Alpha(r,g,b,a) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a]
 

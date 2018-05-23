@@ -170,7 +170,7 @@
     weakifySelf
     [[DS_UserShare share] loginWithAccount:[_accountView getTextFieldContent]  password:[_passwordView getTextFieldContent] complete:^(id result) {
         if (Request_Success(result)) {
-            [self.navigationController popViewControllerAnimated:YES];
+            [self leftButtonAction:nil];
         } else {
             [self hudErrorText:[result objectForKey:@"description"]];
         }
@@ -185,7 +185,11 @@
 #pragma mark - 点击事件
 /* 返回 */
 - (void)leftButtonAction:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_isPresent) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /* 注册 */

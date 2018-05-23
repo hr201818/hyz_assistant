@@ -90,7 +90,6 @@
         DS_BaseTabBarController * nav = (DS_BaseTabBarController *)[viewController.viewControllers firstObject];
         
         DS_HomeViewController * vc = (DS_HomeViewController *)[nav.viewControllers firstObject];
-        [vc searchNewsWithLotteryID:_lotteryID];
         [viewController selectedIndex:0];
     }
     

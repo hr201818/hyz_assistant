@@ -11,6 +11,7 @@
 
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
+#import "UIColor+MyColorCatagory.h"
 #import "UIViewExt.h"
 #import "Masonry.h"
 #import "DS_FunctionTool.h"

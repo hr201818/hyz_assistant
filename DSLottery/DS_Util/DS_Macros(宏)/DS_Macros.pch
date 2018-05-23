@@ -56,7 +56,8 @@ __weak __typeof(&*self)weakSelf = self;
 #define strongifySelf \
 __strong __typeof(&*weakSelf)self = weakSelf;
 
-#define FONT(s) [UIFont systemFontOfSize:s]
+#define FONT(size) [UIFont systemFontOfSize:size]
+#define FONT_BOLD(size) [UIFont boldSystemFontOfSize:size]
 
 /** 获取预定字符 */
 #define DS_STRINGS(s) NSLocalizedStringFromTable(s, @"DS_Strings", nil)
@@ -69,6 +70,7 @@ __strong __typeof(&*weakSelf)self = weakSelf;
 #define Request_Code(dataSource) [dataSource[@"result"] integerValue]
 /** 请求成功 */
 #define Request_Success(dataSource) Request_Code(dataSource) == Request_Code_Success
+#define Request_Description(dataSource) dataSource[@"description"]
 #define Request_Error_tip [self showMessagetext:@"请检查网络"];
 
 #pragma mark - 占位图

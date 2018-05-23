@@ -7,7 +7,7 @@
 //
 
 #import "DS_LotteryNoticeDetailCell.h"
-#import "DS_DrawDigitalView.h"
+#import "YM_DrawDigitalRoundView.h"
 @interface DS_LotteryNoticeDetailCell ()
 
 /** 分隔线右侧视图 */
@@ -93,12 +93,13 @@
         CGFloat top = IOS_SiZESCALE(0);
         for (int i = 0; i < array.count; i++) {
             
-            DS_DrawDigitalView * digitalView = [[DS_DrawDigitalView alloc] initWithFrame:CGRectMake(left, top, IOS_SiZESCALE(25), IOS_SiZESCALE(25)) number:[array[i] integerValue]];
+            YM_DrawDigitalRoundView * digitalView = [[YM_DrawDigitalRoundView alloc] initWithFrame:CGRectMake(left, top, IOS_SiZESCALE(25), IOS_SiZESCALE(25)) number:[array[i] integerValue]];
             [self.backView addSubview:digitalView];
             
             // 双色球单独处理
             if ([model.playGroupId isEqualToString:@"12"] && i == array.count - 1) {
                 digitalView.textColor = [UIColor blueColor];
+                [digitalView redraw];
             }
             
             if(i == 9){

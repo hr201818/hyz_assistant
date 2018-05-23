@@ -1,19 +1,18 @@
 //
-//  DS_NewsTableViewCell.h
+//  DS_News_NotImageCell.h
 //  DSLottery
 //
-//  Created by 黄玉洲 on 2018/5/9.
+//  Created by 黄玉洲 on 2018/5/23.
 //  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "DS_NewsListModel.h"
+static NSString * DS_News_NotImageCellID = @"DS_News_NotImageCell";
+static CGFloat    DS_News_NotImageCellHeight = 155;
 
-static NSString * DS_NewsTableViewCellID = @"DS_NewsTableViewCell";
-static CGFloat    DS_NewsTableViewCellHeight = 100;
-
-/** 首页资讯 */
-@interface DS_NewsTableViewCell : UITableViewCell
+/** 不带图片的资讯cell */
+@interface DS_News_NotImageCell : UITableViewCell
 
 /** 资讯详情 */
 @property (strong, nonatomic) NSMutableArray <DS_NewsModel *> * models;

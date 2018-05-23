@@ -95,6 +95,24 @@ static DS_AdvertShare * advertObject;
 }
 
 /**
+ 从指定的ID数组中，随机获取一个广告
+ @param adverIDs 指定的ID数组。如果传nil，则在所有广告中随机
+ @return 广告模型
+ */
+- (DS_AdvertModel *)randomAdverModel:(NSArray<NSString *> *)adverIDs {
+    DS_AdvertModel * model = nil;
+    if (!adverIDs) {
+        NSInteger index = arc4random() % [_advertListModel.advertList count];
+        model = _advertListModel.advertList[index];
+    } else {
+        NSArray * array = [self advertModelsWithAdvertIDs:adverIDs];
+        NSInteger index = arc4random() % [array count];
+        model = array[index];
+    }
+    return model;
+}
+
+/**
  获取轮播广告数组
  @return 轮播广告模型数组
  */

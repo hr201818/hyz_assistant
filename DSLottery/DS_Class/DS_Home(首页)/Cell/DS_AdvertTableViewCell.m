@@ -77,18 +77,18 @@
     
     [_containView addSubview:self.focusNumLab];
     [_focusNumLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
         make.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(160);
         make.height.mas_equalTo(25);
     }];
     
     [_containView addSubview:self.tagLabel];
     [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-10);
-        make.bottom.mas_equalTo(-5);
+        make.left.mas_equalTo(10);
         make.width.mas_equalTo(40);
-        make.height.mas_equalTo(20);
+        make.top.mas_equalTo(_advertImageView.mas_bottom);
+        make.bottom.mas_equalTo(0);
     }];
     
     [_containView addSubview:self.topLine];
@@ -158,6 +158,7 @@
     if (!_focusNumLab) {
         _focusNumLab = [[UILabel alloc] init];
         _focusNumLab.text = @"13388位彩民关注过";
+        _focusNumLab.textAlignment = NSTextAlignmentRight;
         _focusNumLab.font = [UIFont systemFontOfSize:10.0f];
         _focusNumLab.textColor = COLOR_Font83;
     }
@@ -167,13 +168,11 @@
 - (UILabel *)tagLabel {
     if (!_tagLabel) {
         _tagLabel = [[UILabel alloc]init];
-        _tagLabel.textColor = COLOR(234, 74, 46);
+        _tagLabel.textColor = COLOR_HexRGB(@"008ECE");
         _tagLabel.font = [UIFont systemFontOfSize:10];
         _tagLabel.layer.masksToBounds = YES;
         _tagLabel.layer.cornerRadius = 5;
         _tagLabel.textAlignment = NSTextAlignmentCenter;
-        _tagLabel.layer.borderColor = COLOR(234, 74, 46).CGColor;
-        _tagLabel.layer.borderWidth = 1;
         _tagLabel.text = @"广告";
     }
     return _tagLabel;

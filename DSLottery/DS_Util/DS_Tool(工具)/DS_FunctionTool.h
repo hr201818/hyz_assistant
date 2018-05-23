@@ -94,13 +94,27 @@
  */
 + (NSString *)weekWithTime:(NSInteger)timeInterval prefix:(NSString *)prefix;
 
-#pragma mark - 相关数据获取
+/**
+ 计算时间timeInterval与当前时间的间隔
+ @param timeInterval 要比较的时间(秒)
+ @return 相差间隔
+ */
++ (NSInteger)timeOffsetWithTimeInterval:(NSTimeInterval)timeInterval;
+
+#pragma mark - 彩种数据获取
 /**
  通过图片ID获取彩种图片名
  @param imageID 图片ID
  @return 图片名
  */
 + (NSString *)imageNameWithImageID:(NSString *)imageID;
+
+/**
+ 获取彩种字体颜色
+ @param lotteryID 彩种ID
+ @return 颜色
+ */
++ (UIColor *)lotteryColorWithLotteryID:(NSString *)lotteryID;
 
 #pragma mark - 缓存
 /** 获取缓存 */

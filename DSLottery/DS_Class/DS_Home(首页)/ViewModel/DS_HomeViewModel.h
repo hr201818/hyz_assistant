@@ -12,6 +12,14 @@
 
 #pragma mark - 数据请求
 /**
+ 请求开奖公告
+ @param complete 请求完成
+ @param fail  请求失败
+ */
+- (void)requestLotteryNoticeComplete:(void(^)(id object))complete
+                                fail:(void(^)(NSError * failure))fail;
+
+/**
  请求首页资讯
  @param isRefresh  是否刷新（不为刷新时，page增1）
  @param categoryID 资讯分类ID
@@ -31,15 +39,11 @@
 - (void)requestNoticeComplete:(void(^)(id object))complete
                          fail:(void(^)(NSError *failure))fail;
 
+
+
 #pragma mark - 数据获取
 /** 获取公告列表 */
 - (NSArray <NSString *> *)noticeList;
 
-#pragma mark - 数据处理
-/**
- 处理新的资讯数据
- @param newsModel 新的资讯数据
- */
-- (void)processNewNews:(DS_NewsModel *)newsModel;
 
 @end

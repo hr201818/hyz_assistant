@@ -14,9 +14,8 @@
 
 /** view */
 #import "SDCycleScrollView.h"
-#import "SGPagingView.h"
 
-@interface DS_HomeHeaderView () <SDCycleScrollViewDelegate,SGPageTitleViewDelegate, SGPageContentViewDelegate>
+@interface DS_HomeHeaderView () <SDCycleScrollViewDelegate>
 {
     NSArray * _categoryNames;
     NSArray * _categoryIDs;
@@ -24,12 +23,6 @@
     NSMutableArray * _bannerURLs;
     NSMutableArray * _bannerImageURLs;
 }
-
-/** 选项条 */
-@property (nonatomic, strong) SGPageTitleView   * pageTitleView;
-
-/** 扩展按钮 */
-@property (nonatomic, strong) UIButton          * extensionButton;
 
 /** 广告轮播图 */
 @property (strong, nonatomic) SDCycleScrollView * advertScrollView;
@@ -60,14 +53,6 @@
 #pragma mark - 界面
 /** 布局 */
 - (void)layoutView {
-    [self addSubview:self.pageTitleView];
-    
-    [self addSubview:self.extensionButton];
-    
-    UIView * line = [[UIView alloc] init];
-    line.backgroundColor = COLOR_Line;
-    line.frame = CGRectMake(_pageTitleView.right + 10, 5, 1, 30);
-    [self addSubview:line];
     
     [self addSubview:self.advertScrollView];
     
@@ -88,12 +73,6 @@
     if (notices.count > 0) {
         _noticeScrollView.titlesGroup = notices;
     }
-}
-
-/** 设置下标 */
-- (void)setIndex:(NSInteger)index {
-    _pageTitleView.selectedIndex = index;
-    _pageTitleView.resetSelectedIndex = index;
 }
 
 #pragma mark - 界面
@@ -124,35 +103,6 @@
     _advertScrollView.imageURLStringsGroup = _bannerImageURLs;
 }
 
-/** 刷新分类 */
-- (void)refreshCategory {
-    // 标题
-    _categoryNames = [[DS_CategoryShare share] newsCategoryNames];
-    
-    // ID
-    _categoryIDs = [[DS_CategoryShare share] newsCategoryIDs];
-    
-    // 重新布局
-    [_pageTitleView removeFromSuperview];
-    _pageTitleView = nil;
-    [self addSubview:self.pageTitleView];
-}
-
-#pragma mark - 按钮事件
-/** 扩展按钮 */
-- (void)extensionButtonAction:(UIButton *)sender {
-    if (self.extensionBlock) {
-        self.extensionBlock();
-    }
-}
-
-#pragma mark - <SGPageTitleViewDelegate>
-- (void)pageTitleView:(SGPageTitleView *)pageTitleView selectedIndex:(NSInteger)selectedIndex {
-    if (self.categoryIDBlock) {
-        self.categoryIDBlock(_categoryIDs[selectedIndex]);
-    }
-}
-
 #pragma mark - <SDCycleScrollViewDelegate>
 /** 轮播点击事件 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -162,36 +112,9 @@
 }
 
 #pragma mark - 懒加载
-- (SGPageTitleView *)pageTitleView {
-    if (!_pageTitleView) {
-        SGPageTitleViewConfigure *configure = [SGPageTitleViewConfigure pageTitleViewConfigure];
-        configure.bottomSeparatorColor = [UIColor clearColor];
-        configure.titleFont = [UIFont systemFontOfSize:16];
-        configure.titleColor = COLOR_Font121;
-        configure.titleSelectedColor = COLOR_HOME;
-        configure.indicatorColor = COLOR_HOME;
-        configure.indicatorAnimationTime = 0.1;
-        configure.titleSelectedFont = [UIFont systemFontOfSize:17];
-        
-        _pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, self.width - 70, 40) delegate:self titleNames:_categoryNames configure:configure];
-        _pageTitleView.backgroundColor = [UIColor whiteColor];
-    }
-    return _pageTitleView;
-}
-
-- (UIButton *)extensionButton {
-    if (!_extensionButton) {
-        _extensionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _extensionButton.frame = CGRectMake(self.width - 25 - 15, (_pageTitleView.height - 23) / 2, 25, 23);
-        [_extensionButton setImage:[UIImage imageNamed:@"category_more"] forState:UIControlStateNormal];
-        [_extensionButton addTarget:self action:@selector(extensionButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _extensionButton;
-}
-
 - (SDCycleScrollView *)advertScrollView {
     if (!_advertScrollView) {
-        _advertScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, _pageTitleView.bottom, self.width, 130)];
+        _advertScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, 130)];
         _advertScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
         _advertScrollView.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _advertScrollView.delegate = self;

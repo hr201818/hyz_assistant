@@ -11,6 +11,7 @@
 
 /** viewController */
 #import "DS_UserViewController.h"
+#import "DS_LoginViewController.h"
 
 /** model */
 #import "DS_HomeViewModel.h"
@@ -22,7 +23,6 @@
 
 /** view */
 #import "DS_HomeHeaderView.h"
-#import "DS_NewsCategoryView.h"
 
 @interface DS_HomeViewController ()
 
@@ -37,6 +37,10 @@
 
 /* 首页列表 */
 @property (strong, nonatomic) UITableView       * tableView;
+
+/** 导航栏按钮 */
+@property (strong, nonatomic) UIButton          * leftButton;
+@property (strong, nonatomic) UIButton          * rightButton;
 
 @end
 
@@ -61,7 +65,7 @@
     
     [self requestNotice];
     
-    [self requestCategoryOpenMore:NO];
+    [self requestLotteryNotice];
     
     [self requestNewsWithIsRefresh:YES];
 }
@@ -70,26 +74,13 @@
 /** 布局 */
 - (void)layoutView {
     self.title = DS_STRINGS(@"kHomeTitle");
+    self.navigationBarImage = DS_UIImageName(@"navigationBarImage");
     
-    // 购彩中心
-    UIButton * leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(0, 0, 80, 30);
-    [leftButton setImage:[UIImage imageNamed:@"left_icon"] forState:UIControlStateNormal];
-    [leftButton setTitle:DS_STRINGS(@"kLotteryHall") forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    leftButton.titleLabel.font = FONT(15.0f);
-    [leftButton setImagePosition:DS_ImagePositionLeft spacing:5];
-    [self navLeftItem:leftButton];
+    // 左侧按钮
+    [self navLeftItem:self.leftButton];
     
-    // 个人中心
-    UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(0, 0, 80, 30);
-    [rightBtn setTitle:@"个人中心" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [rightBtn addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self navRightItem:rightBtn];
+    // 右侧按钮
+    [self navRightItem:self.rightButton];
     
     [self.view addSubview:self.tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,28 +88,6 @@
         make.bottom.mas_equalTo(-TABBAR_HEIGHT);
         make.left.right.mas_equalTo(0);
     }];
-}
-
-/** 打开更多资讯分类 */
-- (void)openMoreNewsCategory {
-    DS_NewsCategoryView * newCategoryView = [[DS_NewsCategoryView alloc] initWithFrame:CGRectMake(0, 0, Screen_WIDTH, Screen_HEIGHT)];
-    newCategoryView.newsCategorys = [[DS_CategoryShare share] newsCategorys];
-    [KeyWindows addSubview:newCategoryView];
-    
-    // 更多分类中，点击了分类后的操作
-    weakifySelf
-    newCategoryView.newsCategoryBlock = ^(NSString *newsCategoryID) {
-        strongifySelf
-        // 当点击的分类与当前不同时才执行
-        if (![self.categoryID isEqual:newsCategoryID]) {
-            self.categoryID = newsCategoryID;
-            // 改变资讯分类滚动条的选中状态
-            NSInteger index = [[DS_CategoryShare share] newsCategoryIndexWithID:newsCategoryID];
-            [_headerView setIndex:index];
-            // 请求新的资讯内容
-            [self requestNewsWithIsRefresh:YES];
-        }
-    };
 }
 
 #pragma mark - 数据请求
@@ -137,6 +106,17 @@
     }];
 }
 
+/** 请求开奖公告 */
+- (void)requestLotteryNotice {
+    weakifySelf
+    [_viewModel requestLotteryNoticeComplete:^(id object) {
+        strongifySelf
+        [self.tableView reloadData];
+    } fail:^(NSError *failure) {
+        Request_Error_tip
+    }];
+}
+
 /** 请求公告数据 */
 - (void)requestNotice {
     weakifySelf
@@ -146,23 +126,7 @@
             [self.headerView setNoticeCycleArray:[_viewModel noticeList]];
         }
     } fail:^(NSError *failure) {
-        
-    }];
-}
-
-/**
- 请求分类
- @param isOpen 是否打开更多分类
- */
-- (void)requestCategoryOpenMore:(BOOL)isOpen {
-    weakifySelf
-    [[DS_CategoryShare share] requestCategoryListComplete:^(id object) {
-        strongifySelf
-        if (Request_Success(object)) {
-            [self.headerView refreshCategory];
-        }
-    } fail:^(NSError *failure) {
-        
+        Request_Error_tip
     }];
 }
 
@@ -193,63 +157,105 @@
     }];
 }
 
+/** 请求注销 */
+- (void)requestLogout {
+    [self showhud];
+    [[DS_UserShare share] logoutComplete:^(id result) {
+        if (Request_Success(result) != YES &&
+            Request_Code(result) != Request_Code_Timeout) {
+            [self showMessagetext:Request_Description(result)];
+        }
+    } fail:^(NSError *failure) {
+        Request_Error_tip;
+    }];
+}
+
 #pragma mark - 通知
 /** 注册通知 */
 - (void)registerNotice {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(praiseAndReadChange:) name:@"praise_read_number" object:nil];
+    // 登录成功
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:Login_Notice object:nil];
+    
+    // 注销成功
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutSuccess) name:Logout_Notice object:nil];
+
 }
 
-/** 通知事件 */
-- (void)praiseAndReadChange:(NSNotification *)notifi {
-    DS_NewsModel * newsModel = (DS_NewsModel *)notifi.object;
-    [_viewModel processNewNews:newsModel];
-    [_tableView reloadData];
+/** 登录成功 */
+- (void)loginSuccess {
+    [_leftButton setTitle:DS_STRINGS(@"kLogout") forState:UIControlStateNormal];
+    [self showMessagetext:DS_STRINGS(@"kLoginSuccess")];
 }
 
-#pragma mark - public
-/** 搜索指定彩种的资讯 */
-- (void)searchNewsWithLotteryID:(NSString *)lotteryID {
-    _categoryID = [[DS_CategoryShare share] categoryIDWithLotteryID:lotteryID];
-    [self requestNewsWithIsRefresh:YES];
-    NSInteger index = [[DS_CategoryShare share] newsCategoryIndexWithID:_categoryID];
-    [_headerView setIndex:index];
+/** 注销成功 */
+- (void)logoutSuccess {
+    [_leftButton setTitle:DS_STRINGS(@"kLogin") forState:UIControlStateNormal];
+    [self showMessagetext:DS_STRINGS(@"kLogoutSuccess")];
 }
 
 #pragma mark - 按钮事件
 - (void)leftButtonAction:(UIButton *)sender {
-    [[DS_AdvertShare share] openFirstAdvert];
+    if ([DS_UserShare share].userID) {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要退出登录吗?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if([DS_UserShare share].token){
+                [self requestLogout];
+            } else{
+                [[DS_UserShare share] logoutSucceed];
+            }
+        }];
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:defaultAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        DS_LoginViewController * loginVC = [[DS_LoginViewController alloc] init];
+        loginVC.isPresent = YES;
+        DS_BaseNavigationController * nav = [[DS_BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 - (void)rightButtonAction:(UIButton *)sender {
-    DS_UserViewController * vc = [[DS_UserViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    DS_UserViewController * vc = [[DS_UserViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 懒加载
+- (UIButton *)leftButton {
+    if (!_leftButton) {
+        _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _leftButton.frame = CGRectMake(0, 0, 80, 30);
+        if ([DS_UserShare share].userID) {
+            [_leftButton setTitle:DS_STRINGS(@"kLogout") forState:UIControlStateNormal];
+        } else {
+            [_leftButton setTitle:DS_STRINGS(@"kLogin") forState:UIControlStateNormal];
+        }
+        
+        [_leftButton addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        _leftButton.titleLabel.font = FONT(16.0f);
+    }
+    return _leftButton;
+}
+
+- (UIButton *)rightButton {
+    if (!_rightButton) {
+        _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _rightButton.frame = CGRectMake(0, 0, 80, 30);
+        [_rightButton setTitle:DS_STRINGS(@"kBuyLottery") forState:UIControlStateNormal];
+        [_rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _rightButton.titleLabel.font = FONT(16.0f);
+        _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [_rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightButton;
+}
+
 - (DS_HomeHeaderView *)headerView {
     if (!_headerView) {
-        _headerView = [[DS_HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, Screen_WIDTH, 205)];
-        
-        weakifySelf
-        _headerView.categoryIDBlock = ^(NSString * categoryID) {
-            strongifySelf
-            if (![self.categoryID isEqual:categoryID]) {
-                self.categoryID = categoryID;
-                [self requestNewsWithIsRefresh:YES];
-                [self requestAdvert];
-                [self requestNotice];
-            }
-        };
-        
-        /** 扩展按钮点击 */
-        _headerView.extensionBlock = ^{
-            strongifySelf
-            if ([[[DS_CategoryShare share] newsCategoryIDs] count] > 0) {
-                [self openMoreNewsCategory];
-            } else {
-                [self requestCategoryOpenMore:YES];
-            }
-        };
+        _headerView = [[DS_HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, Screen_WIDTH, 158)];
     }
     return _headerView;
 }
@@ -269,11 +275,12 @@
             strongifySelf
             [self requestAdvert];
             [self requestNotice];
+            [self requestLotteryNotice];
             [self requestNewsWithIsRefresh:YES];
         }];
         
         // 加载
-        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             [self requestNewsWithIsRefresh:NO];
         }];
     }

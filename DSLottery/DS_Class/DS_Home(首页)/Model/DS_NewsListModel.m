@@ -27,7 +27,12 @@
 }
 
 -(void)processModel{
-    self.imageId = [NSString stringWithFormat:@"%@%@.png?",IMGURL,self.imageId];
+    if ([_imageIdList count] > 0) {
+        NSString * imageID = [_imageIdList firstObject];
+        _imageId = [NSString stringWithFormat:@"%@%@.png?",IMGURL, imageID];
+    } else {
+        _imageId = @"";
+    }
     
 //    BOOL isSave = NO;
 //    

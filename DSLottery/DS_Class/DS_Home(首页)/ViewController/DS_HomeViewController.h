@@ -10,7 +10,4 @@
 
 @interface DS_HomeViewController : DS_BaseViewController
 
-/** 搜索指定彩种的资讯 */
-- (void)searchNewsWithLotteryID:(NSString *)lotteryID;
-
 @end

@@ -1,12 +1,12 @@
 //
-//  DS_NewsTableViewCell.m
+//  DS_News_HaveImageCell.m
 //  DSLottery
 //
-//  Created by 黄玉洲 on 2018/5/9.
+//  Created by 黄玉洲 on 2018/5/23.
 //  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
 //
 
-#import "DS_NewsTableViewCell.h"
+#import "DS_News_HaveImageCell.h"
 #import "DS_NewsDetailViewController.h"
 
 /** view */
@@ -15,7 +15,7 @@
 /** share */
 #import "DS_CategoryShare.h"
 
-@interface DS_NewsTableViewCell ()
+@interface DS_News_HaveImageCell ()
 
 /** 左边图片 */
 @property (strong, nonatomic) UIImageView * leftImageView;
@@ -29,15 +29,9 @@
 /** 分割线 */
 @property (strong, nonatomic) UIView      * separator;
 
-/** 点赞数视图 */
-@property (strong, nonatomic) DS_NewsSmallView * praiseView;
-
-/** 查阅数视图 */
-@property (strong, nonatomic) DS_NewsSmallView * lookView;
-
 @end
 
-@implementation DS_NewsTableViewCell
+@implementation DS_News_HaveImageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -53,41 +47,26 @@
 - (void)layoutView {
     [self.contentView addSubview:self.leftImageView];
     [_leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.centerY.mas_equalTo(self.contentView.mas_centerY);
-        make.width.height.mas_equalTo(50);
+        make.left.mas_equalTo(15);
+        make.top.mas_equalTo(15);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(60);
     }];
     
     [self.contentView addSubview:self.titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_leftImageView.mas_right).offset(10);
+        make.left.mas_equalTo(_leftImageView.mas_right).offset(15);
         make.right.mas_equalTo(-10);
-        make.height.mas_equalTo(35);
-        make.top.mas_equalTo(25);
+        make.height.mas_equalTo(60);
+        make.top.mas_equalTo(_leftImageView);
     }];
     
     [self.contentView addSubview:self.timeLabel];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_titleLabel);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(20);
-        make.top.mas_equalTo(70);
-    }];
-    
-    [self.contentView addSubview:self.praiseView];
-    [_praiseView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-80);
-        make.centerY.mas_equalTo(_timeLabel);
-        make.width.mas_equalTo(50);
-        make.height.mas_equalTo(40);
-    }];
-    
-    [self.contentView addSubview:self.lookView];
-    [_lookView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(_timeLabel);
-        make.width.mas_equalTo(60);
+        make.left.mas_equalTo(_leftImageView);
         make.right.mas_equalTo(-10);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(20);
+        make.top.mas_equalTo(_leftImageView.mas_bottom).offset(10);
     }];
     
     [self.contentView addSubview:self.separator];
@@ -103,14 +82,26 @@
 #pragma mark - settet
 - (void)setModel:(DS_NewsModel *)model {
     _model = model;
-    _titleLabel.text = _model.title;
-    _timeLabel.text = [DS_FunctionTool timestampTo:_model.createTime formatter:@"yyyy-MM-dd"];
-    [_praiseView setNumber:_model.thumbsUpNumb];
-    [_lookView setNumber:_model.readerNumb];
     
-    NSString * lotteryID = [[DS_CategoryShare share] lotteryIDWithCategoryID:_model.categoryId];
-    NSString * imageName = [DS_FunctionTool imageNameWithImageID:lotteryID];
-    _leftImageView.image = [UIImage imageNamed:imageName];
+    // 设置标题
+    _titleLabel.text = _model.title;
+    
+    // 设置评论和时间
+    NSInteger offsetTime = [DS_FunctionTool timeOffsetWithTimeInterval:[_model.createTime integerValue] / 1000];
+    NSString * timeStr = @"";
+    if (offsetTime <= 60 * 5) {
+        timeStr = @"刚刚";
+    } else if (offsetTime / 60 < 60) {
+        timeStr = [NSString stringWithFormat:@"%ld分钟前", offsetTime / 60];
+    } else if (offsetTime / 3600 < 24) {
+        timeStr = [NSString stringWithFormat:@"%ld小时前", offsetTime / 3600];
+    } else {
+        timeStr = [NSString stringWithFormat:@"%ld天前", offsetTime / 3600 / 24];
+    }
+    _timeLabel.text = [NSString stringWithFormat:@"134评论   %@",timeStr];
+    
+    NSURL * imageURL = [NSURL URLWithString:_model.imageId];
+    [_leftImageView sd_setImageWithURL:imageURL placeholderImage:nil];
 }
 
 #pragma mark - 手势
@@ -134,7 +125,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        _titleLabel.font = FONT_BOLD(15.0f);
         _titleLabel.numberOfLines = 0;
         _titleLabel.text = @"神人独揽118注头奖共1180万！领奖称很感谢彩票";
     }
@@ -144,7 +135,7 @@
 - (UILabel *)timeLabel {
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = [UIFont systemFontOfSize:12.0f];
+        _timeLabel.font = FONT(12.0f);
         _timeLabel.textColor = COLOR_Font83;
         _timeLabel.text = @"2018-04-01";
     }
@@ -159,20 +150,5 @@
     return _separator;
 }
 
-- (DS_NewsSmallView *)praiseView {
-    if (!_praiseView) {
-        _praiseView = [[DS_NewsSmallView alloc] init];
-        [_praiseView setImageName:@"thumb_icon"];
-    }
-    return _praiseView;
-}
-
-- (DS_NewsSmallView *)lookView {
-    if (!_lookView) {
-        _lookView = [[DS_NewsSmallView alloc] init];
-        [_lookView setImageName:@"read_icon"];
-    }
-    return _lookView;
-}
-
 @end
+
