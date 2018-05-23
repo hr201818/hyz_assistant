@@ -1,0 +1,38 @@
+/* 
+  DS_Strings.strings
+  DSLottery
+
+  Created by 黄玉洲 on 2018/4/27.
+  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
+*/
+
+/** 控制器标题 */
+"kHomeTitle"     = "预测";
+"kNewsDetail"    = "资讯详情";
+"kAdvertising"   = "广告详情";
+"kLaw"           = "法律声明";
+"kLotteryNotice" = "开奖公告";
+"kLotteryDetail" = "开奖公告详情";
+"kLotteryShops"  = "连锁彩店";
+"kPersonalTitle" = "我的";
+"kKefuTitle"     = "在线客服";
+"kAbountUsTitle" = "关于我们";
+"kShops"         = "附近投注站";
+"kVersion"       = "版本记录";
+"kLogin"         = "登录";
+"kRegister"      = "注册";
+
+/** 首页 */
+"kLotteryHall"   = "购彩大厅";
+
+/** 投注站 */
+"kSelectedShops" = "请选择附近的彩票网点进行投注";
+
+/** 关于我们 */
+"kAbountUsContent" = "  欢迎访问时时彩大全网站及相应的手机应用软件，以使用我们提供的产品及服务。时时彩为您提供，最新的时时彩资讯；及时时彩最新走势；本软件功能强大、安全方便、界面美观、更省流量，让您随时随地投注时时彩，是您最好的。\n\n\n\n";
+
+
+/** 登录界面 */
+"kLoginOrRegister" = "登录/注册";
+"kLogout"          = "退出登录";
+"kCompnyInfo" = "湖北福益彩票文化传播有限公司";

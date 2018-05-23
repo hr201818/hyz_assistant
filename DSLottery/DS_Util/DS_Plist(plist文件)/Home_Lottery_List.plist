@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>chongqin</string>
+		<key>name</key>
+		<string>重庆时时彩</string>
+		<key>type</key>
+		<string>1</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>天津时时彩</string>
+		<key>type</key>
+		<string>2</string>
+		<key>icon</key>
+		<string>tianjing</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>新疆时时彩</string>
+		<key>type</key>
+		<string>3</string>
+		<key>icon</key>
+		<string>xinjiang</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>双色球</string>
+		<key>type</key>
+		<string>12</string>
+		<key>icon</key>
+		<string>kaij_21</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>福彩3D</string>
+		<key>type</key>
+		<string>5</string>
+		<key>icon</key>
+		<string>kaij_29</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>体彩排列三</string>
+		<key>type</key>
+		<string>4</string>
+		<key>icon</key>
+		<string>kaij_32</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>北京快乐8</string>
+		<key>type</key>
+		<string>8</string>
+		<key>icon</key>
+		<string>kaij_84</string>
+	</dict>
+</array>
+</plist>

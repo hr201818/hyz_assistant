@@ -1,0 +1,78 @@
+PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
+  - AMap3DMap-NO-IDFA (6.1.0):
+    - AMapFoundation-NO-IDFA (~> 1.4)
+  - AMapFoundation-NO-IDFA (1.4.3)
+  - AMapSearch-NO-IDFA (6.1.0):
+    - AMapFoundation-NO-IDFA (~> 1.4)
+  - BaiduMapKit (3.4.4)
+  - Masonry (1.1.0)
+  - MJRefresh (3.1.15.3)
+  - SDAutoLayout (2.2.0)
+  - SDCycleScrollView (1.75):
+    - SDWebImage (>= 4.0.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - Toast (3.1.0)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.2.0)
+  - AMap3DMap-NO-IDFA (~> 6.1.0)
+  - AMapSearch-NO-IDFA (~> 6.1.0)
+  - BaiduMapKit (~> 3.4.2)
+  - Masonry (~> 1.1.0)
+  - MJRefresh (~> 3.1.15.3)
+  - SDAutoLayout (~> 2.2.0)
+  - SDCycleScrollView (~> 1.75)
+  - SDWebImage (~> 4.3.3)
+  - Toast (~> 3.0)
+  - YYModel (~> 1.0.4)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - AMap3DMap-NO-IDFA
+    - AMapFoundation-NO-IDFA
+    - AMapSearch-NO-IDFA
+    - BaiduMapKit
+    - Masonry
+    - MJRefresh
+    - SDAutoLayout
+    - SDCycleScrollView
+    - SDWebImage
+    - Toast
+    - YYModel
+
+SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AMap3DMap-NO-IDFA: bd90d37497d86ec4e6001327e9913af3d86af6c4
+  AMapFoundation-NO-IDFA: b6cbefab250ae8ab2e31aa9bb3dbbb98137cd76f
+  AMapSearch-NO-IDFA: a4511739719aa32ae9990b3189833a0bf82a986a
+  BaiduMapKit: 4ac88f5a363500760392825b69709f4a0125f81e
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
+  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: dafa12d403333c730e93afc3a51d43893039d3d4
+
+COCOAPODS: 1.5.0

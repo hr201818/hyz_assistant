@@ -1,0 +1,77 @@
+//
+//  DS_Macros.pch
+//  DSLottery
+//
+//  Created by 黄玉洲 on 2018/4/25.
+//  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
+//
+
+#ifndef DS_Macros_pch
+#define DS_Macros_pch
+
+#import "DS_Colors.h"
+#import "DS_Networking.h"
+#import "DS_NetworkingPath.h"
+#import "DS_External.h"
+#import "DS_Header.h"
+#import "DS_NotifyID.h"
+
+
+/* 判断是否是PhoneX */
+#define IS_IPHONEX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/* tabbar默认图片 */
+#define TABBAR_NORMAL_IMAGE @""
+
+/* tabbar高度 */
+#define TABBAR_HEIGHT (IS_IPHONEX ? (49.f+34.f) : 49.f)
+
+/* navigationbar高度 */
+#define  NAVIGATIONBAR_HEIGHT   (IS_IPHONEX ? 88.f : 64.f)
+
+/* 状态栏高度 */
+#define  STATUSBAR_HEIGHT      (IS_IPHONEX ? 44.f : 20.f)
+
+/* 获取横竖屏下物理屏幕尺寸 */
+#define Screen_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define Screen_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+/** AppDelegate相关 */
+#define KeyWindows [[UIApplication sharedApplication].delegate window]
+
+/*  获取竖屏下物理屏幕尺寸 */
+#define Vertical_HEIGHT ([UIScreen mainScreen].bounds.size.height > [UIScreen mainScreen].bounds.size.width ? [UIScreen mainScreen].bounds.size.height:[UIScreen mainScreen].bounds.size.width)
+#define Vertical_WIDTH ([UIScreen mainScreen].bounds.size.width < [UIScreen mainScreen].bounds.size.height ? [UIScreen mainScreen].bounds.size.width:[UIScreen mainScreen].bounds.size.height)
+
+
+/* 比例系数 */
+#define IOS8_WINDTH  Vertical_WIDTH / 375.0
+#define IOS8_HEIGHT  Vertical_HEIGHT / 667.0
+#define IOS_SiZESCALE(m) m * IOS8_WINDTH
+
+/* weakSelf strongSelf */
+#define weakifySelf  \
+__weak __typeof(&*self)weakSelf = self;
+
+#define strongifySelf \
+__strong __typeof(&*weakSelf)self = weakSelf;
+
+#define FONT(s) [UIFont systemFontOfSize:s]
+
+/** 获取预定字符 */
+#define DS_STRINGS(s) NSLocalizedStringFromTable(s, @"DS_Strings", nil)
+
+#pragma mark - 键盘
+#define HidenKeybory {[[[UIApplication sharedApplication] keyWindow] endEditing:YES];}
+
+#pragma mark - 数据请求相关
+/** 用来判断请求结果result */
+#define Request_Code(dataSource) [dataSource[@"result"] integerValue]
+/** 请求成功 */
+#define Request_Success(dataSource) Request_Code(dataSource) == Request_Code_Success
+#define Request_Error_tip [self showMessagetext:@"请检查网络"];
+
+#pragma mark - 占位图
+#define PLACEHOLDER_ADVERT [UIImage imageNamed:@"advert_placeholder"]
+#define DS_UIImageName(name) [UIImage imageNamed:name]
+#endif /* DS_Macros_pch */

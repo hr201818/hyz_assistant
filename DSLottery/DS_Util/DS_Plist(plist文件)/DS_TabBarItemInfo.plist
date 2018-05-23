@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>预测</string>
+		<key>selectedImageName</key>
+		<string>toolbar_icon_xihu-pre</string>
+		<key>normalImageName</key>
+		<string>toolbar_icon_xihu-dis</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>走势</string>
+		<key>selectedImageName</key>
+		<string>toolbar_icon_xiaoguanjia_pre</string>
+		<key>normalImageName</key>
+		<string>toolbar_icon_xiaoguanjia-_dis</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>开奖公告</string>
+		<key>selectedImageName</key>
+		<string>toolbar_icon_HI-_pre</string>
+		<key>normalImageName</key>
+		<string>toolbar_icon_HI_dis</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>发现</string>
+		<key>selectedImageName</key>
+		<string>label_bar_taopiaopiao_selected</string>
+		<key>normalImageName</key>
+		<string>label_bar_taopiaopiao_normal</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>投注站</string>
+		<key>selectedImageName</key>
+		<string>toolbar_icon_wode-_pre</string>
+		<key>normalImageName</key>
+		<string>toolbar_icon_wode_dis</string>
+	</dict>
+</array>
+</plist>
