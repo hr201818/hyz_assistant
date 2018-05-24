@@ -8,10 +8,16 @@
 
 #import "DS_MapViewController.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
-@interface DS_MapViewController () <BMKMapViewDelegate>
-
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>
+@interface DS_MapViewController () <BMKMapViewDelegate, BMKLocationServiceDelegate>
+{
+    // 定位
+    BMKLocationService * _locationManager;
+}
 /** 地图视图 */
 @property (strong, nonatomic) BMKMapView * mapView;
+
+
 
 @end
 
@@ -33,23 +39,25 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
     DS_BaseNavigationController * navigation = (DS_BaseNavigationController *)self.navigationController;
     navigation.backhandlepan = NO;
+    
+    [_locationManager startUserLocationService];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     DS_BaseNavigationController * navigation = (DS_BaseNavigationController *)self.navigationController;
     navigation.backhandlepan = YES;
+    
+    [_locationManager stopUserLocationService];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = self.typeName;
-    
-    [self navLeftItem:[DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)]];
+    // 数据初始化
+    [self initData];
     
     //视图布局
     [self layoutView];
@@ -60,10 +68,30 @@
     }
 }
 
+#pragma mark - 数据
+- (void)initData {
+    //初始化实例
+    _locationManager = [[BMKLocationService alloc] init];
+    //设置delegate
+    _locationManager.delegate = self;
+    //设置距离过滤参数
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    //设置预期精度参数
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //设置是否自动停止位置更新
+    _locationManager.pausesLocationUpdatesAutomatically = YES;
+    //设置是否允许后台定位
+    _locationManager.allowsBackgroundLocationUpdates = NO;
+    [_locationManager startUserLocationService];
+}
+
 #pragma mark - 布局
 /* 布局 */
 -(void)layoutView {
-    //    self.userInfomation = nil;
+    
+    self.title = self.typeName;
+    
+    [self navLeftItem:[DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)]];
     
     [self.view addSubview:self.mapView];
     
@@ -76,15 +104,6 @@
         annotation.title = self.typeName;
         [_mapView addAnnotation:annotation];
     }
-    
-    //个人位置蓝色图标设置
-//    BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
-//    displayParam.isRotateAngleValid = NO;
-//    displayParam.isAccuracyCircleShow = NO;
-//    displayParam.accuracyCircleFillColor = [UIColor redColor];
-//    displayParam.locationViewOffsetX = self.longitude;//定位偏移量(经度)
-//    displayParam.locationViewOffsetY = self.latitude;//定位偏移量（纬度）
-//    [_mapView updateLocationViewWithParam:displayParam];
 }
 
 #pragma mark - 按钮事件
@@ -119,6 +138,45 @@
     return nil;
 }
 
+#pragma mark - <BMKLocationServiceDelegate>
+/**
+ *在将要启动定位时，会调用此函数
+ */
+- (void)willStartLocatingUser {
+    
+}
+
+/**
+ *在停止定位后，会调用此函数
+ */
+- (void)didStopLocatingUser {
+    
+}
+
+/**
+ *用户方向更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation {
+    
+}
+
+/**
+ *用户位置更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
+    [_mapView updateLocationData:userLocation];
+}
+
+/**
+ *定位失败后，会调用此函数
+ *@param error 错误号
+ */
+- (void)didFailToLocateUserWithError:(NSError *)error {
+    
+}
+
 #pragma mark - 懒加载
 - (BMKMapView *)mapView {
     if (!_mapView) {
@@ -127,7 +185,8 @@
         _mapView.showsUserLocation = YES;
         [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.latitude, self.longitude)];
         _mapView.zoomLevel = 18;
-        _mapView.userTrackingMode = BMKUserTrackingModeFollow;//设置定位的状态为普通定位模式
+        _mapView.mapType = BMKMapTypeStandard;
+        _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态为普通定位模式
     }
     return _mapView;
 }

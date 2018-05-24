@@ -16,6 +16,9 @@
 /** 经度 */
 @property (assign, nonatomic) CGFloat    longitude;
 
+/** 用户所在经纬度 */
+@property (assign, nonatomic) CLLocationCoordinate2D currentCordinate;
+
 /** 图片路径 */
 @property (copy, nonatomic)   NSString * imageUrl;
 

@@ -582,10 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				08FCD85D20A286B8002E93F5 /* Cell */,
-				08FCD85E20A286B8002E93F5 /* Model */,
-				08FCD85F20A286B8002E93F5 /* View */,
 				08FCD86020A286B8002E93F5 /* ViewController */,
-				08FCD86120A286B8002E93F5 /* ViewModel */,
 			);
 			path = "DS_ Shops(投注站)";
 			sourceTree = "<group>";
@@ -599,20 +596,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		08FCD85E20A286B8002E93F5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		08FCD85F20A286B8002E93F5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		08FCD86020A286B8002E93F5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,13 +605,6 @@
 				08F56E1B20AAB49200C47D37 /* DS_MapViewController.m */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		08FCD86120A286B8002E93F5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		08FCD86220A286B8002E93F5 /* DS_Charts(走势) */ = {

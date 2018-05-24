@@ -199,13 +199,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([self.response[indexPath.row] isKindOfClass:[BMKPoiInfo class]]) {
         BMKPoiInfo * poiInfo = (BMKPoiInfo *)self.response[indexPath.row];
-        DS_MapViewController * mapView = [[DS_MapViewController alloc]init];
-        mapView.hidesBottomBarWhenPushed = YES;
-        mapView.imageUrl = [NSString stringWithFormat:@"http://api.map.baidu.com/panorama/v2?ak=TS9nyRMSTDTX3RRMgWGsL0WivcEcUvLM&location=%lf,%lf&poiid=%@",poiInfo.pt.longitude,poiInfo.pt.latitude,poiInfo.uid];
-        mapView.longitude = poiInfo.pt.longitude;
-        mapView.latitude = poiInfo.pt.latitude;
-        mapView.typeName = poiInfo.name;
-        [self.navigationController pushViewController:mapView animated:YES];
+        DS_MapViewController * mapVC = [[DS_MapViewController alloc]init];
+        mapVC.hidesBottomBarWhenPushed = YES;
+        mapVC.imageUrl = [NSString stringWithFormat:@"http://api.map.baidu.com/panorama/v2?ak=TS9nyRMSTDTX3RRMgWGsL0WivcEcUvLM&location=%lf,%lf&poiid=%@",poiInfo.pt.longitude,poiInfo.pt.latitude,poiInfo.uid];
+        mapVC.longitude = poiInfo.pt.longitude;
+        mapVC.latitude = poiInfo.pt.latitude;
+        mapVC.typeName = poiInfo.name;
+        mapVC.currentCordinate = _currentLocaltion;
+        [self.navigationController pushViewController:mapVC animated:YES];
     }
 }
 
