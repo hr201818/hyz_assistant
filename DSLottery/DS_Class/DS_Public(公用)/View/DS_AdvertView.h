@@ -9,7 +9,10 @@
 #import "DS_BaseView.h"
 #import "DS_AdvertListModel.h"
 
-/** 广告图 */
+
+static CGFloat DS_AdvertViewHeight = 160;
+
+/** 广告图（带上下黑边） */
 @interface DS_AdvertView : DS_BaseView
 
 @property (strong, nonatomic) DS_AdvertModel * model;

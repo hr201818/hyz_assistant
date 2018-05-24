@@ -44,6 +44,21 @@ DEPENDENCIES:
   - Toast (~> 3.0)
   - YYModel (~> 1.0.4)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - AMap3DMap-NO-IDFA
+    - AMapFoundation-NO-IDFA
+    - AMapSearch-NO-IDFA
+    - BaiduMapKit
+    - Masonry
+    - MJRefresh
+    - SDAutoLayout
+    - SDCycleScrollView
+    - SDWebImage
+    - Toast
+    - YYModel
+
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   AMap3DMap-NO-IDFA: bd90d37497d86ec4e6001327e9913af3d86af6c4
@@ -60,4 +75,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: dafa12d403333c730e93afc3a51d43893039d3d4
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.0

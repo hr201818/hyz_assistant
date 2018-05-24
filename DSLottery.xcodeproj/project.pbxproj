@@ -60,6 +60,7 @@
 		0873F41720B5406800F8410B /* UIColor+MyColorCatagory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41620B5406800F8410B /* UIColor+MyColorCatagory.m */; };
 		0873F41D20B55D6900F8410B /* DS_News_HaveImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41C20B55D6900F8410B /* DS_News_HaveImageCell.m */; };
 		0873F42020B55D7900F8410B /* DS_News_NotImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41F20B55D7900F8410B /* DS_News_NotImageCell.m */; };
+		08A9F70D20B6925F003BC029 /* DS_AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A9F70C20B6925F003BC029 /* DS_AgreementViewController.m */; };
 		08B8B2EE20A6D9A60074533E /* DS_NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2ED20A6D9A60074533E /* DS_NewsDetailViewController.m */; };
 		08B8B2F120A6DA1E0074533E /* DS_NewsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2F020A6DA1E0074533E /* DS_NewsHeaderView.m */; };
 		08B8B2FA20A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2F920A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m */; };
@@ -225,6 +226,8 @@
 		0873F41C20B55D6900F8410B /* DS_News_HaveImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_News_HaveImageCell.m; sourceTree = "<group>"; };
 		0873F41E20B55D7900F8410B /* DS_News_NotImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_News_NotImageCell.h; sourceTree = "<group>"; };
 		0873F41F20B55D7900F8410B /* DS_News_NotImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_News_NotImageCell.m; sourceTree = "<group>"; };
+		08A9F70B20B6925F003BC029 /* DS_AgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_AgreementViewController.h; sourceTree = "<group>"; };
+		08A9F70C20B6925F003BC029 /* DS_AgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_AgreementViewController.m; sourceTree = "<group>"; };
 		08B8B2EC20A6D9A60074533E /* DS_NewsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_NewsDetailViewController.h; sourceTree = "<group>"; };
 		08B8B2ED20A6D9A60074533E /* DS_NewsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_NewsDetailViewController.m; sourceTree = "<group>"; };
 		08B8B2EF20A6DA1E0074533E /* DS_NewsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_NewsHeaderView.h; sourceTree = "<group>"; };
@@ -952,6 +955,8 @@
 				08FF51F520A4430100E2D918 /* DS_VersionViewController.m */,
 				08FF51F720A44FC200E2D918 /* DS_AboutViewController.h */,
 				08FF51F820A44FC200E2D918 /* DS_AboutViewController.m */,
+				08A9F70B20B6925F003BC029 /* DS_AgreementViewController.h */,
+				08A9F70C20B6925F003BC029 /* DS_AgreementViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -996,7 +1001,6 @@
 				085865D52090612300F270D5 /* Frameworks */,
 				085865D62090612300F270D5 /* Resources */,
 				65A02981BAC4C8D1FDD5B23D /* [CP] Copy Pods Resources */,
-				2A86D568ED276CF3450D1FE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1126,21 +1130,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A86D568ED276CF3450D1FE1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DSLottery/Pods-DSLottery-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5083D9ABE80B1589D9B7BD95 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1156,7 +1145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65A02981BAC4C8D1FDD5B23D /* [CP] Copy Pods Resources */ = {
@@ -1246,6 +1235,7 @@
 				084DC34520919E9E00E2C996 /* DS_BaseViewModel.m in Sources */,
 				08FCD88B20A28949002E93F5 /* DS_HomeViewModel.m in Sources */,
 				08FCD89120A28E89002E93F5 /* DS_AdvertListModel.m in Sources */,
+				08A9F70D20B6925F003BC029 /* DS_AgreementViewController.m in Sources */,
 				08D0437120A67410006C01F5 /* DS_UserViewModel.m in Sources */,
 				084316C32090698E00A3183A /* DS_BaseTabBar.m in Sources */,
 				08FCD8CB20A2F6DE002E93F5 /* DS_UserShare.m in Sources */,

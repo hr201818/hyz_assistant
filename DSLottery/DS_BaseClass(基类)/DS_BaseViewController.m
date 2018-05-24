@@ -11,6 +11,8 @@
 @interface DS_BaseViewController ()
 {
     NSString * _title;
+    // 是否透明导航栏
+    BOOL _transparent;
 }
 /* 标题名称 */
 @property (strong, nonatomic) UILabel * titleName;
@@ -40,9 +42,6 @@
         [self.view addSubview:self.navigationBar];
         [_navigationBar addSubview:self.titleName];
         [_navigationBar addSubview:self.titleImageView];
-        //        UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, self.navBar.height - 0.5, PhoneScreen_WIDTH, 0.5)];
-        //        line.backgroundColor = COLOR_Alpha(53, 53, 53, 0.5);
-        //        [self.navBar addSubview:line];
     });
 }
 
@@ -51,8 +50,8 @@
     if (title) {
         _title = title;
         _titleName.text = title;
-        _titleImageView.hidden = YES;
         _titleName.hidden = NO;
+        _titleImageView.hidden = YES;
     }
 }
 
@@ -111,17 +110,24 @@
     [CSToastManager setQueueEnabled:YES];
 }
 
+/**
+ 让导航栏透明
+ */
+- (void)transparentNavigationBar {
+    _transparent = YES;
+    
+    _navigationBar.backgroundColor = [UIColor clearColor];
+}
+
 #pragma mark - 懒加载
 /* 导航栏 */
-- (UIView *)navigationBar {
+- (UIImageView *)navigationBar {
     if (!_navigationBar) {
-        _navigationBar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Screen_WIDTH, NAVIGATIONBAR_HEIGHT)];
-        _navigationBar.backgroundColor = COLOR_HOME;
-        
-        UIImageView * backImageView = [[UIImageView alloc] init];
-        backImageView.image = DS_UIImageName(@"navigationBar");
-        backImageView.frame = _navigationBar.bounds;
-        [_navigationBar addSubview:backImageView];
+        _navigationBar = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, Screen_WIDTH, NAVIGATIONBAR_HEIGHT)];
+        _navigationBar.userInteractionEnabled = YES;
+        if (_transparent != YES) {
+            _navigationBar.image = DS_UIImageName(@"navigationBar");
+        }
     }
     return _navigationBar;
 }

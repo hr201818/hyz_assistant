@@ -33,18 +33,18 @@
     [customerServiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.top.mas_equalTo(0);
-        make.width.mas_equalTo(self.width / 2);
-        make.height.mas_equalTo(self.height / 2);
+        make.width.mas_equalTo(self.mas_width).multipliedBy(0.5);
+        make.height.mas_equalTo(self.mas_height).multipliedBy(0.5);
     }];
     
     // 关于我们
     UIButton * aboutWeBtn = [self buttonWithTitle:DS_STRINGS(@"kAbountUsTitle") imageName:nil tag:DS_OperationType_AboutWe];
     [self addSubview:aboutWeBtn];
     [aboutWeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.width / 2);
+        make.left.mas_equalTo(customerServiceBtn.mas_right);
         make.top.mas_equalTo(0);
-        make.width.mas_equalTo(self.width / 2);
-        make.height.mas_equalTo(self.height / 2);
+        make.width.mas_equalTo(self.mas_width).multipliedBy(0.5);
+        make.height.mas_equalTo(self.mas_height).multipliedBy(0.5);
     }];
     
     // 版本
@@ -52,19 +52,19 @@
     [self addSubview:versionBtn];
     [versionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
-        make.top.mas_equalTo(self.height / 2);
-        make.width.mas_equalTo(self.width / 2);
-        make.height.mas_equalTo(self.height / 2);
+        make.top.mas_equalTo(customerServiceBtn.mas_bottom);
+        make.width.mas_equalTo(self.mas_width).multipliedBy(0.5);
+        make.height.mas_equalTo(self.mas_height).multipliedBy(0.5);
     }];
     
     // 缓存
     UIButton * cacheBtn = [self buttonWithTitle:DS_STRINGS(@"kClearCache") imageName:nil tag:DS_OperationType_Cache];
     [self addSubview:cacheBtn];
     [cacheBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.width / 2);
-        make.top.mas_equalTo(self.height / 2);
-        make.width.mas_equalTo(self.width / 2);
-        make.height.mas_equalTo(self.height / 2);
+        make.left.mas_equalTo(customerServiceBtn.mas_right);
+        make.top.mas_equalTo(customerServiceBtn.mas_bottom);
+        make.width.mas_equalTo(self.mas_width).multipliedBy(0.5);
+        make.height.mas_equalTo(self.mas_height).multipliedBy(0.5);
     }];
     
     UIView * topLine = [[UIView alloc] init];
@@ -74,7 +74,7 @@
         make.centerX.mas_equalTo(self);
         make.top.mas_equalTo(15);
         make.width.mas_equalTo(1);
-        make.height.mas_equalTo(self.height / 2 - 30);
+        make.height.mas_equalTo(self.mas_height).multipliedBy(0.5).offset(-30);
     }];
     
     UIView * bottomLine = [[UIView alloc] init];
@@ -84,7 +84,7 @@
         make.centerX.mas_equalTo(self);
         make.bottom.mas_equalTo(-15);
         make.width.mas_equalTo(1);
-        make.height.mas_equalTo(self.height / 2 - 30);
+        make.height.mas_equalTo(self.mas_height).multipliedBy(0.5).offset(-30);
     }];
     
     UIView * verticalLine = [[UIView alloc] init];

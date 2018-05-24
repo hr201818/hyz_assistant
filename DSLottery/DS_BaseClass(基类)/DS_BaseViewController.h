@@ -15,7 +15,7 @@
 @interface DS_BaseViewController : UIViewController
 
 /* 导航条 */
-@property (nonatomic, strong) UIView * navigationBar;
+@property (nonatomic, strong) UIImageView * navigationBar;
 
 /** 导航条title图片 */
 @property (strong, nonatomic) UIImage * navigationBarImage;
@@ -39,6 +39,11 @@
  */
 -(void)showMakeTostWithText:(NSString *)tostStr
             andTimeInterval:(NSTimeInterval)timeInterval;
+
+/**
+ 让导航栏透明
+ */
+- (void)transparentNavigationBar;
 
 #pragma mark - 用于重写的方法
 /** 布局，仅仅用于重写 */

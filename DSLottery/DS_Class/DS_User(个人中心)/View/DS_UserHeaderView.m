@@ -42,9 +42,11 @@
     self.backgroundColor = [UIColor whiteColor];
     
     UIImageView * backImageView = [[UIImageView alloc] init];
-    backImageView.frame = self.bounds;
     backImageView.image = DS_UIImageName(@"user_head_back");
     [self addSubview:backImageView];
+    [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self);
+    }];
     
     [self addSubview:self.operationBtn];
     [_operationBtn mas_makeConstraints:^(MASConstraintMaker *make) {

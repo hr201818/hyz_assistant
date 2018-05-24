@@ -10,4 +10,7 @@
 /** 注册 */
 @interface DS_RegisterViewController : DS_BaseViewController
 
+/** 注册成功回调 */
+@property (copy, nonatomic) void(^signUpSuccessBlock)(void);
+
 @end

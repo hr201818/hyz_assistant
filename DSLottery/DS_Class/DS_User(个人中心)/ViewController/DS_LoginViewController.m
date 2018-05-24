@@ -25,7 +25,8 @@
 @property (strong, nonatomic) DS_InputView  * passwordView;
 
 /** 广告 */
-@property (strong, nonatomic) DS_AdvertView * advertView;
+@property (strong, nonatomic) DS_AdvertView * advertView_1;
+@property (strong, nonatomic) DS_AdvertView * advertView_2;
 
 @end
 
@@ -41,80 +42,137 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+    
+    //广告数据请求
+    [self requestAdvert];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = DS_STRINGS(@"kLogin");
+    
+    [self transparentNavigationBar];
+    
+    //视图布局
+    [self layoutView];
+}
+
+#pragma mark - 界面
+/** 布局 */
+- (void)layoutView {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     
     [self navLeftItem:[DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)]];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouch)];
     [self.view addGestureRecognizer:tap];
+    
+    // 忘记密码按钮
     UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [rightBtn setTitle:@"注册" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = FONT_BOLD(15.0f);
+    [rightBtn setTitle:DS_STRINGS(@"kForgotPassword") forState:UIControlStateNormal];
+    [rightBtn setTitleColor:COLOR_HexRGB(@"95BCD0") forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    rightBtn.frame = CGRectMake(0, 0, 60, 30);
+    rightBtn.frame = CGRectMake(0, 0, 80, 30);
     [self navRightItem:rightBtn];
     
-    //视图布局
-    [self layoutView];
+    // 顶部的背景图
+    UIImageView * topBackView = [UIImageView new];
+    topBackView.image = DS_UIImageName(@"login_back");
+    [self.view addSubview:topBackView];
+    [topBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(-STATUSBAR_HEIGHT);
+        make.height.mas_equalTo(IOS_SiZESCALE(280));
+    }];
     
-    //广告数据请求
-    [self requestAdvert];
+    UIScrollView * scrollView = [UIScrollView new];
+    [self.view addSubview:scrollView];
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
     
+    // 容器视图
+    UIView * containView = [UIView new];
+    containView.backgroundColor = [UIColor clearColor];
+    [scrollView addSubview:containView];
+    [containView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(scrollView);
+        make.width.mas_equalTo(scrollView);
+        make.height.mas_greaterThanOrEqualTo(0);
+    }];
     
-}
+    // 北京赛车助手log
+    UIImageView * logImageView = [UIImageView new];
+    logImageView.image = DS_UIImageName(@"login_log");
+    [containView addSubview:logImageView];
+    [logImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(40);
+        make.top.mas_equalTo(100);
+        make.height.mas_equalTo(21);
+        make.width.mas_equalTo(128);
+    }];
 
-- (void)layoutView {
     
-    [self.view addSubview:self.accountView];
+    [containView addSubview:self.accountView];
     [_accountView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(NAVIGATIONBAR_HEIGHT + 40);
-        make.left.mas_equalTo(30);
-        make.right.mas_equalTo(-30);
+        make.top.mas_equalTo(logImageView.mas_bottom).offset(30);
+        make.left.mas_equalTo(40);
+        make.right.mas_equalTo(-40);
         make.height.mas_equalTo(40);
     }];
     
-    [self.view addSubview:self.passwordView];
+    [containView addSubview:self.passwordView];
     [_passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_accountView.mas_bottom).offset(30);
+        make.top.mas_equalTo(_accountView.mas_bottom).offset(20);
         make.left.right.height.mas_equalTo(_accountView);
-    }];
-    
-    //忘记密码按钮
-    UIButton * forgetPassword = [UIButton buttonWithType:UIButtonTypeCustom];
-    [forgetPassword setTitleColor:COLOR(250, 80, 50) forState:UIControlStateNormal];
-    [forgetPassword setTitle:@"忘记密码？" forState:UIControlStateNormal];
-    [forgetPassword addTarget:self action:@selector(forgetPasswordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    forgetPassword.titleLabel.font = [UIFont systemFontOfSize:16];
-    [self.view addSubview:forgetPassword];
-    [forgetPassword mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-30);
-        make.width.mas_equalTo(100);
-        make.top.mas_equalTo(_passwordView.mas_bottom).offset(15);
-        make.height.mas_equalTo(40);
     }];
     
     /* 登录按钮 */
     UIButton * loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBtn setBackgroundImage:[UIImage imageNamed:@"loginBtn"] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_back"] forState:UIControlStateNormal];
+    [loginBtn setTitle:DS_STRINGS(@"kLoginImmediately") forState:UIControlStateNormal];
+    loginBtn.titleLabel.font = FONT(16.0f);
     [loginBtn addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:loginBtn];
+    [containView addSubview:loginBtn];
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(IOS_SiZESCALE(45));
         make.centerX.mas_equalTo(self.view);
-        make.width.mas_equalTo(IOS_SiZESCALE(320));
-        make.top.mas_equalTo(_passwordView.mas_bottom).offset(70);
+        make.height.mas_equalTo(IOS_SiZESCALE(50));
+        make.width.mas_equalTo(IOS_SiZESCALE(300));
+        make.top.mas_equalTo(_passwordView.mas_bottom).offset(25);
+    }];
+
+    // 注册按钮
+    UIButton * signupBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [signupBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_back"] forState:UIControlStateNormal];
+    [signupBtn setTitle:DS_STRINGS(@"kSignupImmediately") forState:UIControlStateNormal];
+    [signupBtn addTarget:self action:@selector(signUpButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    signupBtn.titleLabel.font = FONT(16.0f);
+    [containView addSubview:signupBtn];
+    [signupBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(loginBtn.mas_bottom).offset(10);
+        make.left.right.height.mas_equalTo(loginBtn);
     }];
     
-    [self.view addSubview:self.advertView];
-    [_advertView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(loginBtn.mas_bottom).offset(30);
-        make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(156);
+    [containView addSubview:self.advertView_1];
+    [_advertView_1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(containView);
+        make.top.mas_equalTo(signupBtn.mas_bottom).offset(70);
+        make.height.mas_equalTo(DS_AdvertViewHeight);
+    }];
+    
+    [containView addSubview:self.advertView_2];
+    [_advertView_2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(containView);
+        make.top.mas_equalTo(_advertView_1.mas_bottom).offset(-10);
+        make.height.mas_equalTo(_advertView_1);
+        make.bottom.mas_equalTo(containView).offset(-10);// 设置与容器View底部高度固定，contentLabel高度变化的时候，由于设置了容器View的高度动态变化，底部距离固定。 此时contentView的高度变化之后，ScrollView的contentSize就发生了变化，适配文字内容，滑动查看超出屏幕文字。
     }];
 }
 
@@ -136,13 +194,27 @@
 }
 /* 加载广告 */
 -(void)loadData {
-    //非空判断，不然数组会闪退
-    DS_AdvertModel * model = [[DS_AdvertShare share] advertModelWithAdvertID:@"21"];
-    if (model) {
-        _advertView.model = model;
-        _advertView.hidden = NO;
+    // 非空判断，不然数组会闪退
+    DS_AdvertModel * model_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"21"];
+    DS_AdvertModel * model_2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"20"];
+    // 判断第一个广告是否存在，如果不存在就用第二个广告来代替,而第二个广告则不展示。
+    // 否则，按正常的两个广告都展示
+    if (model_1) {
+        _advertView_1.model = model_1;
+        _advertView_1.hidden = NO;
+        if (model_2) {
+            _advertView_2.model = model_2;
+            _advertView_2.hidden = NO;
+        } else {
+            _advertView_2.hidden = YES;
+        }
     } else {
-        _advertView.hidden = YES;
+        if (model_2) {
+            _advertView_1.model = model_2;
+            _advertView_1.hidden = NO;
+        } else {
+            _advertView_1.hidden = YES;
+        }
     }
 }
 
@@ -192,10 +264,9 @@
     }
 }
 
-/* 注册 */
+/* 忘记密码 */
 - (void)rightButtonAction:(UIButton *)sender {
-    DS_RegisterViewController * registerVC = [[DS_RegisterViewController alloc]init];
-    [self.navigationController pushViewController:registerVC animated:YES];
+    [self showMessagetext:@"请联系在线客服"];
 }
 
 /* 登录 */
@@ -203,9 +274,14 @@
     [self requestLoginInfo];
 }
 
-/* 忘记密码 */
-- (void)forgetPasswordButtonAction:(UIButton *)sender {
-    [self showMessagetext:@"请联系在线客服"];
+/* 注册 */
+- (void)signUpButtonAction:(UIButton *)sender {
+    DS_RegisterViewController * registerVC = [[DS_RegisterViewController alloc]init];
+    [self.navigationController pushViewController:registerVC animated:YES];
+    
+    registerVC.signUpSuccessBlock = ^{
+      [self dismissViewControllerAnimated:YES completion:nil];
+    };
 }
 
 /* 退出键盘 */
@@ -235,12 +311,18 @@
     return _passwordView;
 }
 
-//- (DS_LoginAdvertView *)advertView {
-//    if (!_advertView) {
-//        _advertView = [[DS_LoginAdvertView alloc] init];
-//    }
-//    return _advertView;
-//}
+- (DS_AdvertView *)advertView_1 {
+    if (!_advertView_1) {
+        _advertView_1 = [[DS_AdvertView alloc] init];
+    }
+    return _advertView_1;
+}
 
+- (DS_AdvertView *)advertView_2 {
+    if (!_advertView_2) {
+        _advertView_2 = [[DS_AdvertView alloc] init];
+    }
+    return _advertView_2;
+}
 
 @end

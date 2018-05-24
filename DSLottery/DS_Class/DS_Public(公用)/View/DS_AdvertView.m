@@ -46,7 +46,7 @@
     [_containView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(10);
-        make.height.mas_equalTo(143);
+        make.height.mas_equalTo(DS_AdvertViewHeight - 20);
     }];
     
     [_containView addSubview:self.startLabel];
@@ -60,24 +60,24 @@
     [_containView addSubview:self.advertImageView];
     [_advertImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(85);
+        make.height.mas_equalTo(80);
         make.top.mas_equalTo(_startLabel.mas_bottom);
     }];
     
     [_containView addSubview:self.focusNumLab];
     [_focusNumLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
         make.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(28);
+        make.top.mas_equalTo(_advertImageView.mas_bottom);
+        make.width.mas_equalTo(160);
     }];
     
     [_containView addSubview:self.tagLabel];
     [_tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-10);
+        make.left.mas_equalTo(10);
         make.width.mas_equalTo(40);
-        make.height.mas_equalTo(20);
-        make.centerY.mas_equalTo(_focusNumLab);
+        make.top.mas_equalTo(_advertImageView.mas_bottom);
+        make.bottom.mas_equalTo(0);
     }];
 }
 
@@ -126,7 +126,8 @@
     if (!_focusNumLab) {
         _focusNumLab = [[UILabel alloc] init];
         _focusNumLab.text = @"13388位彩民关注过";
-        _focusNumLab.font = [UIFont systemFontOfSize:10.0f];
+        _focusNumLab.textAlignment = NSTextAlignmentRight;
+        _focusNumLab.font = [UIFont systemFontOfSize:12.0f];
         _focusNumLab.textColor = COLOR_Font83;
     }
     return _focusNumLab;
@@ -134,14 +135,12 @@
 
 - (UILabel *)tagLabel {
     if (!_tagLabel) {
-        _tagLabel = [[UILabel alloc]init];
-        _tagLabel.textColor = COLOR(234, 74, 46);
-        _tagLabel.font = [UIFont systemFontOfSize:10];
+        _tagLabel = [[UILabel alloc] init];
+        _tagLabel.textColor = COLOR_HexRGB(@"008ECE");
+        _tagLabel.font = [UIFont systemFontOfSize:12];
         _tagLabel.layer.masksToBounds = YES;
         _tagLabel.layer.cornerRadius = 5;
         _tagLabel.textAlignment = NSTextAlignmentCenter;
-        _tagLabel.layer.borderColor = COLOR(234, 74, 46).CGColor;
-        _tagLabel.layer.borderWidth = 1;
         _tagLabel.text = @"广告";
     }
     return _tagLabel;

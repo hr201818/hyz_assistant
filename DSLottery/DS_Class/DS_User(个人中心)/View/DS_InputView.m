@@ -12,12 +12,6 @@
     DS_InputViewType _type;
 }
 
-/** 左侧图标 */
-@property (strong, nonatomic) UIImageView * leftImageView;
-
-/** 标题 */
-@property (strong, nonatomic) UILabel     * titleLab;
-
 /** 输入框 */
 @property (strong, nonatomic) UITextField * textField;
 
@@ -37,82 +31,43 @@
 #pragma mark - 界面
 /** 布局 */
 - (void)layoutView {
-    [self addSubview:self.leftImageView];
-    [_leftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(0);
-        make.centerY.mas_equalTo(self);
-        make.width.mas_equalTo(20);
-        make.height.mas_equalTo(30);
-    }];
     
-    CGFloat titleWidth = 0;
-    CGFloat rightEdge = 0;
+    NSString * imageName = @"login_gray_line";
+    NSString * placeholder = @"";
     switch (_type) {
         case DS_InputViewType_Account: {
-            titleWidth = 50;
-            rightEdge = 0;
+            imageName = @"login_light_line";
+            placeholder = DS_STRINGS(@"kInputAccount");
             break;
         }
         case DS_InputViewType_Password: {
-            titleWidth = 50;
-            rightEdge = 0;
+            placeholder = DS_STRINGS(@"kInputPassword");
             break;
         }
         case DS_InputViewType_ConfirmPassword: {
-            titleWidth = 85;
-            rightEdge = 0;
+            placeholder = DS_STRINGS(@"kReInputPassword");
             break;
         }
-        case DS_InputViewType_VerificationCode: {
-            titleWidth = 70;
-            rightEdge = -90;
-            break;
-        }
-            
         default:
             break;
     }
     
-    [self addSubview:self.titleLab];
-    [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_leftImageView.mas_right).offset(10);
-        make.centerY.mas_equalTo(self);
-        make.width.mas_equalTo(titleWidth);
-        make.height.mas_equalTo(self);
-    }];
-    
     [self addSubview:self.textField];
+    _textField.placeholder = placeholder;
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_titleLab.mas_right);
-        make.right.mas_equalTo(rightEdge);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
         make.centerY.mas_equalTo(self);
         make.height.mas_equalTo(self);
     }];
     
-    if (_type == DS_InputViewType_VerificationCode) {
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [button setTitleColor:COLOR(250, 80, 50) forState:UIControlStateNormal];
-        button.titleLabel.font = FONT(15.0f);
-        button.layer.borderColor = COLOR(250, 80, 50).CGColor;
-        button.layer.borderWidth = 0.5;
-        [button addTarget:self action:@selector(verificatonCodeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
-        [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(0);
-            make.centerY.mas_equalTo(self);
-            make.width.mas_equalTo(85);
-            make.height.mas_equalTo(25);
-        }];
-    }
-    
-    UIView * bottomLine = [[UIView alloc] init];
-    bottomLine.backgroundColor = COLOR_Line;
+    UIImageView * bottomLine = [UIImageView new];
+    bottomLine.image = DS_UIImageName(imageName);
     [self addSubview:bottomLine];
     [bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(0);
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(1);
+        make.height.mas_equalTo(2);
     }];
 }
 
@@ -145,59 +100,6 @@
 }
 
 #pragma mark - 懒加载
-- (UIImageView *)leftImageView {
-    if (!_leftImageView) {
-        _leftImageView = [[UIImageView alloc] init];
-        switch (_type) {
-            case DS_InputViewType_Account: {
-                _leftImageView.image = [UIImage imageNamed:@"phoneIcon"];
-                break;
-            }
-            case DS_InputViewType_Password: {
-                _leftImageView.image = [UIImage imageNamed:@"password"];
-                break;
-            }
-            case DS_InputViewType_ConfirmPassword: {
-                _leftImageView.image = [UIImage imageNamed:@"password"];
-                break;
-            }
-            case DS_InputViewType_VerificationCode: {
-                _leftImageView.image = [UIImage imageNamed:@"icon_eye"];
-                break;
-            }
-            default:break;
-        }
-    }
-    return _leftImageView;
-}
-
-- (UILabel *)titleLab {
-    if (!_titleLab) {
-        _titleLab = [[UILabel alloc] init];
-        _titleLab.font = [UIFont systemFontOfSize:16];
-        switch (_type) {
-            case DS_InputViewType_Account: {
-                _titleLab.text = @"手机：";
-                break;
-            }
-            case DS_InputViewType_Password: {
-                _titleLab.text = @"密码：";
-                break;
-            }
-            case DS_InputViewType_ConfirmPassword: {
-                _titleLab.text = @"确认密码：";
-                break;
-            }
-            case DS_InputViewType_VerificationCode: {
-                _titleLab.text = @"验证码：";
-                break;
-            }
-            default:break;
-        }
-    }
-    return _titleLab;
-}
-
 - (UITextField *)textField {
     if (!_textField) {
         _textField = [[UITextField alloc] init];
@@ -219,10 +121,6 @@
             case DS_InputViewType_ConfirmPassword: {
                 _textField.placeholder = @"";
                 _textField.secureTextEntry = YES;
-                break;
-            }
-            case DS_InputViewType_VerificationCode: {
-                _textField.placeholder = @"";
                 break;
             }
             default:break;

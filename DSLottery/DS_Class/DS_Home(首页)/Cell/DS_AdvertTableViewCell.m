@@ -159,7 +159,7 @@
         _focusNumLab = [[UILabel alloc] init];
         _focusNumLab.text = @"13388位彩民关注过";
         _focusNumLab.textAlignment = NSTextAlignmentRight;
-        _focusNumLab.font = [UIFont systemFontOfSize:10.0f];
+        _focusNumLab.font = [UIFont systemFontOfSize:12.0f];
         _focusNumLab.textColor = COLOR_Font83;
     }
     return _focusNumLab;
@@ -169,7 +169,7 @@
     if (!_tagLabel) {
         _tagLabel = [[UILabel alloc]init];
         _tagLabel.textColor = COLOR_HexRGB(@"008ECE");
-        _tagLabel.font = [UIFont systemFontOfSize:10];
+        _tagLabel.font = [UIFont systemFontOfSize:12];
         _tagLabel.layer.masksToBounds = YES;
         _tagLabel.layer.cornerRadius = 5;
         _tagLabel.textAlignment = NSTextAlignmentCenter;

@@ -14,13 +14,11 @@
  - DS_InputViewType_Account:   账号
  - DS_InputViewType_Password:  密码
  - DS_InputViewType_ConfirmPassword: 确认密码
- - DS_InputViewType_VerificationCode: 验证码
  */
 typedef NS_ENUM(NSInteger, DS_InputViewType) {
     DS_InputViewType_Account,
     DS_InputViewType_Password,
     DS_InputViewType_ConfirmPassword,
-    DS_InputViewType_VerificationCode,
 };
 
 @interface DS_InputView : UIView

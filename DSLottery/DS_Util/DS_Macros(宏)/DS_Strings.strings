@@ -37,9 +37,19 @@
 
 
 /** 登录界面 */
-"kLoginOrRegister" = "登录/注册";
-"kLogout"          = "注销";
-"kCompnyInfo" = "湖北福益彩票文化传播有限公司";
+"kLoginOrRegister"  = "登录/注册";
+"kLogout"           = "注销";
+"kCompnyInfo"       = "湖北福益彩票文化传播有限公司";
+"kLoginImmediately" = "立即登录";
+"kSignupImmediately"= "马上注册";
+"kForgotPassword"   = "忘记密码";
+"kInputAccount"     = "输入手机号码";
+"kInputPassword"    = "输入密码";
+"kReInputPassword"  = "重复输入密码";
+
+/** 注册界面 */
+"kUserAgreement"        = "用户协议";
+"kAgreeUserAgreement"   = "我已同意 用户协议";
 
 /** 提示内容 */
 "kLoginSuccess" = "登录成功";
