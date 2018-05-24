@@ -49,7 +49,6 @@
 		084DC3512091A1AD00E2C996 /* DS_FunctionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DC3502091A1AD00E2C996 /* DS_FunctionTool.m */; };
 		085865DD2090612300F270D5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 085865DC2090612300F270D5 /* AppDelegate.mm */; };
 		085865E52090612300F270D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 085865E42090612300F270D5 /* Assets.xcassets */; };
-		085865E82090612300F270D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085865E62090612300F270D5 /* LaunchScreen.storyboard */; };
 		085865EB2090612300F270D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865EA2090612300F270D5 /* main.m */; };
 		085865F52090612300F270D5 /* DSLotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865F42090612300F270D5 /* DSLotteryTests.m */; };
 		085866002090612300F270D5 /* DSLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865FF2090612300F270D5 /* DSLotteryUITests.m */; };
@@ -203,7 +202,6 @@
 		085865DB2090612300F270D5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		085865DC2090612300F270D5 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		085865E42090612300F270D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		085865E72090612300F270D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		085865E92090612300F270D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		085865EA2090612300F270D5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		085865F02090612300F270D5 /* DSLotteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSLotteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,7 +554,6 @@
 				085865DB2090612300F270D5 /* AppDelegate.h */,
 				085865DC2090612300F270D5 /* AppDelegate.mm */,
 				085865E42090612300F270D5 /* Assets.xcassets */,
-				085865E62090612300F270D5 /* LaunchScreen.storyboard */,
 				085865E92090612300F270D5 /* Info.plist */,
 				085865EA2090612300F270D5 /* main.m */,
 			);
@@ -1103,7 +1100,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				085865E82090612300F270D5 /* LaunchScreen.storyboard in Resources */,
 				085865E52090612300F270D5 /* Assets.xcassets in Resources */,
 				08FCD89620A297CC002E93F5 /* DS_NewsCategory.plist in Resources */,
 				084316D82090762000A3183A /* DS_TabBarItemInfo.plist in Resources */,
@@ -1155,13 +1151,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DSLottery/Pods-DSLottery-resources.sh",
-				"${PODS_ROOT}/AMap3DMap-NO-IDFA/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
@@ -1289,17 +1283,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		085865E62090612300F270D5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				085865E72090612300F270D5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		085866022090612300F270D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1410,6 +1393,7 @@
 			baseConfigurationReference = BC565ADC1E9891946E538FD8 /* Pods-DSLottery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1417,6 +1401,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DSLottery/DS_Util/DS_Macros(宏)/DS_Macros.pch";
 				INFOPLIST_FILE = DSLottery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ds.lotteryApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1431,6 +1416,7 @@
 			baseConfigurationReference = A878DE0155821D876D827405 /* Pods-DSLottery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1438,6 +1424,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DSLottery/DS_Util/DS_Macros(宏)/DS_Macros.pch";
 				INFOPLIST_FILE = DSLottery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ds.lotteryApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";

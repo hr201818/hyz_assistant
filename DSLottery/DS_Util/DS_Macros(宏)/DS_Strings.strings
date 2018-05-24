@@ -17,7 +17,7 @@
 "kPersonalTitle" = "我的";
 "kKefuTitle"     = "在线客服";
 "kAbountUsTitle" = "关于我们";
-"kShops"         = "附近投注站";
+"kShops"         = "附近网点";
 "kVersion"       = "版本";
 "kLogin"         = "登录";
 "kRegister"      = "注册";
@@ -55,4 +55,7 @@
 "kLoginSuccess" = "登录成功";
 "kLogoutSuccess" = "注销成功";
 "kNetworkError"  = "请检查网络";
+
+/** 彩票站 */
+
 

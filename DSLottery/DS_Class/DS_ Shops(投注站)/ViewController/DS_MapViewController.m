@@ -30,6 +30,20 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
+    DS_BaseNavigationController * navigation = (DS_BaseNavigationController *)self.navigationController;
+    navigation.backhandlepan = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    DS_BaseNavigationController * navigation = (DS_BaseNavigationController *)self.navigationController;
+    navigation.backhandlepan = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -62,6 +76,15 @@
         annotation.title = self.typeName;
         [_mapView addAnnotation:annotation];
     }
+    
+    //个人位置蓝色图标设置
+//    BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
+//    displayParam.isRotateAngleValid = NO;
+//    displayParam.isAccuracyCircleShow = NO;
+//    displayParam.accuracyCircleFillColor = [UIColor redColor];
+//    displayParam.locationViewOffsetX = self.longitude;//定位偏移量(经度)
+//    displayParam.locationViewOffsetY = self.latitude;//定位偏移量（纬度）
+//    [_mapView updateLocationViewWithParam:displayParam];
 }
 
 #pragma mark - 按钮事件
@@ -102,9 +125,9 @@
         _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, NAVIGATIONBAR_HEIGHT, self.view.width, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT)];
         _mapView.delegate = self;
         _mapView.showsUserLocation = YES;
-        _mapView.centerCoordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+        [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.latitude, self.longitude)];
         _mapView.zoomLevel = 18;
-        _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态为普通定位模式
+        _mapView.userTrackingMode = BMKUserTrackingModeFollow;//设置定位的状态为普通定位模式
     }
     return _mapView;
 }

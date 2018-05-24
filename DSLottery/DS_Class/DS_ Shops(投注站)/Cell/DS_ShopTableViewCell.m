@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) UILabel     * content;
 
+@property (strong, nonatomic) UIImageView * rightIcon;
+
 @end
 
 @implementation DS_ShopTableViewCell
@@ -37,34 +39,42 @@
     line.backgroundColor = COLOR_Line;
     [self.contentView addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.bottom.equalTo(@0);
-        make.height.equalTo(@0.6);
+        make.left.and.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(0.6);
     }];
     
     // 图片
     [self.contentView addSubview:self.imageIcon];
     [_imageIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.and.width.equalTo(@55);
-        make.centerY.equalTo(@0);
-        make.left.equalTo(@5);
+        make.height.and.width.mas_equalTo(55);
+        make.centerY.mas_equalTo(0);
+        make.left.mas_equalTo(5);
     }];
     
     // 名称
     [self.contentView addSubview:self.title];
     [_title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.imageIcon.mas_right).offset(10);
-        make.right.equalTo(@0);
-        make.height.equalTo(@25);
-        make.top.equalTo(@10);
+        make.left.mas_equalTo(self.imageIcon.mas_right).offset(10);
+        make.right.mas_equalTo(-30);
+        make.height.mas_equalTo(25);
+        make.top.mas_equalTo(10);
     }];
     
     // 地址
     [self.contentView addSubview:self.content];
     [_content mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.imageIcon.mas_right).offset(10);
-        make.right.equalTo(@0);
-        make.bottom.equalTo(@(-8));
+        make.left.mas_equalTo(self.imageIcon.mas_right).offset(10);
+        make.right.mas_equalTo(-30);
+        make.bottom.mas_equalTo(-8);
         make.top.equalTo(self.title.mas_bottom).offset(0);
+    }];
+    
+    // 右边定位符
+    [self.contentView addSubview:self.rightIcon];
+    [_rightIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-20);
+        make.width.height.mas_equalTo(25);
+        make.centerY.mas_equalTo(self.contentView);
     }];
     
 }
@@ -86,7 +96,7 @@
         _imageIcon = [[UIImageView alloc]init];
         _imageIcon.backgroundColor = COLOR_BACK;
         _imageIcon.layer.masksToBounds = YES;
-        _imageIcon.layer.cornerRadius = 5;
+        _imageIcon.layer.cornerRadius = 55 / 2.0;
         _imageIcon.clipsToBounds = YES;
         _imageIcon.contentMode = UIViewContentModeScaleAspectFill;
     }
@@ -112,6 +122,12 @@
     return _content;
 }
 
-
+- (UIImageView *)rightIcon {
+    if (!_rightIcon) {
+        _rightIcon = [[UIImageView alloc] init];
+        _rightIcon.image = DS_UIImageName(@"positioning_icon");
+    }
+    return _rightIcon;
+}
 
 @end

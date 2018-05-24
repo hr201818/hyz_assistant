@@ -28,6 +28,13 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
+        // 禁用掉自动设置的内边距，自行控制controller上index为0的控件以及scrollview控件的位置
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        // 视图延伸不考虑透明的Bars(这里包含导航栏和状态栏)
+        // 意思就是延伸到边界
+        self.extendedLayoutIncludesOpaqueBars = YES;
+    }
     
     [self initBaseUI];
 }
@@ -40,8 +47,8 @@
     // 在主线程异步加载，使下面的方法最后执行，防止其他的控件挡住了导航栏
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.view addSubview:self.navigationBar];
-        [_navigationBar addSubview:self.titleName];
-        [_navigationBar addSubview:self.titleImageView];
+        [self.navigationBar addSubview:self.titleName];
+        [self.navigationBar addSubview:self.titleImageView];
     });
 }
 

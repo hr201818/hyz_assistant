@@ -16,14 +16,14 @@
 #import "DS_AdvertListModel.h"
 
 /** view */
-#import "SGPagingView.h"
 #import "DS_AdvertTableViewCell.h"
 #import "DS_ShopTableViewCell.h"
 
 /** frame */
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>
 
-@interface DS_ShopsViewController () <SGPageTitleViewDelegate, SGPageContentViewDelegate, BMKPoiSearchDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface DS_ShopsViewController () <BMKPoiSearchDelegate,UITableViewDelegate,UITableViewDataSource,BMKLocationServiceDelegate>
 {
     /** 记录当前的城市名称 */
     NSString * _city;
@@ -31,15 +31,13 @@
     NSString * _keyword;
     /** 分页 */
     NSInteger  _page;
+    /** 当前坐标 */
+    CLLocationCoordinate2D _currentLocaltion;
+    // 定位
+    BMKLocationService * _locationManager;
 }
 
 @property (nonatomic, strong) UITableView       * tableView;
-
-/** 选项条 */
-@property (nonatomic, strong) SGPageTitleView   * pageTitleView;
-
-/** 选项条标题数组 */
-@property (nonatomic, strong) NSArray           * titleArr;
 
 /** 存放地图点模型数组 */
 @property (nonatomic, strong) NSMutableArray    * response;
@@ -65,7 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"投注站";
+    self.title = DS_STRINGS(@"kShops");
     
     [self initData];
     [self layoutView];
@@ -84,18 +82,26 @@
 - (void)initData {
     _response = [[NSMutableArray alloc]init];
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"DS_CityList" ofType:@"plist"];
-    _titleArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
-    
     _page = 0;
-    _city = [_titleArr firstObject];
     _keyword = @"投注站";
+    
+    //初始化实例
+    _locationManager = [[BMKLocationService alloc] init];
+    //设置delegate
+    _locationManager.delegate = self;
+    //设置距离过滤参数
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    //设置预期精度参数
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //设置是否自动停止位置更新
+    _locationManager.pausesLocationUpdatesAutomatically = YES;
+    //设置是否允许后台定位
+    _locationManager.allowsBackgroundLocationUpdates = NO;
+    [_locationManager startUserLocationService];
     
     //初始化搜索对象 ，并设置代理
     _searcher =[[BMKPoiSearch alloc] init];
     _searcher.delegate = self;
-    
-    [self searchInfoWithCity:_city keyword:_keyword];
 }
 
 /** 加载广告 */
@@ -128,20 +134,7 @@
 #pragma mark - 界面
 /** 视图布局 */
 - (void)layoutView {
-    //选项条
-    SGPageTitleViewConfigure * configure = [SGPageTitleViewConfigure pageTitleViewConfigure];
-    configure.bottomSeparatorColor = [UIColor clearColor];
-    configure.titleFont = [UIFont systemFontOfSize:16];
-    configure.titleColor = COLOR_Font121;
-    configure.titleSelectedColor = COLOR_HOME;
-    configure.indicatorColor = COLOR_HOME;
-    configure.indicatorAnimationTime = 0.1;
-    configure.titleSelectedFont = [UIFont systemFontOfSize:17];
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, NAVIGATIONBAR_HEIGHT, self.view.width, 44) delegate:self titleNames:self.titleArr configure:configure];
-    [self.view addSubview:self.pageTitleView];
-    
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATIONBAR_HEIGHT + 44, self.view.width, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT - 44) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATIONBAR_HEIGHT, self.view.width, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
@@ -149,27 +142,16 @@
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
     // 刷新
-    weakifySelf
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        strongifySelf
+        [_locationManager startUserLocationService];
         _page = 0;
-        [self searchInfoWithCity:_city keyword:_keyword];
     }];
     
     // 加载
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        strongifySelf
         _page++;
-        [self searchInfoWithCity:_city keyword:_keyword];
-
+        [_locationManager startUserLocationService];
     }];
-}
-
-#pragma mark - 代理
-- (void)pageTitleView:(SGPageTitleView *)pageTitleView selectedIndex:(NSInteger)selectedIndex {
-    _city = self.titleArr[selectedIndex];
-    _page = 0;
-    [self searchInfoWithCity:_city keyword:_keyword];
 }
 
 #pragma mark - 代理方法
@@ -227,7 +209,77 @@
     }
 }
 
+#pragma mark - <BMKLocationServiceDelegate>
+/**
+ *在将要启动定位时，会调用此函数
+ */
+- (void)willStartLocatingUser {
+    
+}
+
+/**
+ *在停止定位后，会调用此函数
+ */
+- (void)didStopLocatingUser {
+    
+}
+
+/**
+ *用户方向更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation {
+    
+}
+
+/**
+ *用户位置更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
+    if (userLocation.location != nil) {
+        [_locationManager stopUserLocationService];
+        _currentLocaltion = userLocation.location.coordinate;
+        [self searchInfoWithCoordinate:_currentLocaltion keyword:_keyword];
+    }
+}
+
+/**
+ *定位失败后，会调用此函数
+ *@param error 错误号
+ */
+- (void)didFailToLocateUserWithError:(NSError *)error {
+    
+}
+
 #pragma mark - 百度地图相关操作
+/**
+ 周边搜索
+ @param coordinate 中心经纬度
+ @param keyword 关键字
+ */
+- (void)searchInfoWithCoordinate:(CLLocationCoordinate2D)coordinate keyword:(NSString *)keyword {
+    [self showhud];
+    
+    BMKNearbySearchOption * nearbySearchOption = [[BMKNearbySearchOption alloc] init];
+    nearbySearchOption.pageIndex = (int)_page;
+    nearbySearchOption.pageCapacity = 10;
+    nearbySearchOption.keyword = keyword;
+    nearbySearchOption.radius = 5000;
+    nearbySearchOption.sortType = BMK_POI_SORT_BY_DISTANCE;
+    nearbySearchOption.location = coordinate;
+    
+    BOOL flag = [_searcher poiSearchNearBy:nearbySearchOption];
+    if(flag) {
+        NSLog(@"周边搜索发送成功");
+    } else {
+        if (_page > 0) {
+            _page--;
+        }
+        NSLog(@"周边搜索发送失败");
+    }
+}
+
 /**
  按城市搜索指定地点
  @param city    城市
@@ -305,6 +357,5 @@
 -(void)btnAction{
     
 }
-
 
 @end
