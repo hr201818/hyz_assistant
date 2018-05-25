@@ -16,8 +16,8 @@
 
 /** cell */
 #import "DS_LotteryNoticeTableViewCell.h"
-#import "DS_NewsDetailAdvertTableViewCell.h"
 #import "DS_FindTableViewCell.h"
+#import "DS_NotBorderAdvertCell.h"
 
 /** model */
 #import "DS_LotteryNoticeListModel.h"
@@ -128,9 +128,9 @@
     id object = _mArray[indexPath.section];
     // 广告
     if ([object isKindOfClass:[DS_AdvertModel class]]) {
-        DS_NewsDetailAdvertTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:DS_NewsDetailAdvertTableViewCellID];
+        DS_NotBorderAdvertCell * cell = [tableView dequeueReusableCellWithIdentifier:DS_NotBorderAdvertCellID];
         if (!cell) {
-            cell = [[DS_NewsDetailAdvertTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NewsDetailAdvertTableViewCellID];
+            cell = [[DS_NotBorderAdvertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NotBorderAdvertCellID];
         }
         
         cell.model = (DS_AdvertModel *)object;
@@ -164,7 +164,7 @@
     id object = _mArray[indexPath.section];
     // 广告
     if ([object isKindOfClass:[DS_AdvertModel class]]) {
-        return DS_NewsDetailAdvertTableViewCellHeight;
+        return DS_NotBorderAdvertCellHeight;
     }
     // 彩种
     else if ([object isKindOfClass:[DS_LotteryNoticeModel class]]){

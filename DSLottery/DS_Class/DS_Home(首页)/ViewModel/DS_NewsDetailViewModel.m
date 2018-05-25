@@ -12,9 +12,10 @@
 #import "DS_AdvertShare.h"
 
 /** cell */
-#import "DS_NewsDetailAdvertTableViewCell.h"
 #import "DS_NewsDetailWebTableViewCell.h"
-#import "DS_RecommendTableViewCell.h"
+#import "DS_News_HaveImageCell.h"
+#import "DS_News_NotImageCell.h"
+#import "DS_NotBorderAdvertCell.h"
 
 @interface DS_NewsDetailViewModel ()
 
@@ -105,7 +106,8 @@
             // 增加点赞数
             NSInteger thumbNum = [_model.thumbsUpNumb integerValue] + 1;
             _model.thumbsUpNumb = [NSString stringWithFormat:@"%ld",thumbNum];
-
+            _model.isPraised = YES;
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"praise_read_number" object:_model];
         }
         if (complete) {
@@ -135,12 +137,12 @@
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 4;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section < 4) {
+    if (section < 3) {
         return 1;
     } else {
         return [_relatedReads count];;
@@ -149,13 +151,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
-        DS_NewsDetailAdvertTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DS_NewsDetailAdvertTableViewCellID];
+    if (indexPath.section == 0 || indexPath.section == 2) {
+        DS_NotBorderAdvertCell *cell = [tableView dequeueReusableCellWithIdentifier:DS_NotBorderAdvertCellID];
         if (cell ==nil) {
-            cell = [[DS_NewsDetailAdvertTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NewsDetailAdvertTableViewCellID];
+            cell = [[DS_NotBorderAdvertCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NotBorderAdvertCellID];
         }
         
-        NSString * locationID = indexPath.section == 0 ? @"6" : indexPath.section == 2 ? @"7" : @"8";
+        NSString * locationID = indexPath.section == 0 ? @"6" : @"7";
         DS_AdvertModel * model = [[DS_AdvertShare share] advertModelWithAdvertID:locationID];
         cell.model = model;
         return cell;
@@ -164,7 +166,7 @@
         if (cell ==nil) {
             cell = [[DS_NewsDetailWebTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NewsDetailWebTableViewCellID];
         }
-        cell.webContent = self.model.content;
+        cell.model = _model;
         weakifySelf
         cell.webHeightBlock = ^(CGFloat height) {
             strongifySelf
@@ -182,53 +184,62 @@
         
         return cell;
     }else{
-        DS_RecommendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DS_RecommendTableViewCellID];
-        if (cell ==nil) {
-            cell = [[DS_RecommendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_RecommendTableViewCellID];
+        DS_NewsModel * model = (DS_NewsModel *)_relatedReads[indexPath.row];
+        if ([model.imageIdList count] > 0) {
+            DS_News_HaveImageCell * cell = [tableView dequeueReusableCellWithIdentifier:DS_News_HaveImageCellID];
+            if (!cell) {
+                cell = [[DS_News_HaveImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_News_HaveImageCellID];
+            }
+            cell.models = _models;
+            cell.model = model;
+            return cell;
+        } else {
+            DS_News_NotImageCell * cell = [tableView dequeueReusableCellWithIdentifier:DS_News_NotImageCellID];
+            if (!cell) {
+                cell = [[DS_News_NotImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_News_NotImageCellID];
+            }
+            cell.models = _models;
+            cell.model = model;
+            return cell;
         }
-        cell.model = _relatedReads[indexPath.row];
-        return cell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
-        return DS_NewsDetailAdvertTableViewCellHeight;
+    if (indexPath.section == 0 || indexPath.section == 2) {
+        return DS_NotBorderAdvertCellHeight;
     }else if(indexPath.section == 1){
         return  self.webHeight;
-    } else if (indexPath.section == 4) {
-        return DS_RecommendTableViewCellHeight;
+    } else if (indexPath.section == 3) {
+        DS_NewsModel * model = (DS_NewsModel *)_relatedReads[indexPath.row];
+        if ([model.imageIdList count] > 0) {
+            return DS_News_HaveImageCellHeight;
+        } else {
+            return DS_News_NotImageCellHeight;
+        }
     }
     return 46;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 4) {
-        return 5 + 45;
+    if (section == 0 || section == 1) {
+        return 0;
     } else {
-        return 5;
+        return 15;
     }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView * sectionView = [[UIView alloc] init];
     sectionView.backgroundColor = COLOR_BACK;
-    
-    if (section == 4) {
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, tableView.width, 45)];
-        label.text = @"    相关阅读";
-        label.font = [UIFont systemFontOfSize:14.0f];
-        label.backgroundColor = [UIColor whiteColor];
-        [sectionView addSubview:label];
-    }
     return sectionView;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 4) {
+    if (indexPath.section == 3) {
         if (self.childVCBlock) {
             self.childVCBlock(_relatedReads[indexPath.row], _models);
         }
@@ -236,10 +247,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y <= 5 && scrollView.contentOffset.y >= 0) {
+    if (scrollView.contentOffset.y <= 15 && scrollView.contentOffset.y >= 0) {
         scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-    } else if (scrollView.contentOffset.y >= 5) {
-        scrollView.contentInset = UIEdgeInsetsMake(-5, 0, 0, 0);
+    } else if (scrollView.contentOffset.y >= 15) {
+        scrollView.contentInset = UIEdgeInsetsMake(-15, 0, 0, 0);
     }
 }
 

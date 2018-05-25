@@ -12,10 +12,4 @@
 
 - (instancetype)initWithFrame:(CGRect)frame model:(DS_NewsModel *)model;
 
-/** 设置点赞数量 */
-- (void)setThumbNumber:(NSString *)thumbNumber;
-
-/** 设置阅读数量 */
-- (void)setReadNumber:(NSString *)readNumber;
-
 @end

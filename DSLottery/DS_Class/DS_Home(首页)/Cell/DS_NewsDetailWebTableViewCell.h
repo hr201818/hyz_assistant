@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DS_NewsListModel.h"
 static NSString * DS_NewsDetailWebTableViewCellID = @"DS_NewsDetailWebTableViewCell";
 @interface DS_NewsDetailWebTableViewCell : UITableViewCell
 
-@property (copy, nonatomic) NSString                * webContent;
+@property (strong, nonatomic) DS_NewsModel * model;
 
 @property (copy, nonatomic) void(^webHeightBlock)(CGFloat height);
 

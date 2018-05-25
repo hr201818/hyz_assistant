@@ -56,6 +56,6 @@
 "kLogoutSuccess" = "注销成功";
 "kNetworkError"  = "请检查网络";
 
-/** 彩票站 */
-
+/** 资讯 */
+"kPleasePraise" = "点个赞吧！";
 

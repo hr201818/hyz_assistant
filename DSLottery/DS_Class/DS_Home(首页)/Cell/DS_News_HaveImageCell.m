@@ -136,7 +136,7 @@
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.font = FONT(12.0f);
-        _timeLabel.textColor = COLOR_Font83;
+        _timeLabel.textColor = COLOR_Font151;
         _timeLabel.text = @"2018-04-01";
     }
     return _timeLabel;

@@ -8,18 +8,15 @@
 
 #import "DS_NewsHeaderView.h"
 
-/** view */
-#import "DS_NewsSmallView.h"
-
 @interface DS_NewsHeaderView ()
 
 @property (strong, nonatomic) DS_NewsModel * model;
 
-// 点赞
-@property (strong, nonatomic) DS_NewsSmallView * praiseView;
+/** 标题 */
+@property (strong, nonatomic) UILabel      * titleLab;
 
-// 阅读
-@property (strong, nonatomic) DS_NewsSmallView * lookView;
+/** 时间 */
+@property (strong, nonatomic) UILabel      * dateLab;
 
 @end
 
@@ -37,72 +34,58 @@
     return self;
 }
 
--(void)layoutView{
+- (void)layoutView {
     UIView * backView = [[UIView alloc]init];
     backView.backgroundColor = [UIColor whiteColor];
     [self addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.top.equalTo(@0);
-        make.bottom.equalTo(@0);
+        make.left.and.right.and.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
     }];
     
     //标题
-    UILabel * titleName = [[UILabel alloc]init];
-    titleName.text = _model.title;
-    titleName.textColor = COLOR_Font53;
-    titleName.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
-    titleName.numberOfLines = 0;
-    [backView addSubview:titleName];
-    [titleName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(@5);
-        make.left.equalTo(@10);
-        make.right.equalTo(@(-10));
-        make.height.equalTo(backView.mas_height).multipliedBy(0.5);
-    }];
-    
-    [backView addSubview:self.praiseView];
-    [_praiseView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-80);
-        make.bottom.mas_equalTo(0);
-        make.width.mas_equalTo(50);
-        make.height.mas_equalTo(40);
-    }];
-    
-    [backView addSubview:self.lookView];
-    [_lookView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [backView addSubview:self.titleLab];
+    [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(5);
+        make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
-        make.bottom.mas_equalTo(0);
-        make.width.mas_equalTo(60);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(backView.mas_height).multipliedBy(0.5);
     }];
-}
-
-#pragma mark - public
-/** 设置点赞数量 */
-- (void)setThumbNumber:(NSString *)thumbNumber {
-    [_praiseView setNumber:thumbNumber];
-}
-
-/** 设置阅读数量 */
-- (void)setReadNumber:(NSString *)readNumber {
-    [_lookView setNumber:readNumber];
+    
+    // 时间和评论
+    [backView addSubview:self.dateLab];
+    [_dateLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_titleLab);
+        make.top.mas_equalTo(_titleLab.mas_bottom).offset(10);
+        make.right.mas_equalTo(-10);
+        make.height.mas_equalTo(20);
+    }];
 }
 
 #pragma mark - 懒加载
-- (DS_NewsSmallView *)praiseView {
-    if (!_praiseView) {
-        _praiseView = [[DS_NewsSmallView alloc] init];
-        [_praiseView setImageName:@"thumb_icon" number:_model.thumbsUpNumb];
+- (UILabel *)titleLab {
+    if (!_titleLab) {
+        _titleLab = [[UILabel alloc]init];
+        _titleLab.text = _model.title;
+        _titleLab.textColor = COLOR_Font53;
+        _titleLab.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+        _titleLab.numberOfLines = 0;
     }
-    return _praiseView;
+    return _titleLab;
 }
 
-- (DS_NewsSmallView *)lookView {
-    if (!_lookView) {
-        _lookView = [[DS_NewsSmallView alloc] init];
-        [_lookView setImageName:@"read_icon" number:_model.readerNumb];
+- (UILabel *)dateLab {
+    if (!_dateLab) {
+        _dateLab = [[UILabel alloc] init];
+        _dateLab.font = FONT(13.0f);
+        _dateLab.textColor = COLOR_Font151;
+        
+        NSString * dateStr = [DS_FunctionTool timestampTo:_model.createTime formatter:@"yyyy-MM-dd HH:mm:ss"];
+        NSString * watchNumber = _model.readerNumb;
+        
+        _dateLab.text = [NSString stringWithFormat:@"%@ | %@人浏览", dateStr, watchNumber];
     }
-    return _lookView;
+    return _dateLab;
 }
 
 

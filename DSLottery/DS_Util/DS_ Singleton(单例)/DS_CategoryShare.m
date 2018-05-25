@@ -26,6 +26,15 @@ static DS_CategoryShare * categoryObject;
     return categoryObject;
 }
 
+/** 是否有网络数据 */
+- (BOOL)haveNetworkData {
+    if ([_categoryListModel.newsCategory count] == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 #pragma mark - 数据请求
 /**
  请求分类列表
@@ -50,7 +59,21 @@ static DS_CategoryShare * categoryObject;
 #pragma mark - 数据获取
 /** 获取资讯模型列表 */
 - (NSArray <DS_CategoryModel *> *)newsCategorys {
-    return _categoryListModel.newsCategory;
+    if ([_categoryListModel.newsCategory count] == 0) {
+        NSArray * categoryIDs = [self newsCategoryIDs];
+        NSArray * categoryTitle = [self newsCategoryNames];
+        NSMutableArray * newsCategorys = [NSMutableArray array];
+        for (int i = 0; i < [categoryIDs count]; i++) {
+            DS_CategoryModel * model = [DS_CategoryModel new];
+            model.ID = categoryIDs[i];
+            model.name = categoryTitle[i];
+            [newsCategorys addObject:model];
+        }
+        return newsCategorys;
+    } else {
+        return _categoryListModel.newsCategory;
+    }
+    
 }
 
 /** 获取资讯分类ID */

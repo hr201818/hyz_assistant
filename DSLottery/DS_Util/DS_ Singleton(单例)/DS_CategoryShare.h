@@ -17,6 +17,9 @@
 /** 实例 */
 + (DS_CategoryShare *)share;
 
+/** 是否有网络数据 */
+- (BOOL)haveNetworkData;
+
 #pragma mark - 数据请求
 /**
  请求分类列表

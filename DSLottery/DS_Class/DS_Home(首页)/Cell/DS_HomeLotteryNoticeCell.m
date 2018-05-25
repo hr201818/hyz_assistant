@@ -171,7 +171,7 @@
     
     left = -2;
     for (int i = 0; i < 5; i++) {
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(left, top + 20, 25, 25)];
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(left, top + IOS_SiZESCALE(25) + 5, 25, 25)];
         label.textColor = color;
         label.font = [UIFont systemFontOfSize:12];
         label.textAlignment = NSTextAlignmentCenter;

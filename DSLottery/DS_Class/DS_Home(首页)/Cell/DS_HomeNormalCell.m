@@ -7,7 +7,7 @@
 //
 
 #import "DS_HomeNormalCell.h"
-
+#import "DS_NewsListViewController.h"
 @interface DS_HomeNormalCell ()
 
 /** 标题标签 */
@@ -75,6 +75,8 @@
 #pragma mark - 手势
 - (void)tapTouch {
     NSLog(@"点击了彩票资讯");
+    DS_NewsListViewController * vc = [[DS_NewsListViewController alloc] init];
+    [self.viewController.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 懒加载

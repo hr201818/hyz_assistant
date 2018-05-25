@@ -17,9 +17,6 @@
 
 @interface DS_HomeHeaderView () <SDCycleScrollViewDelegate>
 {
-    NSArray * _categoryNames;
-    NSArray * _categoryIDs;
-    
     NSMutableArray * _bannerURLs;
     NSMutableArray * _bannerImageURLs;
 }
@@ -46,8 +43,7 @@
 #pragma mark - 数据
 /** 初始化数据 */
 - (void)initData {
-    _categoryNames = [[DS_CategoryShare share] newsCategoryNames];
-    _categoryIDs = [[DS_CategoryShare share] newsCategoryIDs];
+    
 }
 
 #pragma mark - 界面

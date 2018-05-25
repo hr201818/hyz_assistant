@@ -28,7 +28,6 @@
 		084316FD2090879000A3183A /* DS_BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 084316FC2090879000A3183A /* DS_BaseObject.m */; };
 		08431703209087BE00A3183A /* DS_BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08431702209087BE00A3183A /* DS_BaseView.m */; };
 		08431710209088E800A3183A /* DS_TabbarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0843170F209088E800A3183A /* DS_TabbarInfo.m */; };
-		08444A3120A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08444A3020A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.m */; };
 		08444A3420A91ACC0013F24D /* DS_NewsDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08444A3320A91ACC0013F24D /* DS_NewsDetailViewModel.m */; };
 		08496F832099A39D00D40168 /* UIViewController+DSControllerHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 08496F812099A39D00D40168 /* UIViewController+DSControllerHud.m */; };
 		08496F892099A4F400D40168 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 08496F882099A4F400D40168 /* MBProgressHUD.m */; };
@@ -47,6 +46,12 @@
 		084DC34120919E0900E2C996 /* DS_NetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DC34020919E0900E2C996 /* DS_NetworkingManager.m */; };
 		084DC34520919E9E00E2C996 /* DS_BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DC34420919E9E00E2C996 /* DS_BaseViewModel.m */; };
 		084DC3512091A1AD00E2C996 /* DS_FunctionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DC3502091A1AD00E2C996 /* DS_FunctionTool.m */; };
+		085671ED20B79CEE00F00C41 /* DS_NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 085671EC20B79CEE00F00C41 /* DS_NewsListViewController.m */; };
+		085671F020B79D8E00F00C41 /* DS_NewsListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 085671EF20B79D8E00F00C41 /* DS_NewsListViewModel.m */; };
+		085671FC20B7A50300F00C41 /* DS_BaseAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085671FB20B7A50300F00C41 /* DS_BaseAdvertView.m */; };
+		085671FF20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 085671FE20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m */; };
+		0856720220B7B40300F00C41 /* DS_NewsCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0856720020B7B40200F00C41 /* DS_NewsCategoryView.m */; };
+		0856720520B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0856720420B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m */; };
 		085865DD2090612300F270D5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 085865DC2090612300F270D5 /* AppDelegate.mm */; };
 		085865E52090612300F270D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 085865E42090612300F270D5 /* Assets.xcassets */; };
 		085865EB2090612300F270D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865EA2090612300F270D5 /* main.m */; };
@@ -63,7 +68,6 @@
 		08B8B2EE20A6D9A60074533E /* DS_NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2ED20A6D9A60074533E /* DS_NewsDetailViewController.m */; };
 		08B8B2F120A6DA1E0074533E /* DS_NewsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2F020A6DA1E0074533E /* DS_NewsHeaderView.m */; };
 		08B8B2FA20A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2F920A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m */; };
-		08B8B2FD20A6E9760074533E /* DS_RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B2FC20A6E9760074533E /* DS_RecommendTableViewCell.m */; };
 		08D0437120A67410006C01F5 /* DS_UserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D0437020A67410006C01F5 /* DS_UserViewModel.m */; };
 		08F56E1920AAB17900C47D37 /* DS_ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F56E1820AAB17900C47D37 /* DS_ShopTableViewCell.m */; };
 		08F56E1C20AAB49200C47D37 /* DS_MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F56E1B20AAB49200C47D37 /* DS_MapViewController.m */; };
@@ -158,8 +162,6 @@
 		0843170E209088E800A3183A /* DS_TabbarInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_TabbarInfo.h; sourceTree = "<group>"; };
 		0843170F209088E800A3183A /* DS_TabbarInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_TabbarInfo.m; sourceTree = "<group>"; };
 		0843171120908AA800A3183A /* DS_Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_Colors.h; sourceTree = "<group>"; };
-		08444A2F20A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_NewsDetailAdvertTableViewCell.h; sourceTree = "<group>"; };
-		08444A3020A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_NewsDetailAdvertTableViewCell.m; sourceTree = "<group>"; };
 		08444A3220A91ACC0013F24D /* DS_NewsDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_NewsDetailViewModel.h; sourceTree = "<group>"; };
 		08444A3320A91ACC0013F24D /* DS_NewsDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_NewsDetailViewModel.m; sourceTree = "<group>"; };
 		08496F6D2099748900D40168 /* DS_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_Header.h; sourceTree = "<group>"; };
@@ -198,6 +200,18 @@
 		084DC34420919E9E00E2C996 /* DS_BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_BaseViewModel.m; sourceTree = "<group>"; };
 		084DC34F2091A1AD00E2C996 /* DS_FunctionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_FunctionTool.h; sourceTree = "<group>"; };
 		084DC3502091A1AD00E2C996 /* DS_FunctionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_FunctionTool.m; sourceTree = "<group>"; };
+		085671EB20B79CEE00F00C41 /* DS_NewsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_NewsListViewController.h; sourceTree = "<group>"; };
+		085671EC20B79CEE00F00C41 /* DS_NewsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_NewsListViewController.m; sourceTree = "<group>"; };
+		085671EE20B79D8E00F00C41 /* DS_NewsListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_NewsListViewModel.h; sourceTree = "<group>"; };
+		085671EF20B79D8E00F00C41 /* DS_NewsListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_NewsListViewModel.m; sourceTree = "<group>"; };
+		085671FA20B7A50300F00C41 /* DS_BaseAdvertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_BaseAdvertView.h; sourceTree = "<group>"; };
+		085671FB20B7A50300F00C41 /* DS_BaseAdvertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_BaseAdvertView.m; sourceTree = "<group>"; };
+		085671FD20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_NotBorderAdvertCell.h; sourceTree = "<group>"; };
+		085671FE20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_NotBorderAdvertCell.m; sourceTree = "<group>"; };
+		0856720020B7B40200F00C41 /* DS_NewsCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_NewsCategoryView.m; sourceTree = "<group>"; };
+		0856720120B7B40300F00C41 /* DS_NewsCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_NewsCategoryView.h; sourceTree = "<group>"; };
+		0856720320B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_NewsCategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		0856720420B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_NewsCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		085865D82090612300F270D5 /* DSLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		085865DB2090612300F270D5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		085865DC2090612300F270D5 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -232,8 +246,6 @@
 		08B8B2F020A6DA1E0074533E /* DS_NewsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_NewsHeaderView.m; sourceTree = "<group>"; };
 		08B8B2F820A6E51F0074533E /* DS_NewsDetailWebTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_NewsDetailWebTableViewCell.h; sourceTree = "<group>"; };
 		08B8B2F920A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_NewsDetailWebTableViewCell.m; sourceTree = "<group>"; };
-		08B8B2FB20A6E9760074533E /* DS_RecommendTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_RecommendTableViewCell.h; sourceTree = "<group>"; };
-		08B8B2FC20A6E9760074533E /* DS_RecommendTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_RecommendTableViewCell.m; sourceTree = "<group>"; };
 		08D0436F20A67410006C01F5 /* DS_UserViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_UserViewModel.h; sourceTree = "<group>"; };
 		08D0437020A67410006C01F5 /* DS_UserViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_UserViewModel.m; sourceTree = "<group>"; };
 		08F56E1720AAB17900C47D37 /* DS_ShopTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_ShopTableViewCell.h; sourceTree = "<group>"; };
@@ -732,8 +744,12 @@
 		08FCD86F20A286B8002E93F5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0856720320B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.h */,
+				0856720420B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m */,
 				08FCD8AC20A2E118002E93F5 /* DS_AdvertTableViewCell.h */,
 				08FCD8AD20A2E118002E93F5 /* DS_AdvertTableViewCell.m */,
+				085671FD20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.h */,
+				085671FE20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m */,
 				0873F41B20B55D6900F8410B /* DS_News_HaveImageCell.h */,
 				0873F41C20B55D6900F8410B /* DS_News_HaveImageCell.m */,
 				0873F41E20B55D7900F8410B /* DS_News_NotImageCell.h */,
@@ -742,10 +758,6 @@
 				0873F41020B539FE00F8410B /* DS_HomeNormalCell.m */,
 				08B8B2F820A6E51F0074533E /* DS_NewsDetailWebTableViewCell.h */,
 				08B8B2F920A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m */,
-				08B8B2FB20A6E9760074533E /* DS_RecommendTableViewCell.h */,
-				08B8B2FC20A6E9760074533E /* DS_RecommendTableViewCell.m */,
-				08444A2F20A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.h */,
-				08444A3020A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.m */,
 				0873F40C20B5391200F8410B /* DS_HomeLotteryNoticeCell.h */,
 				0873F40D20B5391200F8410B /* DS_HomeLotteryNoticeCell.m */,
 			);
@@ -772,6 +784,8 @@
 				08FCD88D20A289D5002E93F5 /* DS_HomeHeaderView.m */,
 				08B8B2EF20A6DA1E0074533E /* DS_NewsHeaderView.h */,
 				08B8B2F020A6DA1E0074533E /* DS_NewsHeaderView.m */,
+				0856720120B7B40300F00C41 /* DS_NewsCategoryView.h */,
+				0856720020B7B40200F00C41 /* DS_NewsCategoryView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -781,6 +795,8 @@
 			children = (
 				08FCD87A20A2876C002E93F5 /* DS_HomeViewController.h */,
 				08FCD87B20A2876C002E93F5 /* DS_HomeViewController.m */,
+				085671EB20B79CEE00F00C41 /* DS_NewsListViewController.h */,
+				085671EC20B79CEE00F00C41 /* DS_NewsListViewController.m */,
 				08B8B2EC20A6D9A60074533E /* DS_NewsDetailViewController.h */,
 				08B8B2ED20A6D9A60074533E /* DS_NewsDetailViewController.m */,
 			);
@@ -792,6 +808,8 @@
 			children = (
 				08FCD88920A28949002E93F5 /* DS_HomeViewModel.h */,
 				08FCD88A20A28949002E93F5 /* DS_HomeViewModel.m */,
+				085671EE20B79D8E00F00C41 /* DS_NewsListViewModel.h */,
+				085671EF20B79D8E00F00C41 /* DS_NewsListViewModel.m */,
 				08444A3220A91ACC0013F24D /* DS_NewsDetailViewModel.h */,
 				08444A3320A91ACC0013F24D /* DS_NewsDetailViewModel.m */,
 			);
@@ -939,6 +957,8 @@
 			children = (
 				0873F41320B53C8500F8410B /* YM_DrawDigitalRoundView.h */,
 				0873F41220B53C8500F8410B /* YM_DrawDigitalRoundView.m */,
+				085671FA20B7A50300F00C41 /* DS_BaseAdvertView.h */,
+				085671FB20B7A50300F00C41 /* DS_BaseAdvertView.m */,
 				08FCD8D020A2FDA1002E93F5 /* DS_AdvertView.h */,
 				08FCD8D120A2FDA1002E93F5 /* DS_AdvertView.m */,
 			);
@@ -1151,6 +1171,7 @@
 				0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */,
 				084DC33C20919CF900E2C996 /* DS_Networking.m in Sources */,
 				0835A3E120B5C309009FB94A /* DS_UserOperationView.m in Sources */,
+				085671ED20B79CEE00F00C41 /* DS_NewsListViewController.m in Sources */,
 				08B8B2EE20A6D9A60074533E /* DS_NewsDetailViewController.m in Sources */,
 				084DC33920917C6900E2C996 /* DS_DataTool.m in Sources */,
 				08FCD8A820A2C68A002E93F5 /* DS_CategoryListModel.m in Sources */,
@@ -1175,6 +1196,7 @@
 				08FCD87F20A2878C002E93F5 /* DS_ChartsViewController.m in Sources */,
 				0810B66720947C16005D908D /* DS_WebViewController.m in Sources */,
 				08FCD8CE20A2F98E002E93F5 /* DS_UserModel.m in Sources */,
+				085671FC20B7A50300F00C41 /* DS_BaseAdvertView.m in Sources */,
 				08FF51F620A4430100E2D918 /* DS_VersionViewController.m in Sources */,
 				08431710209088E800A3183A /* DS_TabbarInfo.m in Sources */,
 				084B07F720A93F2E00F2C105 /* DS_LotteryNoticeListModel.m in Sources */,
@@ -1184,12 +1206,12 @@
 				084316C720906A9100A3183A /* DS_BaseTabBarItem.m in Sources */,
 				08431703209087BE00A3183A /* DS_BaseView.m in Sources */,
 				0873F41120B539FE00F8410B /* DS_HomeNormalCell.m in Sources */,
-				08444A3120A91A420013F24D /* DS_NewsDetailAdvertTableViewCell.m in Sources */,
 				084316B1209066FB00A3183A /* DS_BaseTabBarController.m in Sources */,
 				08FCD8B420A2EA28002E93F5 /* DS_NewsSmallView.m in Sources */,
 				08496F892099A4F400D40168 /* MBProgressHUD.m in Sources */,
-				08B8B2FD20A6E9760074533E /* DS_RecommendTableViewCell.m in Sources */,
 				08FCD8D220A2FDA1002E93F5 /* DS_AdvertView.m in Sources */,
+				085671F020B79D8E00F00C41 /* DS_NewsListViewModel.m in Sources */,
+				0856720520B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m in Sources */,
 				084B080C20AA6E8700F2C105 /* DS_FindViewModel.m in Sources */,
 				08FCD89420A29074002E93F5 /* DS_AdvertShare.m in Sources */,
 				084316CE2090747A00A3183A /* UIViewExt.m in Sources */,
@@ -1210,6 +1232,8 @@
 				084316C32090698E00A3183A /* DS_BaseTabBar.m in Sources */,
 				08FCD8CB20A2F6DE002E93F5 /* DS_UserShare.m in Sources */,
 				08FCD88220A28799002E93F5 /* DS_LotteryNoticeViewController.m in Sources */,
+				0856720220B7B40300F00C41 /* DS_NewsCategoryView.m in Sources */,
+				085671FF20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m in Sources */,
 				084B080620A9735C00F2C105 /* DS_LotteryNoticeDetailCell.m in Sources */,
 				0805AB18209AC71C00F48F29 /* SGPageContentScrollView.m in Sources */,
 				08FF51F320A43ADD00E2D918 /* DS_RegisterViewController.m in Sources */,

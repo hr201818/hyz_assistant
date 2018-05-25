@@ -21,8 +21,6 @@
 
 @property (strong, nonatomic) UITableView * tableView;
 
-
-
 /** 头视图 */
 @property (strong, nonatomic) DS_NewsHeaderView * headerView;
 
@@ -118,15 +116,6 @@
     UIButton * leftButton = [DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)];
     [self navLeftItem:leftButton];
 
-    UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setTitle:DS_STRINGS(@"kLotteryHall") forState:UIControlStateNormal];
-    rightButton.frame = CGRectMake(0, 0, 70, 30);
-    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self navRightItem:rightButton];
-
     //首页列表
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATIONBAR_HEIGHT, Screen_WIDTH, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT) style:UITableViewStylePlain];
     self.tableView.delegate = _viewModel;
@@ -157,8 +146,6 @@
 /** 通知事件 */
 - (void)praiseAndReadChange:(NSNotification *)notifi {
     DS_NewsModel * model = (DS_NewsModel *)notifi.object;
-    [_headerView setThumbNumber:model.thumbsUpNumb];
-    [_headerView setReadNumber:model.readerNumb];
     [_viewModel processNews:model];
     [self.tableView reloadData];
 }

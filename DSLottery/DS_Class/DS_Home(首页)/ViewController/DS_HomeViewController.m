@@ -281,6 +281,7 @@
         
         // 加载
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            strongifySelf
             [self requestNewsWithIsRefresh:NO];
         }];
     }

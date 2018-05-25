@@ -50,7 +50,12 @@
 /** 观看数 */
 @property (copy, nonatomic) NSString * readerNumb;
 
+#pragma mark - 非接口数据
 /** 存放广告模型 */
 @property (strong, nonatomic) id adverModel;
+
+/** 是否已经点赞 */
+@property (assign, nonatomic) BOOL isPraised;
+
 
 @end
