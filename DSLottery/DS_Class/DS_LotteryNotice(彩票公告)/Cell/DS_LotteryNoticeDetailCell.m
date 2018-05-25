@@ -88,12 +88,19 @@
         self.dateNumber.text = dateAllStr;
         self.dateNumber.attributedText = mAttribute;
         
+        // 获取彩种颜色
+        UIColor * color = [DS_FunctionTool lotteryColorWithLotteryID:_model.playGroupId];
+        
         NSArray *array = [model.openCode componentsSeparatedByString:@","];
         CGFloat left = IOS_SiZESCALE(0);
         CGFloat top = IOS_SiZESCALE(0);
+        NSInteger all = 0;
         for (int i = 0; i < array.count; i++) {
             
             YM_DrawDigitalRoundView * digitalView = [[YM_DrawDigitalRoundView alloc] initWithFrame:CGRectMake(left, top, IOS_SiZESCALE(25), IOS_SiZESCALE(25)) number:[array[i] integerValue]];
+            digitalView.isFill = YES;
+            digitalView.textColor = [UIColor whiteColor];
+            digitalView.borderColor = color;
             [self.backView addSubview:digitalView];
             
             // 双色球单独处理
@@ -107,6 +114,55 @@
                 top = IOS_SiZESCALE(30);
             }else{
                 left += IOS_SiZESCALE(40);
+            }
+            
+            [digitalView redraw];
+        }
+        
+        left = -2;
+        for (int i = 0; i < 5; i++) {
+            UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(left, top + IOS_SiZESCALE(25) + 5, 25, 25)];
+            label.textColor = color;
+            label.font = [UIFont systemFontOfSize:12];
+            label.textAlignment = NSTextAlignmentCenter;
+            [_backView addSubview:label];
+            left += IOS_SiZESCALE(30);
+            switch (i) {
+                case 0:
+                    label.text = [NSString stringWithFormat:@"%ld",all];
+                    break;
+                case 1:
+                    if(all % 2 == 0){
+                        label.text = @"双";
+                    }else{
+                        label.text = @"单";
+                    }
+                    break;
+                case 2:
+                    if(all <= 22){
+                        label.text = @"小";
+                    }else{
+                        label.text = @"大";
+                    }
+                    break;
+                case 3:
+                    if([array[0] integerValue] == [array[4] integerValue]){
+                        label.text= @"和";
+                    }else if([array[0] integerValue] > [array[4] integerValue]){
+                        label.text= @"龙";
+                    }else{
+                        label.text= @"虎";
+                    }
+                    break;
+                case 4:
+                    if ([[array firstObject] integerValue] > [[array lastObject] integerValue]) {
+                        label.text = @"尾大";
+                    } else {
+                        label.text = @"尾小";
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }

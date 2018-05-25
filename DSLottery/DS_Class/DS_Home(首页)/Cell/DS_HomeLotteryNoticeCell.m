@@ -26,8 +26,8 @@
 /** 彩种标题 */
 @property (strong, nonatomic) UILabel * titleLab;
 
-/** 期号 */
-@property (strong, nonatomic) UILabel * dateNumber;
+/** cell右侧按钮 */
+@property (strong, nonatomic) UIButton * rightButton;
 
 @end
 
@@ -78,18 +78,9 @@
     [_rightContainView addSubview:self.titleLab];
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(5);
-        make.width.mas_equalTo(IOS_SiZESCALE(95) > 95 ? IOS_SiZESCALE(95) : 95);
+        make.right.mas_equalTo(-5);
         make.top.mas_equalTo(20);
-        make.height.mas_equalTo(20);
-    }];
-    
-    // 彩种期数
-    [_rightContainView addSubview:self.dateNumber];
-    [_dateNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(IOS_SiZESCALE(90) > 90 ? IOS_SiZESCALE(90) : 90);
-        make.right.mas_equalTo(-10);
-        make.top.mas_equalTo(_titleLab);
-        make.height.mas_equalTo(_titleLab);
+        make.height.mas_greaterThanOrEqualTo(0); // 自动适配高度
     }];
     
     //圆球的父视图，方便清除
@@ -101,14 +92,8 @@
         make.top.mas_equalTo(_titleLab.mas_bottom).offset(5);
     }];
     
-    UIButton * bettingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [bettingButton setTitle:DS_STRINGS(@"kBetting") forState:UIControlStateNormal];
-    bettingButton.backgroundColor =  [UIColor colorFromHexRGB:@"#2F9BD3"];
-    bettingButton.layer.cornerRadius = 25 / 2;
-    bettingButton.titleLabel.font = FONT(13.0f);
-    [bettingButton addTarget:self action:@selector(bettingButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [_rightContainView addSubview:bettingButton];
-    [bettingButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_rightContainView addSubview:self.rightButton];
+    [_rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-15);
         make.centerY.mas_equalTo(_rightContainView);
         make.width.mas_equalTo(45);
@@ -127,12 +112,48 @@
 }
 
 #pragma mark - setter
--(void)setModel:(DS_LotteryNoticeModel *)model {
+- (void)setModel:(DS_LotteryNoticeModel *)model {
     _model = model;
     
-    _titleLab.text = model.playGroupName;
+    NSString * title = model.playGroupName;
     
-    self.dateNumber.text = [NSString stringWithFormat:@"第%@期开奖",model.number];
+    if (_isLottery) {
+        
+        
+        // 获取字符
+        NSString * periodStr = [NSString stringWithFormat:@"  %@期",model.number];
+        NSString * timeStr = [DS_FunctionTool timestampTo:model.openTime formatter:@"  yyyy-MM-dd HH:mm"];
+        NSString * allStr = [NSString stringWithFormat:@"%@%@%@", title, periodStr, timeStr];
+        
+        // 配置富文本
+        NSRange allStrRange = NSMakeRange(0, allStr.length);
+        NSRange timeStrRange = [allStr rangeOfString:timeStr];
+        NSMutableAttributedString * mAttribute = [[NSMutableAttributedString alloc] initWithString:allStr];
+        [mAttribute addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:allStrRange];
+        [mAttribute addAttribute:NSFontAttributeName value:FONT(13.0f) range:allStrRange];
+        [mAttribute addAttribute:NSForegroundColorAttributeName value:COLOR_Font151 range:timeStrRange];
+        [mAttribute addAttribute:NSFontAttributeName value:FONT(12.0f) range:timeStrRange];
+        
+        // 展示富文本
+        _titleLab.text = allStr;
+        _titleLab.attributedText = mAttribute;
+        
+    } else {
+        // 获取字符
+        NSString * periodStr = [NSString stringWithFormat:@"  第%@期开奖",model.number];
+        NSString * allStr = [NSString stringWithFormat:@"%@%@", title, periodStr];
+        
+        // 配置富文本
+        NSRange allStrRange = NSMakeRange(0, allStr.length);
+        NSMutableAttributedString * mAttribute = [[NSMutableAttributedString alloc] initWithString:allStr];
+        [mAttribute addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:allStrRange];
+        [mAttribute addAttribute:NSFontAttributeName value:FONT(13.0f) range:allStrRange];
+        
+        // 展示富文本
+        _titleLab.text = allStr;
+        _titleLab.attributedText = mAttribute;
+    }
+    
     
     _lotteryImageView.image = [UIImage imageNamed:[DS_FunctionTool imageNameWithImageID:model.playGroupId]];
     
@@ -217,6 +238,22 @@
     }
 }
 
+- (void)setIsLottery:(BOOL)isLottery {
+    _isLottery = isLottery;
+    if (isLottery) {
+        [_rightButton setTitle:DS_STRINGS(@"kDetail") forState:UIControlStateNormal];
+        _rightButton.backgroundColor = [UIColor clearColor];
+        _rightButton.layer.cornerRadius = 0;
+        [_rightButton setTitleColor:COLOR_HexRGB(@"219ED1") forState:UIControlStateNormal];
+        _rightButton.userInteractionEnabled = NO;
+    } else {
+        [_rightButton setTitle:DS_STRINGS(@"kBetting") forState:UIControlStateNormal];
+        _rightButton.backgroundColor =  [UIColor colorFromHexRGB:@"#2F9BD3"];
+        _rightButton.layer.cornerRadius = 25 / 2;
+        [_rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+}
+
 - (void)prepareForReuse{
     [super prepareForReuse];
     for (UIView *view in self.backView.subviews) {
@@ -256,17 +293,10 @@
 - (UILabel *)titleLab {
     if (!_titleLab) {
         _titleLab = [[UILabel alloc] init];
-        _titleLab.font = [UIFont systemFontOfSize:13.0f];
+        _titleLab.numberOfLines = 0;
+
     }
     return _titleLab;
-}
-
-- (UILabel *)dateNumber {
-    if (!_dateNumber) {
-        _dateNumber = [[UILabel alloc] init];
-        _dateNumber.font = [UIFont systemFontOfSize:13.0f];
-    }
-    return _dateNumber;
 }
 
 - (UIView *)backView {
@@ -276,5 +306,16 @@
     return _backView;
 }
 
+- (UIButton *)rightButton {
+    if (!_rightButton) {
+        _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rightButton setTitle:DS_STRINGS(@"kBetting") forState:UIControlStateNormal];
+        _rightButton.backgroundColor =  [UIColor colorFromHexRGB:@"#2F9BD3"];
+        _rightButton.layer.cornerRadius = 25 / 2;
+        _rightButton.titleLabel.font = FONT(13.0f);
+        [_rightButton addTarget:self action:@selector(bettingButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightButton;
+}
 
 @end

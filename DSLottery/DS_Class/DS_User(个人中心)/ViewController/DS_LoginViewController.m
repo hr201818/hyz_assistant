@@ -67,8 +67,9 @@
 - (void)layoutView {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
-    [self navLeftItem:[DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)]];
+    UIButton * leftButton = [DS_FunctionTool leftNavBackTarget:self Item:@selector(leftButtonAction:)];
+    [leftButton setImage:DS_UIImageName(@"cion_xinxi_fanhui_black") forState:UIControlStateNormal];
+    [self navLeftItem:leftButton];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouch)];
     [self.view addGestureRecognizer:tap];
@@ -138,7 +139,7 @@
     UIButton * loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_back"] forState:UIControlStateNormal];
     [loginBtn setTitle:DS_STRINGS(@"kLoginImmediately") forState:UIControlStateNormal];
-    loginBtn.titleLabel.font = FONT(16.0f);
+    loginBtn.titleLabel.font = FONT_BOLD(IOS_SiZESCALE(20.0f));
     [loginBtn addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [containView addSubview:loginBtn];
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -153,7 +154,7 @@
     [signupBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_back"] forState:UIControlStateNormal];
     [signupBtn setTitle:DS_STRINGS(@"kSignupImmediately") forState:UIControlStateNormal];
     [signupBtn addTarget:self action:@selector(signUpButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    signupBtn.titleLabel.font = FONT(16.0f);
+    signupBtn.titleLabel.font = FONT_BOLD(IOS_SiZESCALE(20.0f));
     [containView addSubview:signupBtn];
     [signupBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(loginBtn.mas_bottom).offset(10);

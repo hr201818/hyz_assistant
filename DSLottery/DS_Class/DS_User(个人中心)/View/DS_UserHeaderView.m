@@ -52,7 +52,7 @@
     [_operationBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.height.mas_equalTo(45);
-        make.top.mas_equalTo(60);
+        make.centerY.mas_equalTo(backImageView.mas_centerY).offset(15);
     }];
     
     [_operationBtn addSubview:self.portraitImageView];
@@ -119,7 +119,7 @@
         } else {
             _nameLab.text = DS_STRINGS(@"kLoginOrRegister");
         }
-        _nameLab.font = FONT(15.0f);
+        _nameLab.font = FONT_BOLD(15.0f);
         _nameLab.textColor = [UIColor whiteColor];
     }
     return _nameLab;

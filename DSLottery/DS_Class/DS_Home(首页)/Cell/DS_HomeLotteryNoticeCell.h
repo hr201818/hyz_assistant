@@ -22,4 +22,7 @@ static CGFloat    DS_HomeLotteryNoticeCellMinHeight = 120;
 
 @property (strong, nonatomic) DS_LotteryNoticeModel * model;
 
+/** 是否为开奖公告cell */
+@property (assign, nonatomic) BOOL isLottery;
+
 @end

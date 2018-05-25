@@ -85,15 +85,6 @@
     
     self.title = DS_STRINGS(@"kLotteryNotice");
     
-    UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setTitle:@"购彩大厅" forState:UIControlStateNormal];
-    rightButton.frame = CGRectMake(0, 0, 70, 30);
-    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self navRightItem:rightButton];
-    
     // 彩票公告列表
     [self.view addSubview:self.tableView];
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;

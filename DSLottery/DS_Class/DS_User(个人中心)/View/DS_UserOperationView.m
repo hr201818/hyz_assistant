@@ -28,7 +28,7 @@
     self.backgroundColor = [UIColor whiteColor];
     
     // 在线客服
-    UIButton * customerServiceBtn = [self buttonWithTitle:DS_STRINGS(@"kKefuTitle") imageName:nil tag:DS_OperationType_CustomerService];
+    UIButton * customerServiceBtn = [self buttonWithTitle:DS_STRINGS(@"kKefuTitle") imageName:@"customer_icon" tag:DS_OperationType_CustomerService];
     [self addSubview:customerServiceBtn];
     [customerServiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
@@ -38,7 +38,7 @@
     }];
     
     // 关于我们
-    UIButton * aboutWeBtn = [self buttonWithTitle:DS_STRINGS(@"kAbountUsTitle") imageName:nil tag:DS_OperationType_AboutWe];
+    UIButton * aboutWeBtn = [self buttonWithTitle:DS_STRINGS(@"kAbountUsTitle") imageName:@"abount_icon" tag:DS_OperationType_AboutWe];
     [self addSubview:aboutWeBtn];
     [aboutWeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(customerServiceBtn.mas_right);
@@ -48,7 +48,7 @@
     }];
     
     // 版本
-    UIButton * versionBtn = [self buttonWithTitle:DS_STRINGS(@"kVersion") imageName:nil tag:DS_OperationType_Version];
+    UIButton * versionBtn = [self buttonWithTitle:DS_STRINGS(@"kVersion") imageName:@"version_icon" tag:DS_OperationType_Version];
     [self addSubview:versionBtn];
     [versionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
@@ -58,7 +58,7 @@
     }];
     
     // 缓存
-    UIButton * cacheBtn = [self buttonWithTitle:DS_STRINGS(@"kClearCache") imageName:nil tag:DS_OperationType_Cache];
+    UIButton * cacheBtn = [self buttonWithTitle:DS_STRINGS(@"kClearCache") imageName:@"cache_icon" tag:DS_OperationType_Cache];
     [self addSubview:cacheBtn];
     [cacheBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(customerServiceBtn.mas_right);
@@ -109,15 +109,16 @@
 
 #pragma mark - 便利构造
 - (UIButton *)buttonWithTitle:(NSString *)title imageName:(NSString *)imageName tag:(NSInteger)tag{
+    // 载体
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.tag = 1000 + tag;
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     UIImageView * imageView = [[UIImageView alloc] init];
     imageView.image = DS_UIImageName(imageName);
-    imageView.backgroundColor = [UIColor redColor];
     [button addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
+        make.left.mas_equalTo(30);
         make.centerY.mas_equalTo(button);
         make.width.height.mas_equalTo(30);
     }];

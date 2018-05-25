@@ -15,7 +15,7 @@
 #import "DS_LotteryNoticeDetailViewController.h"
 
 /** cell */
-#import "DS_LotteryNoticeTableViewCell.h"
+#import "DS_HomeLotteryNoticeCell.h"
 #import "DS_FindTableViewCell.h"
 #import "DS_NotBorderAdvertCell.h"
 
@@ -139,9 +139,9 @@
     }
     // 彩种
     else if ([object isKindOfClass:[DS_LotteryNoticeModel class]]){
-        DS_LotteryNoticeTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:DS_LotteryNoticeTableViewCellID];
+        DS_HomeLotteryNoticeCell * cell = [tableView dequeueReusableCellWithIdentifier:DS_HomeLotteryNoticeCellID];
         if (!cell) {
-            cell = [[DS_LotteryNoticeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_LotteryNoticeTableViewCellID];
+            cell = [[DS_HomeLotteryNoticeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_HomeLotteryNoticeCellID];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         cell.model = (DS_LotteryNoticeModel *)object;
@@ -171,11 +171,11 @@
         DS_LotteryNoticeModel * model = (DS_LotteryNoticeModel *)object;
         NSArray *array = [model.openCode componentsSeparatedByString:@","];
         if(array.count > 14){
-            return DS_LotteryNoticeTableViewCellMaxHeight;
+            return DS_HomeLotteryNoticeCellMaxHeight;
         } else if (array.count > 7) {
-            return DS_LotteryNoticeTableViewCellMidHeight;
+            return DS_HomeLotteryNoticeCellMidHeight;
         }
-        return DS_LotteryNoticeTableViewCellMinHeight;
+        return DS_HomeLotteryNoticeCellMinHeight;
     }
     // 操作
     else {

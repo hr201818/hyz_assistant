@@ -6,41 +6,41 @@
 		<key>title</key>
 		<string>首页</string>
 		<key>selectedImageName</key>
-		<string>toolbar_icon_xihu-pre</string>
+		<string>tabbar_icon_select_1</string>
 		<key>normalImageName</key>
-		<string>toolbar_icon_xihu-dis</string>
+		<string>tabbar_icon_deselect_1</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>彩票网点</string>
 		<key>selectedImageName</key>
-		<string>toolbar_icon_xiaoguanjia_pre</string>
+		<string>tabbar_icon_select_2</string>
 		<key>normalImageName</key>
-		<string>toolbar_icon_xiaoguanjia-_dis</string>
+		<string>tabbar_icon_deselect_2</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>开奖</string>
 		<key>selectedImageName</key>
-		<string>toolbar_icon_HI-_pre</string>
+		<string>tabbar_icon_select_3</string>
 		<key>normalImageName</key>
-		<string>toolbar_icon_HI_dis</string>
+		<string>tabbar_icon_deselect_3</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>走势图</string>
 		<key>selectedImageName</key>
-		<string>label_bar_taopiaopiao_selected</string>
+		<string>tabbar_icon_select_4</string>
 		<key>normalImageName</key>
-		<string>label_bar_taopiaopiao_normal</string>
+		<string>tabbar_icon_deselect_4</string>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>我的</string>
 		<key>selectedImageName</key>
-		<string>toolbar_icon_wode-_pre</string>
+		<string>tabbar_icon_select_5</string>
 		<key>normalImageName</key>
-		<string>toolbar_icon_wode_dis</string>
+		<string>tabbar_icon_deselect_5</string>
 	</dict>
 </array>
 </plist>

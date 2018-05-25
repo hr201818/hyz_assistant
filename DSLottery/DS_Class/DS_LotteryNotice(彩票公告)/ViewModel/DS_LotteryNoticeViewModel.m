@@ -15,7 +15,7 @@
 
 /** cell */
 #import "DS_AdvertTableViewCell.h"
-#import "DS_LotteryNoticeTableViewCell.h"
+#import "DS_HomeLotteryNoticeCell.h"
 
 /** share */
 #import "DS_AdvertShare.h"
@@ -108,11 +108,12 @@
         cell.showLine = YES;
         return cell;
     }else{
-        DS_LotteryNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DS_LotteryNoticeTableViewCellID];
+        DS_HomeLotteryNoticeCell *cell = [tableView dequeueReusableCellWithIdentifier:DS_HomeLotteryNoticeCellID];
         if (cell ==nil) {
-            cell = [[DS_LotteryNoticeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_LotteryNoticeTableViewCellID];
+            cell = [[DS_HomeLotteryNoticeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_HomeLotteryNoticeCellID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.isLottery = YES;
         cell.model = (DS_LotteryNoticeModel *)_listArray[indexPath.row];
         return cell;
     }
@@ -128,11 +129,11 @@
         DS_LotteryNoticeModel * model = (DS_LotteryNoticeModel *)_listArray[indexPath.row];
         NSArray *array = [model.openCode componentsSeparatedByString:@","];
         if(array.count > 14){
-            return DS_LotteryNoticeTableViewCellMaxHeight;
+            return DS_HomeLotteryNoticeCellMaxHeight;
         } else if (array.count > 7) {
-            return DS_LotteryNoticeTableViewCellMidHeight;
+            return DS_HomeLotteryNoticeCellMidHeight;
         }
-        return DS_LotteryNoticeTableViewCellMinHeight;
+        return DS_HomeLotteryNoticeCellMinHeight;
     }
     return 0;
 }
