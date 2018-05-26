@@ -268,6 +268,7 @@
     NSLog(@"点击了投注");
     DS_BaseTabBarController * viewController = (DS_BaseTabBarController *)KeyWindows.rootViewController;
     [viewController selectedIndex:1];
+    weakifySelf
 }
 
 #pragma mark - 懒加载
