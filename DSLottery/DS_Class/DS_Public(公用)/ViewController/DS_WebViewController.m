@@ -44,7 +44,7 @@
     closeButton.left = button.right + 10;
     closeButton.width = button.width;
     closeButton.height = button.height;
-    closeButton.top = button.top - 2;
+    closeButton.top = button.top;
     closeButton.contentMode = UIViewContentModeScaleToFill;
     [self.navigationBar addSubview:closeButton];
     

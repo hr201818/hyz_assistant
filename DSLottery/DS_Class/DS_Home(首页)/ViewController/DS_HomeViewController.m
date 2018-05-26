@@ -50,6 +50,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.rightButton.hidden = ![[DS_AdvertShare share] haveAdvertData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerNotice];
@@ -99,6 +104,7 @@
     // 请求广告
     [[DS_AdvertShare share] requestAdvertListComplete:^(id object) {;
         if (Request_Success(object)) {
+            self.rightButton.hidden = ![[DS_AdvertShare share] haveAdvertData];
             [self.headerView refreshBanner];
         }
     } fail:^(NSError *failure) {
@@ -219,8 +225,7 @@
 }
 
 - (void)rightButtonAction:(UIButton *)sender {
-//    DS_UserViewController * vc = [[DS_UserViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
+    [[DS_AdvertShare share] openFirstAdvert];
 }
 
 #pragma mark - 懒加载
@@ -248,6 +253,7 @@
         [_rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _rightButton.titleLabel.font = FONT(16.0f);
         _rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _rightButton.hidden = YES;
         [_rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightButton;

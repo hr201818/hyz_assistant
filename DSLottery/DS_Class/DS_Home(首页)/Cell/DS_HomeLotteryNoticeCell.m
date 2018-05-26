@@ -8,7 +8,7 @@
 
 #import "DS_HomeLotteryNoticeCell.h"
 #import "YM_DrawDigitalRoundView.h"
-
+#import "DS_BaseTabBarController.h"
 @interface DS_HomeLotteryNoticeCell ()
 
 /** 分隔线左侧视图 */
@@ -62,7 +62,8 @@
     // 图片
     [_leftContainView addSubview:self.lotteryImageView];
     [self.lotteryImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(55);
+        make.width.mas_equalTo(55);
+        make.height.mas_equalTo(50);
         make.centerX.mas_equalTo(_leftContainView);
         make.centerY.mas_equalTo(_leftContainView);
     }];
@@ -265,6 +266,8 @@
 /** 投注按钮 */
 - (void)bettingButtonAction:(UIButton *)sender {
     NSLog(@"点击了投注");
+    DS_BaseTabBarController * viewController = (DS_BaseTabBarController *)KeyWindows.rootViewController;
+    [viewController selectedIndex:1];
 }
 
 #pragma mark - 懒加载

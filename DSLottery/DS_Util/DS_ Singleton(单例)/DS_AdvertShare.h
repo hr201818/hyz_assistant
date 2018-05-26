@@ -64,4 +64,7 @@
 /** 打开彩票大厅 */
 - (void)openFirstAdvert;
 
+/** 是否有广告数据 */
+- (BOOL)haveAdvertData;
+
 @end

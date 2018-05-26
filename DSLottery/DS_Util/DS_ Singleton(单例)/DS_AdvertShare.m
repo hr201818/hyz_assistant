@@ -138,4 +138,13 @@ static DS_AdvertShare * advertObject;
     [DS_FunctionTool openAdvert:advertModel];
 }
 
+
+/** 是否有广告数据 */
+- (BOOL)haveAdvertData {
+    if ([_advertListModel.advertList count] > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

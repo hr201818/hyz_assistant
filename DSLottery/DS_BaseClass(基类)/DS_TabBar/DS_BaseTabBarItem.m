@@ -61,7 +61,7 @@
     [self addSubview:self.itemImageView];
     [_itemImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(0);
-        make.width.height.mas_equalTo(28);
+        make.width.height.mas_equalTo(30);
         make.top.mas_equalTo(2);
     }];
     

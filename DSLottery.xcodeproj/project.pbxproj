@@ -36,8 +36,6 @@
 		084B07FD20A96D0000F2C105 /* DS_LotteryNoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 084B07FC20A96D0000F2C105 /* DS_LotteryNoticeDetailViewController.m */; };
 		084B080020A96DBD00F2C105 /* DS_LotteryNoticeDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 084B07FF20A96DBD00F2C105 /* DS_LotteryNoticeDetailViewModel.m */; };
 		084B080620A9735C00F2C105 /* DS_LotteryNoticeDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 084B080520A9735C00F2C105 /* DS_LotteryNoticeDetailCell.m */; };
-		084B080C20AA6E8700F2C105 /* DS_FindViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 084B080B20AA6E8700F2C105 /* DS_FindViewModel.m */; };
-		084B080F20AA70D300F2C105 /* DS_FindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 084B080E20AA70D300F2C105 /* DS_FindTableViewCell.m */; };
 		084DC32F20916BEB00E2C996 /* DS_PanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DC32E20916BEB00E2C996 /* DS_PanGestureRecognizer.m */; };
 		084DC3312091722A00E2C996 /* Home_Lottery_List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 084DC3302091722A00E2C996 /* Home_Lottery_List.plist */; };
 		084DC33920917C6900E2C996 /* DS_DataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DC33820917C6900E2C996 /* DS_DataTool.m */; };
@@ -74,7 +72,6 @@
 		08FCD87C20A2876C002E93F5 /* DS_HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD87B20A2876C002E93F5 /* DS_HomeViewController.m */; };
 		08FCD87F20A2878C002E93F5 /* DS_ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD87E20A2878C002E93F5 /* DS_ChartsViewController.m */; };
 		08FCD88220A28799002E93F5 /* DS_LotteryNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD88120A28799002E93F5 /* DS_LotteryNoticeViewController.m */; };
-		08FCD88520A287AF002E93F5 /* DS_FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD88420A287AF002E93F5 /* DS_FindViewController.m */; };
 		08FCD88820A287BA002E93F5 /* DS_ShopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD88720A287BA002E93F5 /* DS_ShopsViewController.m */; };
 		08FCD88B20A28949002E93F5 /* DS_HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD88A20A28949002E93F5 /* DS_HomeViewModel.m */; };
 		08FCD88E20A289D5002E93F5 /* DS_HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FCD88D20A289D5002E93F5 /* DS_HomeHeaderView.m */; };
@@ -179,10 +176,6 @@
 		084B07FF20A96DBD00F2C105 /* DS_LotteryNoticeDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryNoticeDetailViewModel.m; sourceTree = "<group>"; };
 		084B080420A9735C00F2C105 /* DS_LotteryNoticeDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryNoticeDetailCell.h; sourceTree = "<group>"; };
 		084B080520A9735C00F2C105 /* DS_LotteryNoticeDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryNoticeDetailCell.m; sourceTree = "<group>"; };
-		084B080A20AA6E8700F2C105 /* DS_FindViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_FindViewModel.h; sourceTree = "<group>"; };
-		084B080B20AA6E8700F2C105 /* DS_FindViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_FindViewModel.m; sourceTree = "<group>"; };
-		084B080D20AA70D300F2C105 /* DS_FindTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_FindTableViewCell.h; sourceTree = "<group>"; };
-		084B080E20AA70D300F2C105 /* DS_FindTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_FindTableViewCell.m; sourceTree = "<group>"; };
 		084DC32D20916BEB00E2C996 /* DS_PanGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_PanGestureRecognizer.h; sourceTree = "<group>"; };
 		084DC32E20916BEB00E2C996 /* DS_PanGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_PanGestureRecognizer.m; sourceTree = "<group>"; };
 		084DC3302091722A00E2C996 /* Home_Lottery_List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Home_Lottery_List.plist; sourceTree = "<group>"; };
@@ -256,8 +249,6 @@
 		08FCD87E20A2878C002E93F5 /* DS_ChartsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_ChartsViewController.m; sourceTree = "<group>"; };
 		08FCD88020A28799002E93F5 /* DS_LotteryNoticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryNoticeViewController.h; sourceTree = "<group>"; };
 		08FCD88120A28799002E93F5 /* DS_LotteryNoticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryNoticeViewController.m; sourceTree = "<group>"; };
-		08FCD88320A287AF002E93F5 /* DS_FindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_FindViewController.h; sourceTree = "<group>"; };
-		08FCD88420A287AF002E93F5 /* DS_FindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_FindViewController.m; sourceTree = "<group>"; };
 		08FCD88620A287BA002E93F5 /* DS_ShopsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_ShopsViewController.h; sourceTree = "<group>"; };
 		08FCD88720A287BA002E93F5 /* DS_ShopsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_ShopsViewController.m; sourceTree = "<group>"; };
 		08FCD88920A28949002E93F5 /* DS_HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HomeViewModel.h; sourceTree = "<group>"; };
@@ -401,7 +392,6 @@
 				08FCD86E20A286B8002E93F5 /* DS_Home(首页) */,
 				08FCD86220A286B8002E93F5 /* DS_Charts(走势) */,
 				08FCD86820A286B8002E93F5 /* DS_LotteryNotice(彩票公告) */,
-				08FCD87420A286B8002E93F5 /* DS_Find(发现) */,
 				08FCD85C20A286B8002E93F5 /* DS_ Shops(投注站) */,
 				08FCD8A020A2C621002E93F5 /* DS_Public(公用) */,
 			);
@@ -811,59 +801,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		08FCD87420A286B8002E93F5 /* DS_Find(发现) */ = {
-			isa = PBXGroup;
-			children = (
-				08FCD87520A286B8002E93F5 /* Cell */,
-				08FCD87620A286B8002E93F5 /* Model */,
-				08FCD87720A286B8002E93F5 /* View */,
-				08FCD87820A286B8002E93F5 /* ViewController */,
-				08FCD87920A286B8002E93F5 /* ViewModel */,
-			);
-			path = "DS_Find(发现)";
-			sourceTree = "<group>";
-		};
-		08FCD87520A286B8002E93F5 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				084B080D20AA70D300F2C105 /* DS_FindTableViewCell.h */,
-				084B080E20AA70D300F2C105 /* DS_FindTableViewCell.m */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		08FCD87620A286B8002E93F5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		08FCD87720A286B8002E93F5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		08FCD87820A286B8002E93F5 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				08FCD88320A287AF002E93F5 /* DS_FindViewController.h */,
-				08FCD88420A287AF002E93F5 /* DS_FindViewController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		08FCD87920A286B8002E93F5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				084B080A20AA6E8700F2C105 /* DS_FindViewModel.h */,
-				084B080B20AA6E8700F2C105 /* DS_FindViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		08FCD8A020A2C621002E93F5 /* DS_Public(公用) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1184,7 +1121,6 @@
 				084316C0209068F700A3183A /* DS_BaseNavigationController.m in Sources */,
 				084B07FD20A96D0000F2C105 /* DS_LotteryNoticeDetailViewController.m in Sources */,
 				084B07F420A93BF700F2C105 /* DS_LotteryNoticeViewModel.m in Sources */,
-				08FCD88520A287AF002E93F5 /* DS_FindViewController.m in Sources */,
 				0873F41420B53C8500F8410B /* YM_DrawDigitalRoundView.m in Sources */,
 				084DC3512091A1AD00E2C996 /* DS_FunctionTool.m in Sources */,
 				0810B65020942005005D908D /* DS_RequestTool.m in Sources */,
@@ -1207,14 +1143,12 @@
 				08FCD8D220A2FDA1002E93F5 /* DS_AdvertView.m in Sources */,
 				085671F020B79D8E00F00C41 /* DS_NewsListViewModel.m in Sources */,
 				0856720520B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m in Sources */,
-				084B080C20AA6E8700F2C105 /* DS_FindViewModel.m in Sources */,
 				08FCD89420A29074002E93F5 /* DS_AdvertShare.m in Sources */,
 				084316CE2090747A00A3183A /* UIViewExt.m in Sources */,
 				0873F41720B5406800F8410B /* UIColor+MyColorCatagory.m in Sources */,
 				08FCD89C20A2C246002E93F5 /* UIButton+GraphicLayout.m in Sources */,
 				08FCD88820A287BA002E93F5 /* DS_ShopsViewController.m in Sources */,
 				08B8B2FA20A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m in Sources */,
-				084B080F20AA70D300F2C105 /* DS_FindTableViewCell.m in Sources */,
 				084316B42090682500A3183A /* DS_BaseViewController.m in Sources */,
 				0805AB1B209AC71C00F48F29 /* SGPageTitleViewConfigure.m in Sources */,
 				08FCD89F20A2C57E002E93F5 /* DS_CategoryShare.m in Sources */,

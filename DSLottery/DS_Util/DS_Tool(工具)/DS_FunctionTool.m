@@ -18,7 +18,7 @@
 +(UIButton*)leftNavBackTarget:(id)target Item:(SEL)item {
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 40, 30);
-    [button setImage:[UIImage imageNamed:@"cion_xinxi_fanhui.png"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"cion_xinxi_fanhui"] forState:UIControlStateNormal];
     [button addTarget:target action:item forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
@@ -338,7 +338,7 @@
         case 1: // 重庆时时彩
             return @"chongqing";
         case 2: // 天津时时彩
-            return @"tianjing";
+            return @"tjssc";
         case 3: // 新疆时时彩
             return @"xinjiang";
         case 4: // 体彩排列3
