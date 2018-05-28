@@ -104,10 +104,17 @@
 #pragma mark - 彩种数据获取
 /**
  通过图片ID获取彩种图片名
- @param imageID 图片ID
+ @param lotteryID 图片ID
  @return 图片名
  */
-+ (NSString *)imageNameWithImageID:(NSString *)imageID;
++ (NSString *)lotteryIconWithLotteryID:(NSString *)lotteryID;
+
+/**
+ 通过图片ID获取彩种图片名
+ @param lotteryID 图片ID
+ @return 图片名
+ */
++ (NSString *)lotteryTitleWithLotteryID:(NSString *)lotteryID;
 
 /**
  获取彩种字体颜色
@@ -115,6 +122,9 @@
  @return 颜色
  */
 + (UIColor *)lotteryColorWithLotteryID:(NSString *)lotteryID;
+
+/** 获取当前应用所支持的所有彩种ID */
++ (NSArray *)allLottery;
 
 #pragma mark - 缓存
 /** 获取缓存 */

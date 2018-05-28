@@ -70,7 +70,7 @@
 #pragma mark - 数据处理
 /** 加载广告数据 */
 - (void)loadAdvertData {
-    DS_AdvertModel * advertModel_10 = [[DS_AdvertShare share] advertModelWithAdvertID:@"10"];
+    DS_AdvertModel * advertModel_10 = [[DS_AdvertShare share] advertModelWithAdvertID:@"16"];
     if (advertModel_10) {
         // 插入数组中的第5个位置放广告
         if ([_listArray count] > 5) {
@@ -80,7 +80,7 @@
         }
     }
     
-    DS_AdvertModel * advertModel_11 = [[DS_AdvertShare share] advertModelWithAdvertID:@"11"];
+    DS_AdvertModel * advertModel_11 = [[DS_AdvertShare share] advertModelWithAdvertID:@"17"];
     if (advertModel_11) {
         // 插入数组中的第5个位置放广告
         if ([_listArray count] > 10) {

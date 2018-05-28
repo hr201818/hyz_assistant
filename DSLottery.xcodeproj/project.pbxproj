@@ -15,6 +15,7 @@
 		0810B65020942005005D908D /* DS_RequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0810B64F20942005005D908D /* DS_RequestTool.m */; };
 		0810B65A20944A36005D908D /* SZKCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0810B65920944A36005D908D /* SZKCleanCache.m */; };
 		0810B66720947C16005D908D /* DS_WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0810B66620947C16005D908D /* DS_WebViewController.m */; };
+		0823F6FB20BBD0C600D334C5 /* DS_LotteryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0823F6FA20BBD0C600D334C5 /* DS_LotteryListCell.m */; };
 		0835A3E120B5C309009FB94A /* DS_UserOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835A3E020B5C309009FB94A /* DS_UserOperationView.m */; };
 		0835A88820A3CFDA003E459A /* DS_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835A88720A3CFDA003E459A /* DS_LoginViewController.m */; };
 		0835A88B20A3D038003E459A /* DS_InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835A88A20A3D037003E459A /* DS_InputView.m */; };
@@ -55,6 +56,35 @@
 		085865F52090612300F270D5 /* DSLotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865F42090612300F270D5 /* DSLotteryTests.m */; };
 		085866002090612300F270D5 /* DSLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865FF2090612300F270D5 /* DSLotteryUITests.m */; };
 		085B14602092B72000A87C5C /* DS_Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 085B145F2092B72000A87C5C /* DS_Strings.strings */; };
+		085EA46C20BB8DEC00CBD18B /* DS_AreaLimitShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA46B20BB8DEC00CBD18B /* DS_AreaLimitShare.m */; };
+		085EA4A020BB987300CBD18B /* DSChartListModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47220BB987300CBD18B /* DSChartListModal.m */; };
+		085EA4A120BB987300CBD18B /* DSChartModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47420BB987300CBD18B /* DSChartModal.m */; };
+		085EA4A220BB987300CBD18B /* DSChartsLeftCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47720BB987300CBD18B /* DSChartsLeftCellHeaderView.m */; };
+		085EA4A320BB987300CBD18B /* DSChartsLeftCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47920BB987300CBD18B /* DSChartsLeftCellView.m */; };
+		085EA4A420BB987300CBD18B /* DSChartsResultsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47B20BB987300CBD18B /* DSChartsResultsTool.m */; };
+		085EA4A520BB987300CBD18B /* DSChartsRightCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47D20BB987300CBD18B /* DSChartsRightCellHeaderView.m */; };
+		085EA4A620BB987300CBD18B /* DSChartsRightCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47F20BB987300CBD18B /* DSChartsRightCellView.m */; };
+		085EA4A720BB987300CBD18B /* DSChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48120BB987300CBD18B /* DSChartsView.m */; };
+		085EA4A820BB987300CBD18B /* DSScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48320BB987300CBD18B /* DSScrollMenu.m */; };
+		085EA4A920BB987300CBD18B /* DSDrawingDaxiaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48620BB987300CBD18B /* DSDrawingDaxiaoView.m */; };
+		085EA4AA20BB987300CBD18B /* DSDrawingHeweiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48820BB987300CBD18B /* DSDrawingHeweiView.m */; };
+		085EA4AB20BB987300CBD18B /* DSDrawingHezhiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48A20BB987300CBD18B /* DSDrawingHezhiView.m */; };
+		085EA4AC20BB987300CBD18B /* DSDrawingJiouView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48C20BB987300CBD18B /* DSDrawingJiouView.m */; };
+		085EA4AD20BB987300CBD18B /* DSJiouDaxiaoTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48E20BB987300CBD18B /* DSJiouDaxiaoTopView.m */; };
+		085EA4AE20BB987300CBD18B /* DSLotteryDaxiaoPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49020BB987300CBD18B /* DSLotteryDaxiaoPathView.m */; };
+		085EA4AF20BB987300CBD18B /* DSLotteryHeweiPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49220BB987300CBD18B /* DSLotteryHeweiPathView.m */; };
+		085EA4B020BB987300CBD18B /* DSLotteryIssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49420BB987300CBD18B /* DSLotteryIssueView.m */; };
+		085EA4B120BB987300CBD18B /* DSLotteryJiouPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49620BB987300CBD18B /* DSLotteryJiouPathView.m */; };
+		085EA4B220BB987300CBD18B /* DSLotteryOpenCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49820BB987300CBD18B /* DSLotteryOpenCode.m */; };
+		085EA4B320BB987300CBD18B /* DSLotteryPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49A20BB987300CBD18B /* DSLotteryPathView.m */; };
+		085EA4B420BB987300CBD18B /* DSSumHeweiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49C20BB987300CBD18B /* DSSumHeweiView.m */; };
+		085EA4B520BB987300CBD18B /* DSSumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49E20BB987300CBD18B /* DSSumView.m */; };
+		085EA4B820BB9CBB00CBD18B /* JJMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4B620BB9CBB00CBD18B /* JJMenuItemCell.m */; };
+		085EA4BB20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4B920BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m */; };
+		085EA4BF20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085EA4BC20BB9E9900CBD18B /* DSLotteryChartsDrawIssueClickVIew.xib */; };
+		085EA4C020BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4BE20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.m */; };
+		085EA4C320BBAF8600CBD18B /* DS_LotteryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4C220BBAF8600CBD18B /* DS_LotteryListViewController.m */; };
+		085EA4C620BBB02800CBD18B /* DS_LotteryListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4C520BBB02800CBD18B /* DS_LotteryListViewModel.m */; };
 		0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F40D20B5391200F8410B /* DS_HomeLotteryNoticeCell.m */; };
 		0873F41120B539FE00F8410B /* DS_HomeNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41020B539FE00F8410B /* DS_HomeNormalCell.m */; };
 		0873F41420B53C8500F8410B /* YM_DrawDigitalRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41220B53C8500F8410B /* YM_DrawDigitalRoundView.m */; };
@@ -131,6 +161,8 @@
 		0810B65920944A36005D908D /* SZKCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZKCleanCache.m; sourceTree = "<group>"; };
 		0810B66520947C16005D908D /* DS_WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_WebViewController.h; sourceTree = "<group>"; };
 		0810B66620947C16005D908D /* DS_WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_WebViewController.m; sourceTree = "<group>"; };
+		0823F6F920BBD0C600D334C5 /* DS_LotteryListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryListCell.h; sourceTree = "<group>"; };
+		0823F6FA20BBD0C600D334C5 /* DS_LotteryListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryListCell.m; sourceTree = "<group>"; };
 		0835A3DF20B5C309009FB94A /* DS_UserOperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_UserOperationView.h; sourceTree = "<group>"; };
 		0835A3E020B5C309009FB94A /* DS_UserOperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_UserOperationView.m; sourceTree = "<group>"; };
 		0835A88620A3CFDA003E459A /* DS_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LoginViewController.h; sourceTree = "<group>"; };
@@ -216,6 +248,63 @@
 		085866012090612300F270D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		085B145F2092B72000A87C5C /* DS_Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = DS_Strings.strings; sourceTree = "<group>"; };
 		085B149E20932B3700A87C5C /* DS_External.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_External.h; sourceTree = "<group>"; };
+		085EA46A20BB8DEC00CBD18B /* DS_AreaLimitShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_AreaLimitShare.h; sourceTree = "<group>"; };
+		085EA46B20BB8DEC00CBD18B /* DS_AreaLimitShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_AreaLimitShare.m; sourceTree = "<group>"; };
+		085EA47120BB987300CBD18B /* DSChartListModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartListModal.h; sourceTree = "<group>"; };
+		085EA47220BB987300CBD18B /* DSChartListModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartListModal.m; sourceTree = "<group>"; };
+		085EA47320BB987300CBD18B /* DSChartModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartModal.h; sourceTree = "<group>"; };
+		085EA47420BB987300CBD18B /* DSChartModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartModal.m; sourceTree = "<group>"; };
+		085EA47620BB987300CBD18B /* DSChartsLeftCellHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartsLeftCellHeaderView.h; sourceTree = "<group>"; };
+		085EA47720BB987300CBD18B /* DSChartsLeftCellHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsLeftCellHeaderView.m; sourceTree = "<group>"; };
+		085EA47820BB987300CBD18B /* DSChartsLeftCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartsLeftCellView.h; sourceTree = "<group>"; };
+		085EA47920BB987300CBD18B /* DSChartsLeftCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsLeftCellView.m; sourceTree = "<group>"; };
+		085EA47A20BB987300CBD18B /* DSChartsResultsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartsResultsTool.h; sourceTree = "<group>"; };
+		085EA47B20BB987300CBD18B /* DSChartsResultsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsResultsTool.m; sourceTree = "<group>"; };
+		085EA47C20BB987300CBD18B /* DSChartsRightCellHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartsRightCellHeaderView.h; sourceTree = "<group>"; };
+		085EA47D20BB987300CBD18B /* DSChartsRightCellHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsRightCellHeaderView.m; sourceTree = "<group>"; };
+		085EA47E20BB987300CBD18B /* DSChartsRightCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartsRightCellView.h; sourceTree = "<group>"; };
+		085EA47F20BB987300CBD18B /* DSChartsRightCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsRightCellView.m; sourceTree = "<group>"; };
+		085EA48020BB987300CBD18B /* DSChartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartsView.h; sourceTree = "<group>"; };
+		085EA48120BB987300CBD18B /* DSChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsView.m; sourceTree = "<group>"; };
+		085EA48220BB987300CBD18B /* DSScrollMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSScrollMenu.h; sourceTree = "<group>"; };
+		085EA48320BB987300CBD18B /* DSScrollMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSScrollMenu.m; sourceTree = "<group>"; };
+		085EA48520BB987300CBD18B /* DSDrawingDaxiaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingDaxiaoView.h; sourceTree = "<group>"; };
+		085EA48620BB987300CBD18B /* DSDrawingDaxiaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingDaxiaoView.m; sourceTree = "<group>"; };
+		085EA48720BB987300CBD18B /* DSDrawingHeweiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingHeweiView.h; sourceTree = "<group>"; };
+		085EA48820BB987300CBD18B /* DSDrawingHeweiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingHeweiView.m; sourceTree = "<group>"; };
+		085EA48920BB987300CBD18B /* DSDrawingHezhiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingHezhiView.h; sourceTree = "<group>"; };
+		085EA48A20BB987300CBD18B /* DSDrawingHezhiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingHezhiView.m; sourceTree = "<group>"; };
+		085EA48B20BB987300CBD18B /* DSDrawingJiouView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingJiouView.h; sourceTree = "<group>"; };
+		085EA48C20BB987300CBD18B /* DSDrawingJiouView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingJiouView.m; sourceTree = "<group>"; };
+		085EA48D20BB987300CBD18B /* DSJiouDaxiaoTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJiouDaxiaoTopView.h; sourceTree = "<group>"; };
+		085EA48E20BB987300CBD18B /* DSJiouDaxiaoTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJiouDaxiaoTopView.m; sourceTree = "<group>"; };
+		085EA48F20BB987300CBD18B /* DSLotteryDaxiaoPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryDaxiaoPathView.h; sourceTree = "<group>"; };
+		085EA49020BB987300CBD18B /* DSLotteryDaxiaoPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryDaxiaoPathView.m; sourceTree = "<group>"; };
+		085EA49120BB987300CBD18B /* DSLotteryHeweiPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryHeweiPathView.h; sourceTree = "<group>"; };
+		085EA49220BB987300CBD18B /* DSLotteryHeweiPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryHeweiPathView.m; sourceTree = "<group>"; };
+		085EA49320BB987300CBD18B /* DSLotteryIssueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryIssueView.h; sourceTree = "<group>"; };
+		085EA49420BB987300CBD18B /* DSLotteryIssueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryIssueView.m; sourceTree = "<group>"; };
+		085EA49520BB987300CBD18B /* DSLotteryJiouPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryJiouPathView.h; sourceTree = "<group>"; };
+		085EA49620BB987300CBD18B /* DSLotteryJiouPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryJiouPathView.m; sourceTree = "<group>"; };
+		085EA49720BB987300CBD18B /* DSLotteryOpenCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryOpenCode.h; sourceTree = "<group>"; };
+		085EA49820BB987300CBD18B /* DSLotteryOpenCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryOpenCode.m; sourceTree = "<group>"; };
+		085EA49920BB987300CBD18B /* DSLotteryPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryPathView.h; sourceTree = "<group>"; };
+		085EA49A20BB987300CBD18B /* DSLotteryPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryPathView.m; sourceTree = "<group>"; };
+		085EA49B20BB987300CBD18B /* DSSumHeweiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSumHeweiView.h; sourceTree = "<group>"; };
+		085EA49C20BB987300CBD18B /* DSSumHeweiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSumHeweiView.m; sourceTree = "<group>"; };
+		085EA49D20BB987300CBD18B /* DSSumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSumView.h; sourceTree = "<group>"; };
+		085EA49E20BB987300CBD18B /* DSSumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSumView.m; sourceTree = "<group>"; };
+		085EA4B620BB9CBB00CBD18B /* JJMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMenuItemCell.m; sourceTree = "<group>"; };
+		085EA4B720BB9CBB00CBD18B /* JJMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMenuItemCell.h; sourceTree = "<group>"; };
+		085EA4B920BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryChartsDrawViewController.m; sourceTree = "<group>"; };
+		085EA4BA20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryChartsDrawViewController.h; sourceTree = "<group>"; };
+		085EA4BC20BB9E9900CBD18B /* DSLotteryChartsDrawIssueClickVIew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSLotteryChartsDrawIssueClickVIew.xib; sourceTree = "<group>"; };
+		085EA4BD20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryChartsDrawIssueClickVIew.h; sourceTree = "<group>"; };
+		085EA4BE20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryChartsDrawIssueClickVIew.m; sourceTree = "<group>"; };
+		085EA4C120BBAF8600CBD18B /* DS_LotteryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryListViewController.h; sourceTree = "<group>"; };
+		085EA4C220BBAF8600CBD18B /* DS_LotteryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryListViewController.m; sourceTree = "<group>"; };
+		085EA4C420BBB02800CBD18B /* DS_LotteryListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryListViewModel.h; sourceTree = "<group>"; };
+		085EA4C520BBB02800CBD18B /* DS_LotteryListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryListViewModel.m; sourceTree = "<group>"; };
 		0873F40C20B5391200F8410B /* DS_HomeLotteryNoticeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HomeLotteryNoticeCell.h; sourceTree = "<group>"; };
 		0873F40D20B5391200F8410B /* DS_HomeLotteryNoticeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_HomeLotteryNoticeCell.m; sourceTree = "<group>"; };
 		0873F40F20B539FE00F8410B /* DS_HomeNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HomeNormalCell.h; sourceTree = "<group>"; };
@@ -490,6 +579,8 @@
 				08FCD89E20A2C57E002E93F5 /* DS_CategoryShare.m */,
 				08FCD8C920A2F6DE002E93F5 /* DS_UserShare.h */,
 				08FCD8CA20A2F6DE002E93F5 /* DS_UserShare.m */,
+				085EA46A20BB8DEC00CBD18B /* DS_AreaLimitShare.h */,
+				085EA46B20BB8DEC00CBD18B /* DS_AreaLimitShare.m */,
 			);
 			path = "DS_ Singleton(单例)";
 			sourceTree = "<group>";
@@ -577,6 +668,81 @@
 			path = DSLotteryUITests;
 			sourceTree = "<group>";
 		};
+		085EA46D20BB987300CBD18B /* DSChartsDraw */ = {
+			isa = PBXGroup;
+			children = (
+				085EA46E20BB987300CBD18B /* ChartsModal */,
+				085EA47520BB987300CBD18B /* DSCharts */,
+				085EA48420BB987300CBD18B /* DSChartsNext */,
+			);
+			path = DSChartsDraw;
+			sourceTree = "<group>";
+		};
+		085EA46E20BB987300CBD18B /* ChartsModal */ = {
+			isa = PBXGroup;
+			children = (
+				085EA47120BB987300CBD18B /* DSChartListModal.h */,
+				085EA47220BB987300CBD18B /* DSChartListModal.m */,
+				085EA47320BB987300CBD18B /* DSChartModal.h */,
+				085EA47420BB987300CBD18B /* DSChartModal.m */,
+			);
+			path = ChartsModal;
+			sourceTree = "<group>";
+		};
+		085EA47520BB987300CBD18B /* DSCharts */ = {
+			isa = PBXGroup;
+			children = (
+				085EA47620BB987300CBD18B /* DSChartsLeftCellHeaderView.h */,
+				085EA47720BB987300CBD18B /* DSChartsLeftCellHeaderView.m */,
+				085EA47820BB987300CBD18B /* DSChartsLeftCellView.h */,
+				085EA47920BB987300CBD18B /* DSChartsLeftCellView.m */,
+				085EA47A20BB987300CBD18B /* DSChartsResultsTool.h */,
+				085EA47B20BB987300CBD18B /* DSChartsResultsTool.m */,
+				085EA47C20BB987300CBD18B /* DSChartsRightCellHeaderView.h */,
+				085EA47D20BB987300CBD18B /* DSChartsRightCellHeaderView.m */,
+				085EA47E20BB987300CBD18B /* DSChartsRightCellView.h */,
+				085EA47F20BB987300CBD18B /* DSChartsRightCellView.m */,
+				085EA48020BB987300CBD18B /* DSChartsView.h */,
+				085EA48120BB987300CBD18B /* DSChartsView.m */,
+				085EA48220BB987300CBD18B /* DSScrollMenu.h */,
+				085EA48320BB987300CBD18B /* DSScrollMenu.m */,
+			);
+			path = DSCharts;
+			sourceTree = "<group>";
+		};
+		085EA48420BB987300CBD18B /* DSChartsNext */ = {
+			isa = PBXGroup;
+			children = (
+				085EA48520BB987300CBD18B /* DSDrawingDaxiaoView.h */,
+				085EA48620BB987300CBD18B /* DSDrawingDaxiaoView.m */,
+				085EA48720BB987300CBD18B /* DSDrawingHeweiView.h */,
+				085EA48820BB987300CBD18B /* DSDrawingHeweiView.m */,
+				085EA48920BB987300CBD18B /* DSDrawingHezhiView.h */,
+				085EA48A20BB987300CBD18B /* DSDrawingHezhiView.m */,
+				085EA48B20BB987300CBD18B /* DSDrawingJiouView.h */,
+				085EA48C20BB987300CBD18B /* DSDrawingJiouView.m */,
+				085EA48D20BB987300CBD18B /* DSJiouDaxiaoTopView.h */,
+				085EA48E20BB987300CBD18B /* DSJiouDaxiaoTopView.m */,
+				085EA48F20BB987300CBD18B /* DSLotteryDaxiaoPathView.h */,
+				085EA49020BB987300CBD18B /* DSLotteryDaxiaoPathView.m */,
+				085EA49120BB987300CBD18B /* DSLotteryHeweiPathView.h */,
+				085EA49220BB987300CBD18B /* DSLotteryHeweiPathView.m */,
+				085EA49320BB987300CBD18B /* DSLotteryIssueView.h */,
+				085EA49420BB987300CBD18B /* DSLotteryIssueView.m */,
+				085EA49520BB987300CBD18B /* DSLotteryJiouPathView.h */,
+				085EA49620BB987300CBD18B /* DSLotteryJiouPathView.m */,
+				085EA49720BB987300CBD18B /* DSLotteryOpenCode.h */,
+				085EA49820BB987300CBD18B /* DSLotteryOpenCode.m */,
+				085EA49920BB987300CBD18B /* DSLotteryPathView.h */,
+				085EA49A20BB987300CBD18B /* DSLotteryPathView.m */,
+				085EA49B20BB987300CBD18B /* DSSumHeweiView.h */,
+				085EA49C20BB987300CBD18B /* DSSumHeweiView.m */,
+				085EA49D20BB987300CBD18B /* DSSumView.h */,
+				085EA49E20BB987300CBD18B /* DSSumView.m */,
+			);
+			path = DSChartsNext;
+			sourceTree = "<group>";
+		};
 		08FCD85C20A286B8002E93F5 /* DS_ Shops(投注站) */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +775,7 @@
 		08FCD86220A286B8002E93F5 /* DS_Charts(走势) */ = {
 			isa = PBXGroup;
 			children = (
+				085EA46D20BB987300CBD18B /* DSChartsDraw */,
 				08FCD86620A286B8002E93F5 /* ViewController */,
 				08FCD86520A286B8002E93F5 /* View */,
 				08FCD86420A286B8002E93F5 /* Model */,
@@ -621,6 +788,10 @@
 		08FCD86320A286B8002E93F5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				085EA4B720BB9CBB00CBD18B /* JJMenuItemCell.h */,
+				085EA4B620BB9CBB00CBD18B /* JJMenuItemCell.m */,
+				0823F6F920BBD0C600D334C5 /* DS_LotteryListCell.h */,
+				0823F6FA20BBD0C600D334C5 /* DS_LotteryListCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -635,6 +806,9 @@
 		08FCD86520A286B8002E93F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				085EA4BD20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.h */,
+				085EA4BE20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.m */,
+				085EA4BC20BB9E9900CBD18B /* DSLotteryChartsDrawIssueClickVIew.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -644,6 +818,10 @@
 			children = (
 				08FCD87D20A2878C002E93F5 /* DS_ChartsViewController.h */,
 				08FCD87E20A2878C002E93F5 /* DS_ChartsViewController.m */,
+				085EA4C120BBAF8600CBD18B /* DS_LotteryListViewController.h */,
+				085EA4C220BBAF8600CBD18B /* DS_LotteryListViewController.m */,
+				085EA4BA20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.h */,
+				085EA4B920BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -651,6 +829,8 @@
 		08FCD86720A286B8002E93F5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				085EA4C420BBB02800CBD18B /* DS_LotteryListViewModel.h */,
+				085EA4C520BBB02800CBD18B /* DS_LotteryListViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1034,6 +1214,7 @@
 				085B14602092B72000A87C5C /* DS_Strings.strings in Resources */,
 				08F56E1E20AAB6F300C47D37 /* DS_CityList.plist in Resources */,
 				084DC3312091722A00E2C996 /* Home_Lottery_List.plist in Resources */,
+				085EA4BF20BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,25 +1280,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				085EA4AD20BB987300CBD18B /* DSJiouDaxiaoTopView.m in Sources */,
+				085EA4C620BBB02800CBD18B /* DS_LotteryListViewModel.m in Sources */,
 				08F56E1920AAB17900C47D37 /* DS_ShopTableViewCell.m in Sources */,
 				0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */,
 				084DC33C20919CF900E2C996 /* DS_Networking.m in Sources */,
 				0835A3E120B5C309009FB94A /* DS_UserOperationView.m in Sources */,
 				085671ED20B79CEE00F00C41 /* DS_NewsListViewController.m in Sources */,
+				085EA4A420BB987300CBD18B /* DSChartsResultsTool.m in Sources */,
 				08B8B2EE20A6D9A60074533E /* DS_NewsDetailViewController.m in Sources */,
 				084DC33920917C6900E2C996 /* DS_DataTool.m in Sources */,
+				085EA4A720BB987300CBD18B /* DSChartsView.m in Sources */,
 				08FCD8A820A2C68A002E93F5 /* DS_CategoryListModel.m in Sources */,
 				08FF51F920A44FC200E2D918 /* DS_AboutViewController.m in Sources */,
 				0835A88B20A3D038003E459A /* DS_InputView.m in Sources */,
+				085EA4B020BB987300CBD18B /* DSLotteryIssueView.m in Sources */,
 				0805AB1A209AC71C00F48F29 /* SGPageTitleView.m in Sources */,
 				08F56E1C20AAB49200C47D37 /* DS_MapViewController.m in Sources */,
+				085EA4B220BB987300CBD18B /* DSLotteryOpenCode.m in Sources */,
 				0873F42020B55D7900F8410B /* DS_News_NotImageCell.m in Sources */,
 				08FCD8AE20A2E118002E93F5 /* DS_AdvertTableViewCell.m in Sources */,
 				0873F41D20B55D6900F8410B /* DS_News_HaveImageCell.m in Sources */,
+				085EA4AC20BB987300CBD18B /* DSDrawingJiouView.m in Sources */,
+				085EA4C020BB9E9A00CBD18B /* DSLotteryChartsDrawIssueClickVIew.m in Sources */,
+				085EA4A320BB987300CBD18B /* DSChartsLeftCellView.m in Sources */,
 				084DC32F20916BEB00E2C996 /* DS_PanGestureRecognizer.m in Sources */,
 				08FCD87C20A2876C002E93F5 /* DS_HomeViewController.m in Sources */,
 				08FCD8AB20A2D7D0002E93F5 /* DS_NewsListModel.m in Sources */,
 				085865EB2090612300F270D5 /* main.m in Sources */,
+				085EA4B420BB987300CBD18B /* DSSumHeweiView.m in Sources */,
 				084316C0209068F700A3183A /* DS_BaseNavigationController.m in Sources */,
 				084B07FD20A96D0000F2C105 /* DS_LotteryNoticeDetailViewController.m in Sources */,
 				084B07F420A93BF700F2C105 /* DS_LotteryNoticeViewModel.m in Sources */,
@@ -1126,12 +1317,16 @@
 				0810B65020942005005D908D /* DS_RequestTool.m in Sources */,
 				08FCD87F20A2878C002E93F5 /* DS_ChartsViewController.m in Sources */,
 				0810B66720947C16005D908D /* DS_WebViewController.m in Sources */,
+				085EA4BB20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m in Sources */,
 				08FCD8CE20A2F98E002E93F5 /* DS_UserModel.m in Sources */,
 				085671FC20B7A50300F00C41 /* DS_BaseAdvertView.m in Sources */,
 				08FF51F620A4430100E2D918 /* DS_VersionViewController.m in Sources */,
+				085EA4AB20BB987300CBD18B /* DSDrawingHezhiView.m in Sources */,
 				08431710209088E800A3183A /* DS_TabbarInfo.m in Sources */,
 				084B07F720A93F2E00F2C105 /* DS_LotteryNoticeListModel.m in Sources */,
+				085EA4A520BB987300CBD18B /* DSChartsRightCellHeaderView.m in Sources */,
 				08444A3420A91ACC0013F24D /* DS_NewsDetailViewModel.m in Sources */,
+				085EA4A020BB987300CBD18B /* DSChartListModal.m in Sources */,
 				08B8B2F120A6DA1E0074533E /* DS_NewsHeaderView.m in Sources */,
 				0805AB19209AC71C00F48F29 /* SGPageContentView.m in Sources */,
 				084316C720906A9100A3183A /* DS_BaseTabBarItem.m in Sources */,
@@ -1144,6 +1339,7 @@
 				085671F020B79D8E00F00C41 /* DS_NewsListViewModel.m in Sources */,
 				0856720520B7B41C00F00C41 /* DS_NewsCategoryCollectionViewCell.m in Sources */,
 				08FCD89420A29074002E93F5 /* DS_AdvertShare.m in Sources */,
+				0823F6FB20BBD0C600D334C5 /* DS_LotteryListCell.m in Sources */,
 				084316CE2090747A00A3183A /* UIViewExt.m in Sources */,
 				0873F41720B5406800F8410B /* UIColor+MyColorCatagory.m in Sources */,
 				08FCD89C20A2C246002E93F5 /* UIButton+GraphicLayout.m in Sources */,
@@ -1151,32 +1347,46 @@
 				08B8B2FA20A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m in Sources */,
 				084316B42090682500A3183A /* DS_BaseViewController.m in Sources */,
 				0805AB1B209AC71C00F48F29 /* SGPageTitleViewConfigure.m in Sources */,
+				085EA4B120BB987300CBD18B /* DSLotteryJiouPathView.m in Sources */,
 				08FCD89F20A2C57E002E93F5 /* DS_CategoryShare.m in Sources */,
+				085EA4AA20BB987300CBD18B /* DSDrawingHeweiView.m in Sources */,
 				084DC34520919E9E00E2C996 /* DS_BaseViewModel.m in Sources */,
+				085EA4A820BB987300CBD18B /* DSScrollMenu.m in Sources */,
 				08FCD88B20A28949002E93F5 /* DS_HomeViewModel.m in Sources */,
+				085EA4A920BB987300CBD18B /* DSDrawingDaxiaoView.m in Sources */,
 				08FCD89120A28E89002E93F5 /* DS_AdvertListModel.m in Sources */,
 				08A9F70D20B6925F003BC029 /* DS_AgreementViewController.m in Sources */,
 				08D0437120A67410006C01F5 /* DS_UserViewModel.m in Sources */,
 				084316C32090698E00A3183A /* DS_BaseTabBar.m in Sources */,
 				08FCD8CB20A2F6DE002E93F5 /* DS_UserShare.m in Sources */,
+				085EA4B820BB9CBB00CBD18B /* JJMenuItemCell.m in Sources */,
 				08FCD88220A28799002E93F5 /* DS_LotteryNoticeViewController.m in Sources */,
 				0856720220B7B40300F00C41 /* DS_NewsCategoryView.m in Sources */,
 				085671FF20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m in Sources */,
 				084B080620A9735C00F2C105 /* DS_LotteryNoticeDetailCell.m in Sources */,
 				0805AB18209AC71C00F48F29 /* SGPageContentScrollView.m in Sources */,
+				085EA4B320BB987300CBD18B /* DSLotteryPathView.m in Sources */,
+				085EA4C320BBAF8600CBD18B /* DS_LotteryListViewController.m in Sources */,
 				08FF51F320A43ADD00E2D918 /* DS_RegisterViewController.m in Sources */,
+				085EA4A620BB987300CBD18B /* DSChartsRightCellView.m in Sources */,
 				08FCD89920A2A8E6002E93F5 /* DS_NoticeListModel.m in Sources */,
+				085EA4A220BB987300CBD18B /* DSChartsLeftCellHeaderView.m in Sources */,
 				085865DD2090612300F270D5 /* AppDelegate.mm in Sources */,
 				084DC34120919E0900E2C996 /* DS_NetworkingManager.m in Sources */,
+				085EA4A120BB987300CBD18B /* DSChartModal.m in Sources */,
 				084316FD2090879000A3183A /* DS_BaseObject.m in Sources */,
 				08FCD8C220A2F308002E93F5 /* DS_UserViewController.m in Sources */,
+				085EA4B520BB987300CBD18B /* DSSumView.m in Sources */,
 				0805AB17209AC71C00F48F29 /* UIView+SGPagingView.m in Sources */,
+				085EA4AF20BB987300CBD18B /* DSLotteryHeweiPathView.m in Sources */,
+				085EA4AE20BB987300CBD18B /* DSLotteryDaxiaoPathView.m in Sources */,
 				084B080020A96DBD00F2C105 /* DS_LotteryNoticeDetailViewModel.m in Sources */,
 				08496F832099A39D00D40168 /* UIViewController+DSControllerHud.m in Sources */,
 				08FCD8C820A2F5CD002E93F5 /* DS_UserHeaderView.m in Sources */,
 				0835A88820A3CFDA003E459A /* DS_LoginViewController.m in Sources */,
 				08FCD88E20A289D5002E93F5 /* DS_HomeHeaderView.m in Sources */,
 				0810B65A20944A36005D908D /* SZKCleanCache.m in Sources */,
+				085EA46C20BB8DEC00CBD18B /* DS_AreaLimitShare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

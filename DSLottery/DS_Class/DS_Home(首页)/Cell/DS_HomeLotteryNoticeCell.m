@@ -9,6 +9,7 @@
 #import "DS_HomeLotteryNoticeCell.h"
 #import "YM_DrawDigitalRoundView.h"
 #import "DS_BaseTabBarController.h"
+#import "DS_AdvertShare.h"
 @interface DS_HomeLotteryNoticeCell ()
 
 /** 分隔线左侧视图 */
@@ -156,7 +157,7 @@
     }
     
     
-    _lotteryImageView.image = [UIImage imageNamed:[DS_FunctionTool imageNameWithImageID:model.playGroupId]];
+    _lotteryImageView.image = [UIImage imageNamed:[DS_FunctionTool lotteryIconWithLotteryID:model.playGroupId]];
     
     // 获取彩种颜色
     UIColor * color = [DS_FunctionTool lotteryColorWithLotteryID:_model.playGroupId];
@@ -218,12 +219,14 @@
                 }
                 break;
             case 3:
-                if([array[0] integerValue] == [array[4] integerValue]){
-                    label.text= @"和";
-                }else if([array[0] integerValue] > [array[4] integerValue]){
-                    label.text= @"龙";
-                }else{
-                    label.text= @"虎";
+                if ([array count] >= 5) {
+                    if([array[0] integerValue] == [array[4] integerValue]){
+                        label.text= @"和";
+                    }else if([array[0] integerValue] > [array[4] integerValue]){
+                        label.text= @"龙";
+                    }else{
+                        label.text= @"虎";
+                    }
                 }
                 break;
             case 4:
@@ -266,9 +269,14 @@
 /** 投注按钮 */
 - (void)bettingButtonAction:(UIButton *)sender {
     NSLog(@"点击了投注");
-    DS_BaseTabBarController * viewController = (DS_BaseTabBarController *)KeyWindows.rootViewController;
-    [viewController selectedIndex:1];
-    weakifySelf
+    
+    // 没有广告的时候，也是导航到附近网点
+    if (![DS_AdvertShare share].haveAdvertData || [DS_AreaLimitShare share].isAreaLimit) {
+        DS_BaseTabBarController * viewController = (DS_BaseTabBarController *)KeyWindows.rootViewController;
+        [viewController selectedIndex:1];
+    } else if (![DS_AreaLimitShare share].isAreaLimit) {
+        [[DS_AdvertShare share] openFirstAdvert];
+    }
 }
 
 #pragma mark - 懒加载

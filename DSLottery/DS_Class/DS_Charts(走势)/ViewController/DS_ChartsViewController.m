@@ -8,6 +8,10 @@
 
 #import "DS_ChartsViewController.h"
 
+/** viewController */
+#import "DSLotteryChartsDrawViewController.h"
+#import "DS_LotteryListViewController.h"
+
 /** share */
 #import "DS_AdvertShare.h"
 
@@ -15,7 +19,10 @@
 #import "DS_AdvertView.h"
 
 @interface DS_ChartsViewController ()
-
+{
+    // 彩种ID
+    NSString * _playGroupId;
+}
 @property (strong, nonatomic) UIImageView   * lotteryImageView;
 
 @property (strong, nonatomic) DS_AdvertView * advertView;
@@ -32,13 +39,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self initData];
     [self layoutView];
+}
+
+#pragma mark - 数据
+- (void)initData {
+    _playGroupId = @"1";
 }
 
 #pragma mark - 界面
 - (void)layoutView {
-    self.title = DS_STRINGS(@"kCharts");
-    
+    self.navigationBarImage = DS_UIImageName(@"chats_icon");
     UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.frame = CGRectMake(0, 0, 80, 30);
     [rightButton setTitle:DS_STRINGS(@"kBuyLottery") forState:UIControlStateNormal];
@@ -52,7 +64,8 @@
     UIScrollView * scrollView = [[UIScrollView alloc] init];
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(0);
+        make.left.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(-TABBAR_HEIGHT);
         make.top.mas_equalTo(NAVIGATIONBAR_HEIGHT);
     }];
     
@@ -121,11 +134,13 @@
             make.height.mas_equalTo(height);
         }];
         
+        UIImage * image = DS_UIImageName(icons[i]);
         UIImageView * imageView = [[UIImageView alloc] init];
         imageView.image = DS_UIImageName(icons[i]);
         [button addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.width.mas_equalTo(30);
+            make.height.mas_equalTo(image.size.height);
+            make.width.mas_equalTo(image.size.width);
             make.top.mas_equalTo(0);
             make.centerX.mas_equalTo(button);
         }];
@@ -136,7 +151,7 @@
         label.textAlignment = NSTextAlignmentCenter;
         [button addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(imageView.mas_bottom);
+            make.height.mas_equalTo(20);
             make.bottom.mas_equalTo(0);
             make.left.right.mas_equalTo(0);
         }];
@@ -164,7 +179,7 @@
 /* 加载广告 */
 -(void)loadData{
     // 非空判断，不然数组会闪退
-    DS_AdvertModel * model_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"19"];
+    DS_AdvertModel * model_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"18"];
     // 判断第一个广告是否存在，如果不存在就用第二个广告来代替,而第二个广告则不展示。
     // 否则，按正常的两个广告都展示
     if (model_1) {
@@ -183,51 +198,67 @@
 }
 
 - (void)operationButtonAction:(UIButton *)sender {
-    NSLog(@"tag = %ld", sender.tag);
+    DSLotteryChartsDrawViewController * vc = [[DSLotteryChartsDrawViewController alloc] init];
     switch (sender.tag - 1000) {
         case 0: { // 号码走势
-            
+            vc.chartType = DSChartsBasicType;
             break;
         }
         case 1: { // 定位走势
-            
+            vc.chartType = DSChartsLocationType;
             break;
         }
         case 2: { // 跨度走势
-            
-            
+            vc.chartType = DSChartsSpadType;
             break;
         }
         case 3: { // 除三余走势
-            
+            vc.chartType = DSChartsThreeType;
             break;
         }
         case 4: { // 和值走势
-            
+            vc.chartType = DSChartsHezhiType;
             break;
         }
         case 5: { // 奇偶走势
-            
+            vc.chartType = DSChartsJiouType;
             break;
         }
         case 6: { // 大小走势
-            
+            vc.chartType = DSChartsDaxiaoType;
             break;
         }
         case 7: { // 和尾走势
-            
+            vc.chartType = DSChartsHeweiType;
             break;
         }
         default:
             break;
     }
+    vc.playGroupId = _playGroupId;
+    vc.isMeCharts = (sender.tag - 1000) > 3 ? YES : NO;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - 手势
+- (void)titleTapAction:(UITapGestureRecognizer *)tapGesture {
+    DS_LotteryListViewController * vc = [[DS_LotteryListViewController alloc] init];
+    DS_BaseNavigationController * nav = [[DS_BaseNavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+    weakifySelf
+    vc.selectLotteryBlock = ^(NSString *lotterID) {
+        strongifySelf
+        _playGroupId = lotterID;
+        self.lotteryImageView.image = DS_UIImageName([DS_FunctionTool lotteryIconWithLotteryID:lotterID]);
+    };
 }
 
 #pragma mark - 懒加载
 - (UIImageView *)lotteryImageView {
     if (!_lotteryImageView) {
         _lotteryImageView = [[UIImageView alloc] init];
-        _lotteryImageView.image = DS_UIImageName(@"tjssc");
+        _lotteryImageView.image = DS_UIImageName(@"chongqing");
     }
     return _lotteryImageView;
 }
@@ -241,3 +272,4 @@
 }
 
 @end
+

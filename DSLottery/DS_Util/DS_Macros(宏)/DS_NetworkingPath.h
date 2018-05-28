@@ -17,7 +17,7 @@
 
 #define  COMPANYSHORTNAME  @"AA"                    //公司名称
 #define  CLIENTTYPE  @"IOS"                         //客户端平台
-#define  APPVERSION  @"4"                           //版本
+#define  APPVERSION  @"6"                           //版本
 //#define  IMGURL      @"http://a.facai8.cc:8080/api/image/" //图片链接
 #define  IMGURL      @"http://api.aa.77.nf/image/" //图片链接
 /* 注册 */

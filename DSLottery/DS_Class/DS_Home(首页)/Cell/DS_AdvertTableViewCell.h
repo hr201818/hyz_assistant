@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DS_AdvertListModel.h"
 static NSString * DS_AdvertTableViewCellID = @"DS_AdvertTableViewCell";
-static CGFloat    DS_AdvertTableViewCellHeight = 165;
+static CGFloat    DS_AdvertTableViewCellHeight = 160;
 
 /** 首页广告(带有上下灰色区域) */
 @interface DS_AdvertTableViewCell : UITableViewCell

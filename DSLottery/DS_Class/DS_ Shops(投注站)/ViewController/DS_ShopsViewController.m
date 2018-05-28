@@ -106,7 +106,7 @@
 
 /** 加载广告 */
 -(void)loadData {
-    DS_AdvertModel * advert1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"17"];
+    DS_AdvertModel * advert1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"14"];
     if (advert1 != nil) {
         // 判断第1位是否为广告，如果不是则插入
         if (![[self.response firstObject] isKindOfClass:[DS_AdvertModel class]]) {
@@ -114,7 +114,7 @@
         }
     }
     
-    DS_AdvertModel * advert2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"18"];
+    DS_AdvertModel * advert2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"15"];
     if (advert2 != nil) {
         if (self.response.count > 5) {
             // 如果数组大于6位，则判断第6位是否为广告，如果不是则插入

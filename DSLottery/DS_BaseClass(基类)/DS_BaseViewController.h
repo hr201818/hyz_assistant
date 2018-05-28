@@ -15,10 +15,19 @@
 @interface DS_BaseViewController : UIViewController
 
 /* 导航条 */
-@property (nonatomic, strong) UIImageView * navigationBar;
+@property (nonatomic, strong, readonly) UIImageView * navigationBar;
 
 /** 导航条title图片 */
 @property (strong, nonatomic) UIImage * navigationBarImage;
+
+
+#pragma mark - 手势
+/**
+ 标题点击手势
+ @param tapGesture 手势对象
+ */
+- (void)titleTapAction:(UITapGestureRecognizer *)tapGesture;
+
 
 /**
  导航栏左侧视图

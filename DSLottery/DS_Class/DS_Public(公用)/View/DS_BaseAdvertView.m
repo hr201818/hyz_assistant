@@ -85,7 +85,9 @@
     
     _startLabel.text = model.advertisTitle;
     [_advertImageView sd_setImageWithURL:model.imageURL placeholderImage:PLACEHOLDER_ADVERT];
-    _focusNumLab.text = [NSString stringWithFormat:@"\%@位彩民关注过",model.advertisFollowNum];
+    
+    NSInteger peopleNumber = [model.advertisFollowNum integerValue];
+    _focusNumLab.text = [NSString stringWithFormat:@"%ld位彩民关注过", peopleNumber];
 }
 
 #pragma mark - 手势

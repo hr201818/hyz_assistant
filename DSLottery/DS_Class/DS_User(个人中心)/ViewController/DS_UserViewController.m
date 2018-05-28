@@ -81,7 +81,7 @@
     [self.view addSubview:self.scrollView];
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(-STATUSBAR_HEIGHT);
+        make.top.mas_equalTo(0);
         make.bottom.mas_equalTo(-TABBAR_HEIGHT);
     }];
     
@@ -279,6 +279,11 @@
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
+        NSString *version = [UIDevice currentDevice].systemVersion;
+        if (version.doubleValue >= 11.0) {
+            // 针对 11.0 以上的iOS系统进行处理
+            _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _scrollView;
 }

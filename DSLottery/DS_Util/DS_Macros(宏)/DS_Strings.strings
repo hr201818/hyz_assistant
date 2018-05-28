@@ -22,7 +22,7 @@
 "kLogin"         = "登录";
 "kRegister"      = "注册";
 "kClearCache"    = "清除缓存";
-"kCharts"        = "走势";
+"kLotteryList"   = "彩种列表";
 
 /** 首页 */
 "kLotteryHall"   = "购彩大厅";

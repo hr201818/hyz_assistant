@@ -74,7 +74,9 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouch)];
     [self.view addGestureRecognizer:tap];
     
-    [self navLeftItem:[DS_FunctionTool leftNavBackTarget:self Item:@selector(leftBackAction)]];
+    UIButton * leftButton = [DS_FunctionTool leftNavBackTarget:self Item:@selector(leftBackAction)];
+    [leftButton setImage:DS_UIImageName(@"cion_xinxi_fanhui_black") forState:UIControlStateNormal];
+    [self navLeftItem:leftButton];
     
     // 顶部的背景图
     UIImageView * topBackView = [UIImageView new];
@@ -223,8 +225,8 @@
 /* 加载广告 */
 -(void)loadData {
     // 非空判断，不然数组会闪退
-    DS_AdvertModel * model_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"21"];
-    DS_AdvertModel * model_2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"20"];
+    DS_AdvertModel * model_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"23"];
+    DS_AdvertModel * model_2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"24"];
     // 判断第一个广告是否存在，如果不存在就用第二个广告来代替,而第二个广告则不展示。
     // 否则，按正常的两个广告都展示
     if (model_1) {

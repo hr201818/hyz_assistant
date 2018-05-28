@@ -55,7 +55,7 @@
         _titleLabel.text = model.name;
         
         NSString * lotteryID = [[DS_CategoryShare share] lotteryIDWithCategoryID:model.ID];
-        _lotteryImageView.image = [UIImage imageNamed:[DS_FunctionTool imageNameWithImageID:lotteryID]];
+        _lotteryImageView.image = [UIImage imageNamed:[DS_FunctionTool lotteryIconWithLotteryID:lotteryID]];
     }
 }
 

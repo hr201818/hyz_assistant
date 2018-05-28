@@ -73,13 +73,15 @@
     [self requestLotteryNotice];
     
     [self requestNewsWithIsRefresh:YES];
+    
+    [self requestAreaLimit];
 }
 
 #pragma mark - 界面
 /** 布局 */
 - (void)layoutView {
-    self.title = DS_STRINGS(@"kHomeTitle");
-    self.navigationBarImage = DS_UIImageName(@"navigationBarImage");
+    
+    self.navigationBarImage = DS_UIImageName(@"home_icon");
     
     // 左侧按钮
     [self navLeftItem:self.leftButton];
@@ -173,6 +175,19 @@
         }
     } fail:^(NSError *failure) {
         Request_Error_tip;
+    }];
+}
+
+/** 请求区域限制 */
+- (void)requestAreaLimit {
+    weakifySelf
+    [[DS_AreaLimitShare share] requestCheckIPComplete:^{
+        
+    } fail:^(NSError *failure) {
+        strongifySelf
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self requestAreaLimit];
+        });
     }];
 }
 

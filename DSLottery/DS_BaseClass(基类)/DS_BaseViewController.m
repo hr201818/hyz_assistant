@@ -14,6 +14,9 @@
     // 是否透明导航栏
     BOOL _transparent;
 }
+
+@property (nonatomic, strong) UIImageView * navigationBar;
+
 /* 标题名称 */
 @property (strong, nonatomic) UILabel * titleName;
 
@@ -72,6 +75,11 @@
         _titleImageView.hidden = NO;
         _titleName.hidden = YES;
         _titleImageView.image = navigationBarImage;
+        
+        _titleImageView.width = _navigationBarImage.size.width;
+        _titleImageView.height = _navigationBarImage.size.height;
+        _titleImageView.centerX = _navigationBar.width / 2;
+        _titleImageView.centerY = _navigationBar.height / 2 + 10;
     }
 }
 
@@ -126,6 +134,15 @@
     _navigationBar.backgroundColor = [UIColor clearColor];
 }
 
+#pragma mark - 手势
+/**
+ 标题点击手势
+ @param tapGesture 手势对象
+ */
+- (void)titleTapAction:(UITapGestureRecognizer *)tapGesture {
+    
+}
+
 #pragma mark - 懒加载
 /* 导航栏 */
 - (UIImageView *)navigationBar {
@@ -155,10 +172,7 @@
 - (UIImageView *)titleImageView {
     if (!_titleImageView) {
         _titleImageView = [[UIImageView alloc] init];
-        _titleImageView.width = 110;
-        _titleImageView.height = 30;
-        _titleImageView.centerX = _navigationBar.width / 2;
-        _titleImageView.centerY = _navigationBar.height / 2 + 10;
+        _titleImageView.userInteractionEnabled = YES;
         if (_navigationBarImage) {
             _titleImageView.image = _navigationBarImage;
             _titleImageView.hidden = NO;
@@ -167,7 +181,13 @@
             _titleImageView.hidden = YES;
             _titleName.hidden = NO;
         }
+        _titleImageView.width = _navigationBarImage.size.width;
+        _titleImageView.height = _navigationBarImage.size.height;
+        _titleImageView.centerX = _navigationBar.width / 2;
+        _titleImageView.centerY = _navigationBar.height / 2 + 10;
         
+        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleTapAction:)];
+        [_titleImageView addGestureRecognizer:tapGesture];
     }
     return _titleImageView;
 }

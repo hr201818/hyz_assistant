@@ -159,7 +159,7 @@
 - (void)newsDataFilling:(NSMutableArray *)newsArray {
     for (DS_NewsModel * model in newsArray) {
         if ([model.imageIdList count] == 0) {
-            DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:@[@"4",@"5"]];
+            DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:@[@"4",@"5", @"6", @"7", @"8"]];
             model.adverModel = adverModel;
         }
     }

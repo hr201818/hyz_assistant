@@ -130,6 +130,10 @@
         if ([model.ID isEqual:newsModel.ID]) {
             newsModel.thumbsUpNumb = model.thumbsUpNumb;
             newsModel.readerNumb = model.readerNumb;
+            if ([newsModel.imageIdList count] == 0) {
+                DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:@[@"11",@"12", @"13"]];
+                newsModel.adverModel = adverModel;
+            }
         }
     }
 }
@@ -157,7 +161,7 @@
             cell = [[DS_NotBorderAdvertCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NotBorderAdvertCellID];
         }
         
-        NSString * locationID = indexPath.section == 0 ? @"6" : @"7";
+        NSString * locationID = indexPath.section == 0 ? @"9" : @"10";
         DS_AdvertModel * model = [[DS_AdvertShare share] advertModelWithAdvertID:locationID];
         cell.model = model;
         return cell;

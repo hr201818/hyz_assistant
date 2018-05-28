@@ -330,11 +330,11 @@
 #pragma mark - 彩种数据获取
 /**
  通过图片ID获取彩种图片名
- @param imageID 图片ID
+ @param lotteryID 图片ID
  @return 图片名
  */
-+ (NSString *)imageNameWithImageID:(NSString *)imageID {
-    switch ([imageID integerValue]) {
++ (NSString *)lotteryIconWithLotteryID:(NSString *)lotteryID {
+    switch ([lotteryID integerValue]) {
         case 1: // 重庆时时彩
             return @"chongqing";
         case 2: // 天津时时彩
@@ -342,9 +342,9 @@
         case 3: // 新疆时时彩
             return @"xinjiang";
         case 4: // 体彩排列3
-            return @"pailie";
+            return @"pl3";
         case 5: // 福彩3D
-            return @"fucai";
+            return @"fucai_3d";
         case 6: // 六合彩
             return @"";
         case 7: // 北京28
@@ -354,9 +354,9 @@
         case 9: // 北京PK10
             return @"";
         case 10: // 重庆幸运农场
-            return @"chongqingxingyun";
+            return @"cqxync";
         case 11: // 广东快乐十分
-            return @"guangdong10";
+            return @"gdkl";
         case 12: // 双色球
             return @"shuangse";
         case 13: // 三分时时彩
@@ -387,6 +387,69 @@
             return @"beijing";
         case 26: // 吉林时时彩
             return @"jilin";
+        default: return @"";
+    }
+}
+
+/**
+ 通过图片ID获取彩种图片名
+ @param lotteryID 图片ID
+ @return 图片名
+ */
++ (NSString *)lotteryTitleWithLotteryID:(NSString *)lotteryID {
+    switch ([lotteryID integerValue]) {
+        case 1:
+            return @"重庆时时彩";
+        case 2:
+            return @"天津时时彩";
+        case 3:
+            return @"新疆时时彩";
+        case 4:
+            return @"体彩排列3";
+        case 5:
+            return @"福彩3D";
+        case 6:
+            return @"六合彩";
+        case 7:
+            return @"北京28";
+        case 8:
+            return @"北京快乐8";
+        case 9:
+            return @"北京PK10";
+        case 10:
+            return @"重庆幸运农场";
+        case 11:
+            return @"广东快乐十分";
+        case 12:
+            return @"双色球";
+        case 13:
+            return @"三分时时彩";
+        case 14:
+            return @"幸运飞艇";
+        case 15:
+            return @"分分时时彩";
+        case 16:
+            return @"两分时时彩";
+        case 17:
+            return @"五分时时彩";
+        case 18:
+            return @"江苏快3";
+        case 19:
+            return @"湖北快3";
+        case 20:
+            return @"安徽快3";
+        case 21:
+            return @"吉林快3";
+        case 22:
+            return @"10分六合彩";
+        case 23:
+            return @"极速PK10";
+        case 24:
+            return @"广东十一选五";
+        case 25:
+            return @"北京时时彩";
+        case 26:
+            return @"吉林时时彩";
         default: return @"";
     }
 }
@@ -452,6 +515,36 @@
             return [UIColor redColor];
         default: return [UIColor redColor];
     }
+}
+
+/** 获取当前应用所支持的所有彩种ID */
++ (NSArray *)allLottery {
+    NSMutableArray * mArray = [NSMutableArray new];
+    [mArray addObject:@(1)];  // 重庆时时彩
+    [mArray addObject:@(2)];  // 天津时时彩
+    [mArray addObject:@(3)];  // 新疆时时彩
+    [mArray addObject:@(4)];  // 体彩排列3
+    [mArray addObject:@(5)];  // 福彩3D
+    [mArray addObject:@(6)];  // 六合彩
+    [mArray addObject:@(7)];  // 北京28
+    [mArray addObject:@(8)];  // 北京快乐8
+    [mArray addObject:@(9)];  // 北京PK10
+    [mArray addObject:@(10)]; // 重庆幸运农场
+    [mArray addObject:@(11)]; // 广东快乐十分
+    [mArray addObject:@(12)]; // 双色球
+    [mArray addObject:@(13)]; // 三分时时彩
+    [mArray addObject:@(14)]; // 幸运飞艇
+    [mArray addObject:@(15)]; // 分分时时彩
+    [mArray addObject:@(16)]; // 两分时时彩
+    [mArray addObject:@(17)]; // 五分时时彩
+    [mArray addObject:@(18)]; // 江苏快3
+    [mArray addObject:@(19)]; // 湖北快3
+    [mArray addObject:@(20)]; // 安徽快3
+    [mArray addObject:@(21)]; // 吉林快3
+    [mArray addObject:@(22)]; // 10分六合彩
+    [mArray addObject:@(23)]; // 极速PK10
+    [mArray addObject:@(24)]; // 广东十一选五
+    return mArray;
 }
 
 #pragma mark - 缓存
