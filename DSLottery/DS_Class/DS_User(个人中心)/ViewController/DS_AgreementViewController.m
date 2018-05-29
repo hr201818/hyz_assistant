@@ -31,7 +31,11 @@
     [self.view addSubview:scrollView];
     
     UILabel * content = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, self.view.width - 25, 1000)];
-    content.text = @"尊敬的用户";
+    if ([DS_AreaLimitShare share].isAreaLimit) {
+        content.text = [DS_AreaLimitShare share].content;
+    } else {
+        content.text = @"尊敬的用户";
+    }
     content.textColor = COLOR_Font83;
     content.numberOfLines = 0;
     content.font = [UIFont systemFontOfSize:15];

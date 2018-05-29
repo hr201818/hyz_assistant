@@ -21,7 +21,14 @@
 - (void)requestCheckIPComplete:(void(^)(void))complete
                           fail:(void(^)(NSError * failure))fail;
 
+/** 请求版本 */
+- (void)requestGengxinComplete:(void(^)(void))complete
+                          fail:(void(^)(NSError * failure))fail;
+
 /** 是否区域限制 */
 @property (assign, nonatomic, readonly) BOOL isAreaLimit;
+
+/** 区域限制内容 */
+@property (copy, nonatomic, readonly) NSString * content;
 
 @end

@@ -81,6 +81,8 @@
     [self requestNewsWithIsRefresh:YES];
     
     [self requestAreaLimit];
+    
+    [self requestGengxin];
 }
 
 #pragma mark - 界面
@@ -197,6 +199,19 @@
         strongifySelf
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self requestAreaLimit];
+        });
+    }];
+}
+
+/** 请求版本 */
+- (void)requestGengxin {
+    weakifySelf
+    [[DS_AreaLimitShare share] requestGengxinComplete:^{
+        
+    } fail:^(NSError *failure) {
+        strongifySelf
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self requestGengxin];
         });
     }];
 }
