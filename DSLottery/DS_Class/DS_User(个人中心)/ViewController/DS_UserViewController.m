@@ -82,15 +82,15 @@
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
-        make.bottom.mas_equalTo(-TABBAR_HEIGHT);
+        make.height.mas_equalTo(Screen_HEIGHT - TABBAR_HEIGHT);
     }];
     
     UIView * view = [[UIView alloc] init];
     [_scrollView addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_scrollView);
-        make.width.equalTo(_scrollView);
-        make.height.greaterThanOrEqualTo(@0.f); // 此处保证容器View高度的动态变化 大于等于0.f的高度
+        make.edges.mas_equalTo(_scrollView);
+        make.width.mas_equalTo(_scrollView);
+        make.height.mas_greaterThanOrEqualTo(@0.f); // 此处保证容器View高度的动态变化 大于等于0.f的高度
     }];
     
     [view addSubview:self.headerView];

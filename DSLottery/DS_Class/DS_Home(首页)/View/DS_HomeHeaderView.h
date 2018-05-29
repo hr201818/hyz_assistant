@@ -20,4 +20,10 @@
 /** 刷新轮播图 */
 - (void)refreshBanner;
 
+/**
+ 设置自动轮播
+ @param autoScroll 是否自动轮播
+ */
+- (void)setAutoScroll:(BOOL)autoScroll;
+
 @end

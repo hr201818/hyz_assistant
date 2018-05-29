@@ -8,6 +8,7 @@
 
 #import "DS_LotteryNoticeViewModel.h"
 #import "DS_LotteryNoticeDetailViewController.h"
+#import "DS_LocalData.h"
 
 /** model */
 #import "DS_LotteryNoticeListModel.h"
@@ -34,6 +35,14 @@
 - (instancetype)init {
     if ([super init]) {
         _listArray = [NSMutableArray array];
+        
+        // 开奖公告信息
+        id lotteryData = [DS_LocalData lotteryData];
+        if (lotteryData) {
+            _listModel = [DS_LotteryNoticeListModel yy_modelWithJSON:lotteryData];
+            [self processData];
+            [self loadAdvertData];
+        }
     }
     return self;
 }
@@ -51,11 +60,7 @@
         
         if (Request_Success(result)) {
             _listModel = [DS_LotteryNoticeListModel yy_modelWithJSON:result];
-            
-            [_listArray removeAllObjects];
-            for (DS_LotteryNoticeModel * model in _listModel.resultList) {
-                [_listArray addObject:model];
-            }
+            [self processData];
         }
         if (complete) {
             complete(result);
@@ -68,6 +73,13 @@
 }
 
 #pragma mark - 数据处理
+- (void)processData {
+    [_listArray removeAllObjects];
+    for (DS_LotteryNoticeModel * model in _listModel.resultList) {
+        [_listArray addObject:model];
+    }
+}
+
 /** 加载广告数据 */
 - (void)loadAdvertData {
     DS_AdvertModel * advertModel_10 = [[DS_AdvertShare share] advertModelWithAdvertID:@"16"];
@@ -129,11 +141,11 @@
         DS_LotteryNoticeModel * model = (DS_LotteryNoticeModel *)_listArray[indexPath.row];
         NSArray *array = [model.openCode componentsSeparatedByString:@","];
         if(array.count > 14){
-            return DS_HomeLotteryNoticeCellMaxHeight;
+            return IOS_SiZESCALE(DS_HomeLotteryNoticeCellMaxHeight + 10);
         } else if (array.count > 7) {
-            return DS_HomeLotteryNoticeCellMidHeight;
+            return IOS_SiZESCALE(DS_HomeLotteryNoticeCellMidHeight + 10);
         }
-        return DS_HomeLotteryNoticeCellMinHeight;
+        return IOS_SiZESCALE(DS_HomeLotteryNoticeCellMinHeight + 10);
     }
     return 0;
 }

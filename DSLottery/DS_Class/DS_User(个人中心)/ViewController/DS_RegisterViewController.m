@@ -107,7 +107,7 @@
     // 手机号
     [containView addSubview:self.phoneView];
     [_phoneView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(IOS_SiZESCALE(110));
         make.left.mas_equalTo(40);
         make.right.mas_equalTo(-40);
         make.height.mas_equalTo(40);

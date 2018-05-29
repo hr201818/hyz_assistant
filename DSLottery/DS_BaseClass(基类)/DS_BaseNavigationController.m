@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) NSMutableArray          * imageArray;
 
+/** 截取上一层级的界面，在拖动返回的时候进行展示 */
 @property (strong, nonatomic) UIImage                 * fristImg;
 
 @end
@@ -56,8 +57,8 @@
     }
     
     [self.imageArray removeAllObjects];
-    UIViewController * pushview = [self.viewControllers lastObject];
-    [self.imageArray addObject:[self snapshot:pushview.view]];
+    
+    [self.imageArray addObject:[self snapshot:KeyWindows]];
     // 动画标识，在动画的情况下，禁调用右滑手势
     [self startAnimated:animated];
     [super pushViewController:viewController animated:animated];

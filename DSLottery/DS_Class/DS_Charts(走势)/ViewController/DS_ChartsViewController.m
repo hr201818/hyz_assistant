@@ -65,7 +65,7 @@
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(-TABBAR_HEIGHT);
+        make.height.mas_equalTo(Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT);
         make.top.mas_equalTo(NAVIGATIONBAR_HEIGHT);
     }];
     

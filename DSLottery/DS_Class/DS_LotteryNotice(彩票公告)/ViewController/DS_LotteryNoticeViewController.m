@@ -87,8 +87,7 @@
     
     // 彩票公告列表
     [self.view addSubview:self.tableView];
-    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    
+    [_tableView reloadData];
 }
 
 #pragma mark - 按钮事件

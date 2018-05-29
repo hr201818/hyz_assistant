@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DS_LotteryNoticeListModel.h"
 static NSString * DS_LotteryNoticeDetailCellID = @"DS_LotteryDetailTableViewCell";
-static CGFloat DS_LotteryNoticeDetailCellMaxHeight = 135;
-static CGFloat DS_LotteryNoticeDetailCellMinHeight = 120;
+static CGFloat    DS_LotteryNoticeDetailCellMaxHeight = 170;
+static CGFloat    DS_LotteryNoticeDetailCellMidHeight = 140;
+static CGFloat    DS_LotteryNoticeDetailCellMinHeight = 110;
 @interface DS_LotteryNoticeDetailCell : UITableViewCell
 
 @property (strong, nonatomic) DS_LotteryNoticeModel * model;

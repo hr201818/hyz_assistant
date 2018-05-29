@@ -13,9 +13,9 @@
 #import "DS_LotteryNoticeListModel.h"
 
 static NSString * DS_HomeLotteryNoticeCellID = @"DS_HomeLotteryNoticeCell";
-static CGFloat    DS_HomeLotteryNoticeCellMaxHeight = 150;
-static CGFloat    DS_HomeLotteryNoticeCellMidHeight = 120;
-static CGFloat    DS_HomeLotteryNoticeCellMinHeight = 120;
+static CGFloat    DS_HomeLotteryNoticeCellMaxHeight = 170;
+static CGFloat    DS_HomeLotteryNoticeCellMidHeight = 140;
+static CGFloat    DS_HomeLotteryNoticeCellMinHeight = 110;
 
 /** 首页开奖公告cell */
 @interface DS_HomeLotteryNoticeCell : UITableViewCell

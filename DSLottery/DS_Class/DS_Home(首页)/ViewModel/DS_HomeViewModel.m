@@ -7,6 +7,9 @@
 //
 
 #import "DS_HomeViewModel.h"
+#import "DS_LocalData.h"
+/** viewController */
+#import "DS_LotteryNoticeDetailViewController.h"
 
 /** cell */
 #import "DS_AdvertTableViewCell.h"
@@ -46,6 +49,21 @@
 - (instancetype)init {
     if ([super init]) {
         _tableViewList = [NSMutableArray array];
+        
+        // 开奖公告缓存
+        id lotteryData = [DS_LocalData lotteryData];
+        if (lotteryData) {
+            _lotteryNoticeListModel = [DS_LotteryNoticeListModel yy_modelWithJSON:lotteryData];
+        }
+        
+        // 资讯信息缓存
+        id newsData = [DS_LocalData newsData];
+        if (newsData) {
+            _newsListModel = [DS_NewsListModel yy_modelWithJSON:newsData];
+            [self newsDataFilling:_newsListModel.articleList];
+        }
+        
+        [self processDataSource];
     }
     return self;
 }
@@ -61,6 +79,7 @@
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
     [DS_Networking postConectWithS:GETALLSSCDATA Parameter:dic Succeed:^(id result) {
         if (Request_Success(result)) {
+            [DS_LocalData setLotteryData:result];
             _lotteryNoticeListModel = [DS_LotteryNoticeListModel yy_modelWithJSON:result];
             [self processDataSource];
         }
@@ -103,22 +122,20 @@
         if (Request_Success(result)) {
             // 刷新
             if (isRefresh) {
-                _newsListModel = [DS_NewsListModel yy_modelWithJSON:result];
-                [self newsDataFilling:_newsListModel.articleList];
+                [DS_LocalData setNewsData:result reset:YES];
             }
             // 加载
             else {
+                [DS_LocalData setNewsData:result reset:NO];
                 DS_NewsListModel * newsListModel = [DS_NewsListModel yy_modelWithJSON:result];
                 // 如果没有加载更多数据
                 if (newsListModel.articleList.count == 0) {
                     _page--;
                     more = NO;
-                } else {
-                    [self newsDataFilling:newsListModel.articleList];
-                    [_newsListModel.articleList addObjectsFromArray:newsListModel.articleList];
                 }
             }
-            
+            _newsListModel = [DS_NewsListModel yy_modelWithJSON:[DS_LocalData newsData]];
+            [self newsDataFilling:_newsListModel.articleList];
             [self processDataSource];
         }else {
             _page--;
@@ -282,6 +299,16 @@
         return DS_HomeLotteryNoticeCellMinHeight;
     } else {
         return DS_HomeNormalCellHeight;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_tableViewList[indexPath. row] isKindOfClass:[DS_LotteryNoticeModel class]]) {
+        DS_LotteryNoticeDetailViewController * vc = [[DS_LotteryNoticeDetailViewController alloc] init];
+        DS_LotteryNoticeModel * model = (DS_LotteryNoticeModel *)_tableViewList[indexPath. row];
+        vc.playGroupId = model.playGroupId;
+        vc.playGroupName = model.playGroupName;
+        [tableView.viewController.navigationController pushViewController:vc animated:YES];
     }
 }
 

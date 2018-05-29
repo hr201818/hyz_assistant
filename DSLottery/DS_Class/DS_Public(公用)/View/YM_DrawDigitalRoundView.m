@@ -34,7 +34,7 @@
 - (void)initData {
     _textColor = [UIColor redColor];
     _borderColor = [UIColor redColor];
-    _textFont = [UIFont systemFontOfSize:13.0];
+    _textFont = [UIFont systemFontOfSize:IOS_SiZESCALE(15.0f)];
 }
 
 - (void)drawRect:(CGRect)rect {

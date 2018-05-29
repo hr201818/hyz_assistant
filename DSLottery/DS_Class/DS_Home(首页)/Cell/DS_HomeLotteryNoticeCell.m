@@ -176,14 +176,13 @@
         
         YM_DrawDigitalRoundView * digitalView = [[YM_DrawDigitalRoundView alloc] initWithFrame:CGRectMake(left, top, IOS_SiZESCALE(25), IOS_SiZESCALE(25)) number:[array[i] integerValue]];
         digitalView.isFill = YES;
-        digitalView.textFont = FONT(15.0f);
         digitalView.textColor = [UIColor whiteColor];
         digitalView.borderColor = color;
         [_backView addSubview:digitalView];
         
         // 双色球单独处理
         if ([model.playGroupId isEqualToString:@"12"] && i == array.count - 1) {
-            digitalView.textColor = [UIColor blueColor];
+            digitalView.borderColor = [UIColor blueColor];
         }
         
         [digitalView redraw];
@@ -227,6 +226,8 @@
                     }else{
                         label.text= @"虎";
                     }
+                } else {
+                    left -= IOS_SiZESCALE(30);
                 }
                 break;
             case 4:

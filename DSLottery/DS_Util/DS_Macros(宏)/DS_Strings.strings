@@ -62,4 +62,8 @@
 "kDetail"= "详情";
 
 /** 走势 */
+"kThirtyIssue"  = "30期";
+"kFiftyIssue"   = "50期";
+"kEightyIssue" = "70期";
+
 

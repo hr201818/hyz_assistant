@@ -99,6 +99,15 @@
     _advertScrollView.imageURLStringsGroup = _bannerImageURLs;
 }
 
+/**
+ 设置自动轮播
+ @param autoScroll 是否自动轮播
+ */
+- (void)setAutoScroll:(BOOL)autoScroll {
+    _advertScrollView.autoScroll = autoScroll;
+    _noticeScrollView.autoScroll = autoScroll;
+}
+
 #pragma mark - <SDCycleScrollViewDelegate>
 /** 轮播点击事件 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -132,14 +141,13 @@
         _noticeScrollView.titleLabelTextColor = COLOR_Font83;
         _noticeScrollView.backgroundColor = [UIColor whiteColor];
         
-        
         UIImageView * labaImage = [[UIImageView alloc] init];
-        [labaImage setImage:[UIImage imageNamed:@"gift"]];
+        [labaImage setImage:[UIImage imageNamed:@"notice_icon"]];
         [_noticeScrollView addSubview:labaImage];
         [labaImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(10);
             make.centerY.mas_equalTo(_noticeScrollView);
-            make.width.height.mas_equalTo(16);
+            make.width.height.mas_equalTo(20);
         }];
     }
     return _noticeScrollView;

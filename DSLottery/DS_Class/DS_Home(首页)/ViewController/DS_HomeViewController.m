@@ -53,6 +53,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.rightButton.hidden = ![[DS_AdvertShare share] haveAdvertData];
+    [_headerView setAutoScroll:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_headerView setAutoScroll:NO];
 }
 
 - (void)viewDidLoad {
@@ -92,15 +98,18 @@
     [self.view addSubview:self.tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(NAVIGATIONBAR_HEIGHT);
-        make.bottom.mas_equalTo(-TABBAR_HEIGHT);
+        make.height.mas_equalTo(Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT);
         make.left.right.mas_equalTo(0);
     }];
+    [self.tableView reloadData];
 }
 
 #pragma mark - 数据请求
 /** 请求广告数据 */
 - (void)requestAdvert {
     if ([[DS_AdvertShare share] advertCount] > 0) {
+        self.rightButton.hidden = ![[DS_AdvertShare share] haveAdvertData];
+        [self.headerView refreshBanner];
         return;
     }
     // 请求广告
@@ -161,6 +170,7 @@
         [self hidehud];
     } fail:^(NSError *failure) {
         Request_Error_tip
+        [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     }];
 }

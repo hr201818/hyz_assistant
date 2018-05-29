@@ -7,7 +7,7 @@
 //
 
 #import "DS_AdvertShare.h"
-
+#import "DS_LocalData.h"
 @interface DS_AdvertShare ()
 
 @property (strong, nonatomic) DS_AdvertListModel * advertListModel;
@@ -22,6 +22,10 @@ static DS_AdvertShare * advertObject;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         advertObject = [[DS_AdvertShare alloc] init];
+        id advertData = [DS_LocalData advertData];
+        if (advertData) {
+            advertObject.advertListModel = [DS_AdvertListModel yy_modelWithJSON:advertData];
+        }
     });
     return advertObject;
 }
@@ -39,6 +43,7 @@ static DS_AdvertShare * advertObject;
     [DS_Networking postConectWithS:GET_ADVERT_LIST Parameter:dic Succeed:^(id result) {
         strongifySelf
         self.advertListModel = [DS_AdvertListModel yy_modelWithJSON:result];
+        [DS_LocalData setAdvertData:result];
         if (complete) {
             complete(result);
         }

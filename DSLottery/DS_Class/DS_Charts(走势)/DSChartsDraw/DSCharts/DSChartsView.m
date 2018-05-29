@@ -236,6 +236,7 @@
         [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.left.offset(0);
         }];
+        
         self.buttomScrollView = [[UIScrollView alloc] init];
         self.buttomScrollView.contentSize = CGSizeMake(self.rightTableView.bounds.size.width, 0);
         self.buttomScrollView.backgroundColor = self.backgroundColor;
@@ -247,10 +248,12 @@
             make.right.and.top.and.bottom.equalTo(self);
             make.left.equalTo(self.tableView.mas_right);
         }];
+        
         [self.buttomScrollView addSubview:self.rightTableView];
         [self.rightTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.offset(0);
-            make.height.equalTo(self.tableView);
+            make.left.right.mas_equalTo(0);
+            make.top.mas_equalTo(0);
+            make.height.mas_equalTo(self.buttomScrollView);
         }];
     }
 }
@@ -326,7 +329,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-  return  self.issueArr.count * TableView_cellHeight  + (IS_IPHONEX?34:0);
+    return  self.issueArr.count * TableView_cellHeight;
 }
 
 /**

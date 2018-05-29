@@ -134,10 +134,12 @@
     } else {
         DS_LotteryNoticeModel * model = _listArray[indexPath.row];
         NSArray *array = [model.openCode componentsSeparatedByString:@","];
-        if(array.count > 10){
-            return DS_LotteryNoticeDetailCellMaxHeight;
+        if(array.count > 16){
+            return IOS_SiZESCALE(DS_LotteryNoticeDetailCellMaxHeight);
+        } else if (array.count > 8) {
+            return IOS_SiZESCALE(DS_LotteryNoticeDetailCellMidHeight);
         }
-        return DS_LotteryNoticeDetailCellMinHeight;
+        return IOS_SiZESCALE(DS_LotteryNoticeDetailCellMinHeight);
     }
 }
 

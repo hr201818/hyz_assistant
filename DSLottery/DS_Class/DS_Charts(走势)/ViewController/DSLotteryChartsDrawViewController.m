@@ -13,7 +13,11 @@
 #import "DSDrawingHeweiView.h" // 和尾
 #import "DSDrawingDaxiaoView.h" // 大小
 #import "DSDrawingJiouView.h" // 奇偶
-#import "DSLotteryChartsDrawIssueClickVIew.h"
+
+/** view */
+#import "DS_LotteryIssueView.h"
+
+
 @interface DSLotteryChartsDrawViewController ()
 // 合并  号码、定位、 跨度、除三余、
 @property (nonatomic, strong) DSChartsView * chartsView;
@@ -27,7 +31,7 @@
 // 奇偶
 @property (nonatomic, strong) DSDrawingJiouView *  jiouView;
 
-@property (nonatomic,strong) DSLotteryChartsDrawIssueClickVIew * issueView;
+@property (nonatomic,strong) DS_LotteryIssueView * issueView;
 
 @end
 
@@ -109,7 +113,7 @@
         [self.chartsView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(NAVIGATIONBAR_HEIGHT);
             make.left.right.mas_equalTo(0);
-            make.bottom.mas_equalTo(-(IOS_SiZESCALE(40)));
+            make.bottom.mas_equalTo(-(IOS8_HEIGHT * DS_LotteryIssueViewHeight));
         }];
     }
     
@@ -117,14 +121,14 @@
     [_issueView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(IOS_SiZESCALE(40));
+        make.height.mas_equalTo(IOS8_HEIGHT * DS_LotteryIssueViewHeight);
     }];
 }
 
 
 -(void)p_crateChartsViewWithModal:(DSChartModal *)modal{
 
-    CGRect  frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, Screen_WIDTH, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - 40 * IOS8_WINDTH - (IS_IPHONEX?34:0));
+    CGRect  frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, Screen_WIDTH, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - IOS8_HEIGHT * DS_LotteryIssueViewHeight);
     if (self.chartType == DSChartsHezhiType){
           // 和值
         self.hezhiView = [[DSDrawingHezhiView alloc] initWithFrame:frame model:modal lotteryID:self.playGroupId];
@@ -165,12 +169,12 @@
     return _chartsView;
 }
 
-- (DSLotteryChartsDrawIssueClickVIew *)issueView {
+- (DS_LotteryIssueView *)issueView {
     if (!_issueView) {
-        _issueView = [DSLotteryChartsDrawIssueClickVIew lotteryChartsDrawIssueClickView];
+        _issueView = [DS_LotteryIssueView new];
         
         weakifySelf
-        self.issueView.issueClickBlock = ^(NSInteger btnTag) {
+        _issueView.issueBlock = ^(NSInteger tag) {
             strongifySelf
             if (self.chartType == DSChartsHezhiType){
                 [self.hezhiView removeFromSuperview];
@@ -195,16 +199,16 @@
                 [self.chartsView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.top.mas_equalTo(NAVIGATIONBAR_HEIGHT);
                     make.left.right.mas_equalTo(0);
-                    make.bottom.mas_equalTo(-(IOS_SiZESCALE(40)));
+                    make.height.mas_equalTo(Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - -(IOS8_HEIGHT * DS_LotteryIssueViewHeight));
                 }];
             }
             
-            if (btnTag == 1) {
+            if (tag == 0) {
                 [self requstDetailWithPageSize:30];
-            }else if (btnTag == 2){
+            }else if (tag == 1){
                 [self requstDetailWithPageSize:50];
                 
-            }else if (btnTag == 3){
+            }else if (tag == 2){
                 [self requstDetailWithPageSize:80];
             }
         };
