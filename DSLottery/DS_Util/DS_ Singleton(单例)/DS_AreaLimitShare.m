@@ -43,7 +43,7 @@ static DS_AreaLimitShare * areaLmitShare;
     [dic setValue:@"AA6" forKey:@"tip"];
     [DS_Networking postConectWithS:Link_AreaLimit Parameter:dic Succeed:^(id result) {
         if ([result[@"result"] integerValue] == 1 ) {
-            if ([result[@"pass"] integerValue] == 1) {
+            if ([result[@"pass"] integerValue] == 0) {
                 self.isAreaLimit = YES;
             }else {
                 self.isAreaLimit = NO;

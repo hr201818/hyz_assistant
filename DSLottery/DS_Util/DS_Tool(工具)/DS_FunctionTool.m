@@ -187,16 +187,16 @@
  @param advertModel 打开广告
  */
 + (void)openAdvert:(DS_AdvertModel *)advertModel {
-    // 内部跳转
+    // 外部跳转
     if ([advertModel.openType isEqual:@"1"]) {
+        [self openUrl:advertModel.advertisUrl];
+    }
+    // 内部跳转
+    else {
         DS_WebViewController * vc = [[DS_WebViewController alloc] init];
         vc.webURLStr = advertModel.advertisUrl;
         DS_BaseNavigationController * navVC = [[DS_BaseNavigationController alloc] initWithRootViewController:vc];
         [KeyWindows.rootViewController presentViewController:navVC animated:YES completion:nil];
-    }
-    // 外部跳转
-    else {
-        [self openUrl:advertModel.advertisUrl];
     }
 }
 

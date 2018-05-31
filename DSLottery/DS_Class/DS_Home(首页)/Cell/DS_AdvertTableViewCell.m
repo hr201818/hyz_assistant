@@ -56,7 +56,7 @@
 #pragma mark - 手势
 /** 手势 */
 - (void)tapTouch {
-    [DS_FunctionTool openUrl:_model.advertisUrl];
+    [DS_FunctionTool openAdvert:_model];
 }
 
 #pragma mark - 懒加载

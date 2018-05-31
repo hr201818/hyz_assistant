@@ -63,12 +63,6 @@
  */
 + (void)openAdvert:(id)advertModel;
 
-/**
- 打开链接(外部跳转)
- @param url 链接
- */
-+(void)openUrl:(NSString *)url;
-
 #pragma mark - 时间
 /* 获取当前时间戳 */
 +(NSString *)currentTimeStr;
