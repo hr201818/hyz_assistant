@@ -684,3 +684,8 @@ Pods/YYModel/YYModel/NSObject+YYModel.m
 Pods/YYModel/YYModel/YYClassInfo.h
 Pods/YYModel/YYModel/YYClassInfo.m
 Pods/YYModel/YYModel/YYModel.h
+Pods/Headers/Private/JPush/JPUSHService.h
+Pods/Headers/Public/JPush/JPUSHService.h
+Pods/JCore/libjcore-ios-1.1.9.a
+Pods/JPush/JPUSHService.h
+Pods/JPush/libjpush-ios-3.0.9.a
