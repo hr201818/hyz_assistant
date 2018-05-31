@@ -106,10 +106,14 @@
 #pragma mark - 数据处理
 /** 资讯数据填充（给无图资讯增加广告模型） */
 - (void)newsDataFilling:(NSMutableArray *)newsArray {
+    
+    // 获取首页列表广告数组
+    NSArray <DS_AdvertModel *> * adverts = [[DS_AdvertShare share] newsListAdverts:YES];
+    
     for (DS_NewsModel * model in newsArray) {
-        if ([model.imageIdList count] == 0) {
-            DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:@[@"4",@"5"]];
-            model.adverModel = adverModel;
+        if ([model.imageIdList count] == 0 && [adverts count] > 0) {
+            NSInteger index = arc4random() % [adverts count];
+            model.adverModel = adverts[index];
         }
     }
 }
@@ -118,37 +122,42 @@
 - (void)processDataSource {
     [_tableViewList removeAllObjects];
     
+    // 获取首页列表广告数组
+    NSArray <DS_AdvertModel *> * adverts = [[DS_AdvertShare share] newsListAdverts:NO];
+    
     // 插入第一条广告
-    DS_AdvertModel * adverModel_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"4"];
-    if (adverModel_1) {
-        [_tableViewList addObject:adverModel_1];
+    if ([adverts count] > 0) {
+        [_tableViewList addObject:[adverts firstObject]];
     }
     
     // 每两条资讯搭配一条广告
-    NSMutableArray * mArray = nil;
+    NSMutableArray * mArray = [NSMutableArray array];
+    NSArray * newsAdverts = [[DS_AdvertShare share] newsListAdverts:YES];
     for (NSInteger i = 0; i < [_newsListModel.articleList count]; i++) {
-        if (i % 2 == 0) {
-            // 防止i=0时，mArray为nil导致的崩溃
-            if (mArray) {
-                // 放入一条随机广告
-                DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:nil];
-                if (adverModel) {
-                    [mArray addObject:adverModel];
-                }
-                [_tableViewList addObject:mArray];
-            }
-            
-            // 数组重新初始化，以保存新的数据
-            mArray = [NSMutableArray array];
+        [mArray addObject:_newsListModel.articleList[i]];
+        
+        // 获取一条随机广告
+        DS_AdvertModel * advertModel = nil;
+        if ([newsAdverts count] > 0) {
+            NSInteger index = arc4random() % [newsAdverts count];
+            advertModel = (DS_AdvertModel *)newsAdverts[index];
         }
         
-        [mArray addObject:_newsListModel.articleList[i]];
+        // 如果是2的倍数，则插入一条广告
+        if (i % 2 == 0) {
+            if (i != 0) {
+                if (adverts) {
+                    [mArray addObject:advertModel];
+                }
+                mArray = [NSMutableArray array];
+            }
+            [_tableViewList addObject:mArray];
+        }
     }
     
     // 插入第二条广告
-    DS_AdvertModel * adverModel_2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"5"];
-    if (adverModel_2) {
-        [_tableViewList addObject:adverModel_2];
+    if ([adverts count] > 1) {
+        [_tableViewList addObject:[adverts lastObject]];
     }
 }
 

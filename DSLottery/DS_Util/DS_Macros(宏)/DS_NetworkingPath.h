@@ -93,8 +93,11 @@ static NSString * const SETCOMMLIST = @"app/setCommList.json";
 /* 获取最新版本号 */
 static NSString * const GETAPPGENXIN = @"app/getAppGenxin.json";
 
-/* 检查IP[区域限制] */
-static NSString * const CHECKIP = @"app/checkIp.json";
+// 检查IP[区域限制]
+//static NSString * const CHECKIP = @"app/checkIp.json";
+
+/** 区域限制（用于广告显示隐藏） */
+static NSString * const Link_AreaLimit = @"advertisement/checkIpAreaSpecialTips.json?";
 
 /*游戏说明*/
 static NSString * const WEBSETTING = @"webSetting/getGameInfo.json";

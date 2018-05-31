@@ -23,12 +23,15 @@
 "kRegister"      = "注册";
 "kClearCache"    = "清除缓存";
 "kLotteryList"   = "彩种列表";
+"kNotice"        = "公告";
 
 /** 首页 */
 "kLotteryHall"   = "购彩大厅";
 "kBuyLottery"    = "购彩";
 "kLotteryNews"   = "彩票资讯";
 "kBetting"       = "投注";
+"kNoticeTitle"   = "重要公告";
+"kNoticeContent" = "您好，您的所在地区禁止网上购买彩票，请遵守当地法律法规，给您带来的不便，我深表歉意！";
 
 /** 投注站 */
 "kSelectedShops" = "请选择附近的彩票网点进行投注";

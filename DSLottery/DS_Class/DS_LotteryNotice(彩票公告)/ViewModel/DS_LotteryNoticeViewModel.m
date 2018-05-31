@@ -82,23 +82,22 @@
 
 /** 加载广告数据 */
 - (void)loadAdvertData {
-    DS_AdvertModel * advertModel_10 = [[DS_AdvertShare share] advertModelWithAdvertID:@"16"];
-    if (advertModel_10) {
+    NSArray <DS_AdvertModel *> * adverts = [[DS_AdvertShare share] lotteryAdverts];
+    if ([adverts count] > 0) {
         // 插入数组中的第5个位置放广告
         if ([_listArray count] > 5) {
-            [_listArray insertObject:advertModel_10 atIndex:5];
+            [_listArray insertObject:[adverts firstObject] atIndex:5];
         } else {
-            [_listArray insertObject:advertModel_10 atIndex:0];
+            [_listArray insertObject:[adverts firstObject] atIndex:0];
         }
     }
-    
-    DS_AdvertModel * advertModel_11 = [[DS_AdvertShare share] advertModelWithAdvertID:@"17"];
-    if (advertModel_11) {
+
+    if ([adverts count] > 1) {
         // 插入数组中的第5个位置放广告
         if ([_listArray count] > 10) {
-            [_listArray insertObject:advertModel_11 atIndex:10];
+            [_listArray insertObject:[adverts lastObject] atIndex:10];
         } else {
-            [_listArray addObject:advertModel_11];
+            [_listArray addObject:[adverts lastObject]];
         }
     }
 }

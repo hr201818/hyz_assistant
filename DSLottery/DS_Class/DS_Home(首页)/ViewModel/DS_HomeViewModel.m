@@ -174,9 +174,14 @@
 #pragma mark - 数据处理
 /** 资讯数据填充（给无图资讯增加广告模型） */
 - (void)newsDataFilling:(NSMutableArray *)newsArray {
+    // 获取首页列表广告数组
+    NSArray <DS_AdvertModel *> * adverts = [[DS_AdvertShare share] homeListAdverts:YES];
+    
+    // 随机插入广告
     for (DS_NewsModel * model in newsArray) {
-        if ([model.imageIdList count] == 0) {
-            DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:@[@"4",@"5", @"6", @"7", @"8"]];
+        if ([model.imageIdList count] == 0 && [adverts count] > 0) {
+            NSInteger index = arc4random() % [adverts count];
+            DS_AdvertModel * adverModel = adverts[index];
             model.adverModel = adverModel;
         }
     }
@@ -186,10 +191,12 @@
 - (void)processDataSource {
     [_tableViewList removeAllObjects];
     
+    // 获取首页列表广告数组
+    NSArray <DS_AdvertModel *> * adverts = [[DS_AdvertShare share] homeListAdverts:NO];
+    
     // 插入第一条广告
-    DS_AdvertModel * adverModel_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"4"];
-    if (adverModel_1) {
-        [_tableViewList addObject:adverModel_1];
+    if ([adverts count] > 0) {
+        [_tableViewList addObject:[adverts firstObject]];
     }
     
     // 插入开奖公告
@@ -198,9 +205,8 @@
     }
     
     // 插入第二条广告
-    DS_AdvertModel * adverModel_2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"5"];
-    if (adverModel_2) {
-        [_tableViewList addObject:adverModel_2];
+    if ([adverts count] > 1) {
+        [_tableViewList addObject:[adverts lastObject]];
     }
     
     // 插入资讯列表
@@ -213,12 +219,8 @@
 
 #pragma mark - 数据获取
 /** 获取公告列表 */
-- (NSArray <NSString *> *)noticeList {
-    NSMutableArray * noticeArray = [NSMutableArray array];
-    for (DS_NoticeModel * noticeModel in self.noticeListModel.noticeList) {
-        [noticeArray addObject:[NSString stringWithFormat:@"      %@",noticeModel.content]];
-    }
-    return noticeArray;
+- (NSArray <DS_NoticeModel *> *)noticeList {
+    return self.noticeListModel.noticeList;
 }
 
 #pragma mark - <UITableViewDelegate,UITableViewDataSource>

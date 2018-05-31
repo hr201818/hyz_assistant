@@ -177,13 +177,12 @@
     }
 }
 /* 加载广告 */
--(void)loadData{
-    // 非空判断，不然数组会闪退
-    DS_AdvertModel * model_1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"18"];
-    // 判断第一个广告是否存在，如果不存在就用第二个广告来代替,而第二个广告则不展示。
-    // 否则，按正常的两个广告都展示
-    if (model_1) {
-        _advertView.model = model_1;
+- (void)loadData {
+    // 获取广告
+    NSArray <DS_AdvertModel *> * chartsAdverts = [[DS_AdvertShare share] chartsAdverts];
+    
+    if ([chartsAdverts count] > 0) {
+        _advertView.model = [chartsAdverts firstObject];
         _advertView.hidden = NO;
     }
 }

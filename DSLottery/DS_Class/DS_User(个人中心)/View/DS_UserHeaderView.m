@@ -88,7 +88,6 @@
 /** 重新布局界面 */
 - (void)refreshView {
     if ([DS_UserShare share].userID) {
-//        _nameLab.text = DS_STRINGS(@"kLogout");
         _nameLab.text = [NSString stringWithFormat:@"用户：%@",[DS_UserShare share].userID];
     } else {
         _nameLab.text = DS_STRINGS(@"kLoginOrRegister");
@@ -116,7 +115,7 @@
     if (!_nameLab) {
         _nameLab = [[UILabel alloc] init];
         if ([DS_UserShare share].userID) {
-            _nameLab.text = DS_STRINGS(@"kLogout");
+            _nameLab.text = [NSString stringWithFormat:@"用户：%@",[DS_UserShare share].userID];
         } else {
             _nameLab.text = DS_STRINGS(@"kLoginOrRegister");
         }

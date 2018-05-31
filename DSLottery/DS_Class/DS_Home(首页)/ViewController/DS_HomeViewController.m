@@ -109,11 +109,6 @@
 #pragma mark - 数据请求
 /** 请求广告数据 */
 - (void)requestAdvert {
-    if ([[DS_AdvertShare share] advertCount] > 0) {
-        self.rightButton.hidden = ![[DS_AdvertShare share] haveAdvertData];
-        [self.headerView refreshBanner];
-        return;
-    }
     // 请求广告
     [[DS_AdvertShare share] requestAdvertListComplete:^(id object) {;
         if (Request_Success(object)) {
@@ -194,7 +189,10 @@
 - (void)requestAreaLimit {
     weakifySelf
     [[DS_AreaLimitShare share] requestCheckIPComplete:^{
-        
+        strongifySelf
+        [self.headerView refreshBanner];
+        [self.headerView setNoticeCycleArray:[_viewModel noticeList]];
+        [self.tableView reloadData];
     } fail:^(NSError *failure) {
         strongifySelf
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

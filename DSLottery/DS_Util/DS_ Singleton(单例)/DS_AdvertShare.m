@@ -10,6 +10,12 @@
 #import "DS_LocalData.h"
 @interface DS_AdvertShare ()
 
+/** 轮播广告 */
+@property (strong, nonatomic) NSMutableArray     * bannerAdverts;
+
+/** 非轮播广告 */
+@property (strong, nonatomic) NSMutableArray     * nonBannerAdverts;
+
 @property (strong, nonatomic) DS_AdvertListModel * advertListModel;
 
 @end
@@ -24,7 +30,10 @@ static DS_AdvertShare * advertObject;
         advertObject = [[DS_AdvertShare alloc] init];
         id advertData = [DS_LocalData advertData];
         if (advertData) {
+            advertObject.bannerAdverts = [NSMutableArray array];
+            advertObject.nonBannerAdverts = [NSMutableArray array];
             advertObject.advertListModel = [DS_AdvertListModel yy_modelWithJSON:advertData];
+            [advertObject progressAdvertListModel];
         }
     });
     return advertObject;
@@ -44,6 +53,7 @@ static DS_AdvertShare * advertObject;
         strongifySelf
         self.advertListModel = [DS_AdvertListModel yy_modelWithJSON:result];
         [DS_LocalData setAdvertData:result];
+        [self progressAdvertListModel];
         if (complete) {
             complete(result);
         }
@@ -54,14 +64,45 @@ static DS_AdvertShare * advertObject;
     }];
 }
 
+#pragma mark - 数据处理
+/** 处理广告数据模型，将其分解为轮播和非轮播 */
+- (void)progressAdvertListModel {
+    [_bannerAdverts removeAllObjects];
+    [_nonBannerAdverts removeAllObjects];
+    for (DS_AdvertModel * advertModel in _advertListModel.list) {
+        if ([advertModel.locationId integerValue] < 10) {
+            [_bannerAdverts addObject:advertModel];
+        } else {
+            [_nonBannerAdverts addObject:advertModel];
+        }
+    }
+}
+
 #pragma mark - public
+/**
+ 获取广告条数
+ @return 广告条数
+ */
+- (NSInteger)advertCount {
+    return [_nonBannerAdverts count];
+}
+
+/** 是否有广告数据 */
+- (BOOL)haveAdvertData {
+    if ([_nonBannerAdverts count] > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark private
 /**
  获取指定广告ID的广告模型
  @param advertID 广告ID
  @return 广告模型
  */
 - (DS_AdvertModel *)advertModelWithAdvertID:(NSString *)advertID {
-    for (DS_AdvertModel * advertModel in _advertListModel.advertList) {
+    for (DS_AdvertModel * advertModel in _nonBannerAdverts) {
         if ([advertModel.locationId isEqual:advertID]) {
             return advertModel;
         }
@@ -76,7 +117,7 @@ static DS_AdvertShare * advertObject;
  */
 - (NSArray <DS_AdvertModel *> *)advertModelsWithAdvertIDs:(NSArray <NSString *> *)advertIDs {
     // 用于遍历操作的广告模型数组，在循环的时候可以删除其中的内容，提升搜索性能。
-    NSMutableArray * adverts = [_advertListModel.advertList mutableCopy];
+    NSMutableArray * adverts = [_nonBannerAdverts mutableCopy];
     
     // 用于保存指定广告模型的数组
     NSMutableArray * specifiedAdverts = [NSMutableArray array];
@@ -99,57 +140,132 @@ static DS_AdvertShare * advertObject;
     return nil;
 }
 
-/**
- 从指定的ID数组中，随机获取一个广告
- @param adverIDs 指定的ID数组。如果传nil，则在所有广告中随机
- @return 广告模型
- */
-- (DS_AdvertModel *)randomAdverModel:(NSArray<NSString *> *)adverIDs {
-    DS_AdvertModel * model = nil;
-    if (!adverIDs) {
-        if ([_advertListModel.advertList count] > 0) {
-            NSInteger index = arc4random() % [_advertListModel.advertList count];
-            model = _advertListModel.advertList[index];
-        }
-    } else {
-        NSArray * array = [self advertModelsWithAdvertIDs:adverIDs];
-        if ([array count] > 0) {
-            NSInteger index = arc4random() % [array count];
-            model = array[index];
-        }
-    }
-    return model;
+#pragma mark - 各部分广告获取
+/** 获取轮播广告数组 */
+- (NSArray <DS_AdvertModel *> *)bannerAdvertArray {
+    return _bannerAdverts;
 }
 
-/**
- 获取轮播广告数组
- @return 轮播广告模型数组
- */
-- (NSArray <DS_AdvertModel *> *)bannerAdverts {
-    return _advertListModel.bannerList;
+/** 非轮播广告数组 */
+- (NSArray <DS_AdvertModel *> *)nonBannerAdvertArray {
+    return _nonBannerAdverts;
 }
 
-/**
- 获取广告条数
- @return 广告条数
- */
-- (NSInteger)advertCount {
-    return [_advertListModel.advertList count];
-}
-
+#pragma mark - 首页相关
 /** 打开彩票大厅 */
 - (void)openFirstAdvert {
-    DS_AdvertModel * advertModel = [self advertModelWithAdvertID:@"1"];
+    DS_AdvertModel * advertModel = [self advertModelWithAdvertID:@"10"];
     [DS_FunctionTool openAdvert:advertModel];
 }
 
-
-/** 是否有广告数据 */
-- (BOOL)haveAdvertData {
-    if ([_advertListModel.advertList count] > 0) {
-        return YES;
+/**
+ 首页列表广告
+ @param isList 是否是tableView中的数据
+ @return 首页列表广告
+ */
+- (NSArray <DS_AdvertModel *> *)homeListAdverts:(BOOL)isList {
+    NSArray * adverts = nil;
+    if (isList) {
+        adverts = [[self advertModelsWithAdvertIDs:@[@"13", @"14", @"15"]] mutableCopy];
+    } else {
+        adverts = [[self advertModelsWithAdvertIDs:@[@"11", @"12"]] mutableCopy];
     }
-    return NO;
+    
+    return adverts;
+}
+
+
+#pragma mark - 资讯列表相关
+/**
+ 资讯列表广告
+ @param isList 是否是tableView中的数据
+ @return 资讯列表广告
+ */
+- (NSArray <DS_AdvertModel *> *)newsListAdverts:(BOOL)isList {
+    NSArray * adverts = nil;
+    if (isList) {
+        adverts = [[self advertModelsWithAdvertIDs:@[@"18", @"19", @"20"]] mutableCopy];
+    } else {
+        adverts = [[self advertModelsWithAdvertIDs:@[@"16", @"17"]] mutableCopy];
+    }
+    
+    return adverts;
+}
+
+#pragma mark - 资讯详情相关
+/**
+ 资讯详情广告
+ @param isList 是否是tableView中的数据
+ @return 资讯详情广告
+ */
+- (NSArray <DS_AdvertModel *> *)newsDetailListAdverts:(BOOL)isList {
+    NSArray * adverts = nil;
+    if (isList) {
+        adverts = [[self advertModelsWithAdvertIDs:@[@"23", @"24", @"25"]] mutableCopy];
+    } else {
+        adverts = [[self advertModelsWithAdvertIDs:@[@"21", @"22"]] mutableCopy];
+    }
+    
+    return adverts;
+}
+
+#pragma mark - 投注站相关
+/**
+ 投注站广告
+ @return 投注站广告
+ */
+- (NSArray <DS_AdvertModel *> *)shopsAdverts {
+    NSArray * adverts = [[self advertModelsWithAdvertIDs:@[@"26", @"27"]] mutableCopy];
+    return adverts;
+}
+
+#pragma mark - 开奖公告相关
+/**
+ 开奖公告广告
+ @return 开奖公告广告
+ */
+- (NSArray <DS_AdvertModel *> *)lotteryAdverts {
+    NSArray * adverts = [[self advertModelsWithAdvertIDs:@[@"28", @"29"]] mutableCopy];
+    return adverts;
+}
+
+#pragma mark - 走势相关
+/**
+ 走势广告
+ @return 走势广告
+ */
+- (NSArray <DS_AdvertModel *> *)chartsAdverts {
+    NSArray * adverts = [[self advertModelsWithAdvertIDs:@[@"30", @"31"]] mutableCopy];
+    return adverts;
+}
+
+#pragma mark - 个人中心相关
+/**
+ 个人中心广告
+ @return 个人中心广告
+ */
+- (NSArray <DS_AdvertModel *> *)userCenterAdverts {
+    NSArray * adverts = [[self advertModelsWithAdvertIDs:@[@"32", @"33"]] mutableCopy];
+    return adverts;
+}
+
+/**
+ 登录页广告
+ @return 登录页广告
+ */
+- (NSArray <DS_AdvertModel *> *)loginAdverts {
+    NSArray * adverts = [[self advertModelsWithAdvertIDs:@[@"34", @"35"]] mutableCopy];
+    return adverts;
+}
+
+
+/**
+ 注册页广告
+ @return 注册页广告
+ */
+- (NSArray <DS_AdvertModel *> *)registerAdverts {
+    NSArray * adverts = [[self advertModelsWithAdvertIDs:@[@"36", @"37"]] mutableCopy];
+    return adverts;
 }
 
 @end

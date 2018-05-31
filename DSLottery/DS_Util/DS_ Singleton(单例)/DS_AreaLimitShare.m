@@ -40,14 +40,14 @@ static DS_AreaLimitShare * areaLmitShare;
 - (void)requestCheckIPComplete:(void(^)(void))complete
                           fail:(void(^)(NSError * failure))fail {
     NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-    [DS_Networking postConectWithS:CHECKIP Parameter:dic Succeed:^(id result) {
+    [dic setValue:@"AA6" forKey:@"tip"];
+    [DS_Networking postConectWithS:Link_AreaLimit Parameter:dic Succeed:^(id result) {
         if ([result[@"result"] integerValue] == 1 ) {
-            if ([result[@"status"] integerValue]==1) {
+            if ([result[@"pass"] integerValue] == 1) {
                 self.isAreaLimit = YES;
             }else {
                 self.isAreaLimit = NO;
             }
-            self.content = result[@"content"];
         }
         if (complete) {
             complete();

@@ -126,12 +126,16 @@
  @param model 修改后的数据
  */
 - (void)processNews:(DS_NewsModel *)model {
+    
+    NSArray * adverts = [[DS_AdvertShare share] newsDetailListAdverts:YES];
+    
     for (DS_NewsModel * newsModel in _relatedReads) {
         if ([model.ID isEqual:newsModel.ID]) {
             newsModel.thumbsUpNumb = model.thumbsUpNumb;
             newsModel.readerNumb = model.readerNumb;
-            if ([newsModel.imageIdList count] == 0) {
-                DS_AdvertModel * adverModel = [[DS_AdvertShare share] randomAdverModel:@[@"11",@"12", @"13"]];
+            if ([newsModel.imageIdList count] == 0 && [adverts count] > 0) {
+                NSInteger index = arc4random() % [adverts count];
+                DS_AdvertModel * adverModel = adverts[index];
                 newsModel.adverModel = adverModel;
             }
         }
@@ -161,8 +165,13 @@
             cell = [[DS_NotBorderAdvertCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DS_NotBorderAdvertCellID];
         }
         
-        NSString * locationID = indexPath.section == 0 ? @"9" : @"10";
-        DS_AdvertModel * model = [[DS_AdvertShare share] advertModelWithAdvertID:locationID];
+        NSArray <DS_AdvertModel *> * adverts = [[DS_AdvertShare share] newsDetailListAdverts:NO];
+        DS_AdvertModel * model = nil;
+        if (indexPath.section == 0) {
+            model = [adverts firstObject];
+        } else {
+            model = [adverts lastObject];
+        }
         cell.model = model;
         return cell;
     }else if(indexPath.section == 1){

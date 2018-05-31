@@ -12,6 +12,7 @@
 #include <net/if.h>
 #import "DS_AdvertListModel.h"
 #import "DS_WebViewController.h"
+#import "DS_AreaLimitShare.h"
 @implementation DS_FunctionTool
 
 
@@ -441,7 +442,7 @@
         case 21:
             return @"吉林快3";
         case 22:
-            return @"10分六合彩";
+            return @"十分六合彩";
         case 23:
             return @"极速PK10";
         case 24:
@@ -541,9 +542,15 @@
     [mArray addObject:@(19)]; // 湖北快3
     [mArray addObject:@(20)]; // 安徽快3
     [mArray addObject:@(21)]; // 吉林快3
-    [mArray addObject:@(22)]; // 10分六合彩
+    [mArray addObject:@(22)]; // 十分六合彩
     [mArray addObject:@(23)]; // 极速PK10
     [mArray addObject:@(24)]; // 广东十一选五
+    
+    if ([DS_AreaLimitShare share].isAreaLimit) {
+        NSArray * deleteArray = @[@(6), @(13), @(14), @(15), @(16), @(17), @(22), @(23)];
+        [mArray removeObjectsInArray:deleteArray];
+    }
+    
     return mArray;
 }
 

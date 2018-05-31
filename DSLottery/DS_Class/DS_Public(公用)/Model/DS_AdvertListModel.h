@@ -8,16 +8,24 @@
 
 #import "DS_BaseObject.h"
 
+
+/**
+ 首页： 购彩按钮：10
+       轮播：1~9
+ 列表：12 13 14 15 16
+ 咨询详情：顶部：17 18
+         列表：18 19 20
+ 
+ 投注站 21 22
+ 开奖公告：23 24
+ 走势：25
+ 我的：26 27
+ 登录:28 29
+ 注册：30 31
+ */
 @interface DS_AdvertListModel : DS_BaseObject
 
 @property (strong, nonatomic) NSMutableArray * list;
-
-#pragma mark - 非接口数据
-/** 用于轮播的广告 */
-@property (strong, nonatomic) NSMutableArray * bannerList;
-
-/** 其他广告 */
-@property (strong, nonatomic) NSMutableArray * advertList;
 
 @end
 

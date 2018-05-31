@@ -14,6 +14,29 @@
     return @{@"resultList"  : [DS_LotteryNoticeModel class]};
 }
 
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    [self processModel];
+    return YES;
+}
+
+/** 处理数据 */
+- (void)processModel {
+    NSMutableArray * deleteArray = [NSMutableArray array];
+    for (DS_LotteryNoticeModel * model in self.resultList) {
+        BOOL allowShow = NO;
+        for (NSNumber * lotteryID in [DS_FunctionTool allLottery]) {
+            if ([model.playGroupId integerValue] == [lotteryID integerValue]) {
+                allowShow = YES;
+            }
+        }
+        if (!allowShow) {
+            [deleteArray addObject:model];
+        }
+    }
+    
+    [self.resultList removeObjectsInArray:deleteArray];
+}
+
 @end
 
 @implementation DS_LotteryNoticeModel

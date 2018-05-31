@@ -21,19 +21,7 @@
 
 /** 处理数据 */
 - (void)processModel {
-    _bannerList = [[NSMutableArray alloc]init];
-    _advertList = [[NSMutableArray alloc]init];
-    for (DS_AdvertModel * model in self.list) {
-        // 轮播图
-        if([model.locationId isEqual:@"2"] ||
-           [model.locationId isEqual:@"3"]){
-            [_bannerList addObject:model];
-        }
-        // 其他广告图
-        else{
-            [_advertList addObject:model];
-        }
-    }
+
 }
 
 @end

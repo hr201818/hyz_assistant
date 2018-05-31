@@ -105,28 +105,26 @@
 }
 
 /** 加载广告 */
--(void)loadData {
-    DS_AdvertModel * advert1 = [[DS_AdvertShare share] advertModelWithAdvertID:@"14"];
-    if (advert1 != nil) {
+- (void)loadData {
+    NSArray <DS_AdvertModel *> * shopsAdverts = [[DS_AdvertShare share] shopsAdverts];
+    if ([shopsAdverts count] > 0) {
         // 判断第1位是否为广告，如果不是则插入
         if (![[self.response firstObject] isKindOfClass:[DS_AdvertModel class]]) {
-            [self.response insertObject:advert1 atIndex:0];
+            [self.response insertObject:[shopsAdverts firstObject] atIndex:0];
         }
     }
-    
-    DS_AdvertModel * advert2 = [[DS_AdvertShare share] advertModelWithAdvertID:@"15"];
-    if (advert2 != nil) {
+
+    if ([shopsAdverts count] > 1) {
         if (self.response.count > 5) {
             // 如果数组大于6位，则判断第6位是否为广告，如果不是则插入
             if (![[self.response objectAtIndex:6] isKindOfClass:[DS_AdvertModel class]]) {
-                [self.response insertObject:advert2 atIndex:6];
+                [self.response insertObject:[shopsAdverts lastObject] atIndex:6];
             }
         } else {
             // 如果数组小于6位，则判断最后一位是否为广告，如果不是则插入
             if (![[self.response lastObject] isKindOfClass:[DS_AdvertModel class]]) {
-                [self.response addObject:advert2];
+                [self.response addObject:[shopsAdverts lastObject]];
             }
-            
         }
     }
 }

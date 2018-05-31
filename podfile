@@ -11,4 +11,9 @@ pod 'SDCycleScrollView', '~> 1.75'
 pod 'SDAutoLayout', '~> 2.2.0'
 pod 'BaiduMapKit', '~> 3.4.2'
 pod 'Toast', '~> 3.0'
+
+# 极光推送 
+pod ‘JPush’, ‘~>3.0.9’
+
+
 end
