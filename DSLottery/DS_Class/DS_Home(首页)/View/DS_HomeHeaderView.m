@@ -67,14 +67,6 @@
         make.centerY.mas_equalTo(_noticeScrollView);
         make.width.height.mas_equalTo(20);
     }];
-    
-    UIView * bottomLine = [[UIView alloc] init];
-    bottomLine.backgroundColor = COLOR_BACK;
-    [self addSubview:bottomLine];
-    [bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(0);
-        make.top.mas_equalTo(_noticeScrollView.mas_bottom);
-    }];
 }
 
 #pragma mark - 数据设置
@@ -185,7 +177,7 @@
         _noticeScrollView.onlyDisplayText = YES;
         [_noticeScrollView disableScrollGesture];
         _noticeScrollView.delegate = self;
-        _noticeScrollView.titleLabelTextFont = [UIFont systemFontOfSize:15];
+        _noticeScrollView.titleLabelTextFont = FONT(IOS_SiZESCALE(15.0f));
         _noticeScrollView.titleLabelBackgroundColor = [UIColor whiteColor];
         _noticeScrollView.titleLabelTextColor = COLOR_Font83;
         _noticeScrollView.backgroundColor = [UIColor whiteColor];

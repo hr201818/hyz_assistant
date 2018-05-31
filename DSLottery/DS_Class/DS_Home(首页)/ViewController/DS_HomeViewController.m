@@ -81,8 +81,6 @@
     [self requestNewsWithIsRefresh:YES];
     
     [self requestAreaLimit];
-    
-    [self requestGengxin];
 }
 
 #pragma mark - 界面
@@ -201,19 +199,6 @@
     }];
 }
 
-/** 请求版本 */
-- (void)requestGengxin {
-    weakifySelf
-    [[DS_AreaLimitShare share] requestGengxinComplete:^{
-        
-    } fail:^(NSError *failure) {
-        strongifySelf
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self requestGengxin];
-        });
-    }];
-}
-
 #pragma mark - 通知
 /** 注册通知 */
 - (void)registerNotice {
@@ -299,7 +284,7 @@
 
 - (DS_HomeHeaderView *)headerView {
     if (!_headerView) {
-        _headerView = [[DS_HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, Screen_WIDTH, 158)];
+        _headerView = [[DS_HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, Screen_WIDTH, DS_HomeHeaderViewHeight)];
     }
     return _headerView;
 }

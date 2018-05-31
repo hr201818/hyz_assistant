@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+static CGFloat DS_HomeHeaderViewHeight = 160;
 @interface DS_HomeHeaderView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;

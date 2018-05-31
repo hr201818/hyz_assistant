@@ -149,6 +149,7 @@
     tipTextField.text = tipStr;
     tipTextField.textColor = COLOR_Font151;
     tipTextField.tintColor = COLOR(250, 80, 50);
+    tipTextField.backgroundColor = [UIColor clearColor];
     tipTextField.attributedText = attributedString;
     tipTextField.editable = NO;
     tipTextField.delegate = self;
@@ -279,7 +280,6 @@
         Request_Error_tip
     }];
 }
-
 
 #pragma  mark - 点击事件
 /* 返回 */

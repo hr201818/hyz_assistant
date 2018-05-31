@@ -257,7 +257,9 @@
 - (UIImageView *)lotteryImageView {
     if (!_lotteryImageView) {
         _lotteryImageView = [[UIImageView alloc] init];
-        _lotteryImageView.image = DS_UIImageName(@"chongqing");
+        NSString * iconName = [DS_FunctionTool lotteryIconWithLotteryID:@"2"];
+        _lotteryImageView.image = DS_UIImageName(iconName);
+        
     }
     return _lotteryImageView;
 }

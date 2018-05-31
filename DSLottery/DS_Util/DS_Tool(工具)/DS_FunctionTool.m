@@ -521,30 +521,30 @@
 /** 获取当前应用所支持的所有彩种ID */
 + (NSArray *)allLottery {
     NSMutableArray * mArray = [NSMutableArray new];
-    [mArray addObject:@(1)];  // 重庆时时彩
+//    [mArray addObject:@(1)];  // 重庆时时彩
     [mArray addObject:@(2)];  // 天津时时彩
-    [mArray addObject:@(3)];  // 新疆时时彩
+//    [mArray addObject:@(3)];  // 新疆时时彩
     [mArray addObject:@(4)];  // 体彩排列3
     [mArray addObject:@(5)];  // 福彩3D
-    [mArray addObject:@(6)];  // 六合彩
-    [mArray addObject:@(7)];  // 北京28
-    [mArray addObject:@(8)];  // 北京快乐8
-    [mArray addObject:@(9)];  // 北京PK10
+//    [mArray addObject:@(6)];  // 六合彩
+//    [mArray addObject:@(7)];  // 北京28
+//    [mArray addObject:@(8)];  // 北京快乐8
+//    [mArray addObject:@(9)];  // 北京PK10
     [mArray addObject:@(10)]; // 重庆幸运农场
     [mArray addObject:@(11)]; // 广东快乐十分
-    [mArray addObject:@(12)]; // 双色球
-    [mArray addObject:@(13)]; // 三分时时彩
-    [mArray addObject:@(14)]; // 幸运飞艇
-    [mArray addObject:@(15)]; // 分分时时彩
-    [mArray addObject:@(16)]; // 两分时时彩
-    [mArray addObject:@(17)]; // 五分时时彩
-    [mArray addObject:@(18)]; // 江苏快3
-    [mArray addObject:@(19)]; // 湖北快3
-    [mArray addObject:@(20)]; // 安徽快3
-    [mArray addObject:@(21)]; // 吉林快3
-    [mArray addObject:@(22)]; // 十分六合彩
-    [mArray addObject:@(23)]; // 极速PK10
-    [mArray addObject:@(24)]; // 广东十一选五
+//    [mArray addObject:@(12)]; // 双色球
+//    [mArray addObject:@(13)]; // 三分时时彩
+//    [mArray addObject:@(14)]; // 幸运飞艇
+//    [mArray addObject:@(15)]; // 分分时时彩
+//    [mArray addObject:@(16)]; // 两分时时彩
+//    [mArray addObject:@(17)]; // 五分时时彩
+//    [mArray addObject:@(18)]; // 江苏快3
+//    [mArray addObject:@(19)]; // 湖北快3
+//    [mArray addObject:@(20)]; // 安徽快3
+//    [mArray addObject:@(21)]; // 吉林快3
+//    [mArray addObject:@(22)]; // 十分六合彩
+//    [mArray addObject:@(23)]; // 极速PK10
+//    [mArray addObject:@(24)]; // 广东十一选五
     
     if ([DS_AreaLimitShare share].isAreaLimit) {
         NSArray * deleteArray = @[@(6), @(13), @(14), @(15), @(16), @(17), @(22), @(23)];
