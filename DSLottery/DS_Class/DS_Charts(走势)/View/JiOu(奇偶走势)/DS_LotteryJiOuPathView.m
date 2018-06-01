@@ -1,43 +1,38 @@
 //
-//  DSLotteryDaxiaoPathView.m
-//  DS_lottery
+//  DS_LotteryJiOuPathView.m
+//  DSLottery
 //
-//  Created by pro on 2018/5/11.
+//  Created by 黄玉洲 on 2018/6/1.
 //  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
 //
 
-#import "DSLotteryDaxiaoPathView.h"
+#import "DS_LotteryJiOuPathView.h"
 
-@implementation DSLotteryDaxiaoPathView
+@interface DS_LotteryJiOuPathView ()
+
+@end
+
+@implementation DS_LotteryJiOuPathView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if ([super initWithFrame:frame]) {
+        [self layoutView];
+    }
+    return self;
+}
+
+#pragma mark - 界面
+- (void)layoutView {
+    
+}
 
 -(void)drawRect:(CGRect)rect{
-
-    //判断彩种的大小
-    NSInteger mixSection = 1;
-    //时时彩，福彩3D，排列3
-    if([self.lottery_ID integerValue] == 1 ||[self.lottery_ID integerValue] == 2||[self.lottery_ID integerValue] == 3||[self.lottery_ID integerValue] == 4||[self.lottery_ID integerValue] == 5||[self.lottery_ID integerValue] == 7||[self.lottery_ID integerValue] == 13||[self.lottery_ID integerValue] == 15||[self.lottery_ID integerValue] == 16||[self.lottery_ID integerValue] == 17||[self.lottery_ID integerValue] == 25||[self.lottery_ID integerValue] == 26){
-        mixSection = 5;
-    }else if ([self.lottery_ID integerValue] == 10 ||[self.lottery_ID integerValue] == 11){
-        mixSection = 11;
-    }else if([self.lottery_ID integerValue] == 24 ||[self.lottery_ID integerValue] == 9||[self.lottery_ID integerValue] == 14 ||[self.lottery_ID integerValue] == 23){
-        mixSection = 6;
-    }else if([self.lottery_ID integerValue] == 6){
-        mixSection = 25;
-    }else if([self.lottery_ID integerValue] == 12){
-        mixSection = 17;
-    }else if([self.lottery_ID integerValue] == 8){
-        mixSection = 41;
-    }else if([self.lottery_ID integerValue] == 18 ||[self.lottery_ID integerValue] == 19 ||[self.lottery_ID integerValue] == 20 ||[self.lottery_ID integerValue] == 21){
-        mixSection = 4;
-    }
-
-
-
+    
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setAlignment:NSTextAlignmentCenter];
     [COLOR(255, 242, 242) setFill];
     UIRectFill(rect);
-
+    
     NSInteger listCount = self.codeList.count;
     CGFloat   cellHeight = self.height/(self.codeList.count +4);
     for (int i=0; i < listCount+4; i++) {
@@ -58,13 +53,13 @@
         //开始绘制
         CGContextStrokePath(context);
     }
-
+    
     //连线
     NSMutableArray  * lineArray = [[NSMutableArray alloc]init];
     CGContextRef contextline = UIGraphicsGetCurrentContext();
     for (int i = 0; i < self.codeList.count; i++) {
         NSString * code = self.codeList[i];
-        if([code integerValue] < mixSection){
+        if([code integerValue]%2 == 0){
             NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
             [dic setValue:[NSString stringWithFormat:@"%f",self.width/4 + self.width/2] forKey:@"x"];
             [dic setValue:[NSString stringWithFormat:@"%f",i*cellHeight + cellHeight/2] forKey:@"y"];
@@ -88,8 +83,8 @@
     CGContextSetStrokeColorWithColor(contextline, COLOR(214, 31, 0).CGColor);
     CGContextSetLineWidth(contextline, 1);
     CGContextStrokePath(contextline);
-
-
+    
+    
     //获得处理的上下文
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGFloat top = (cellHeight-18)/2;
@@ -110,9 +105,8 @@
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         style.alignment = NSTextAlignmentCenter;
         NSDictionary *dict = @{NSFontAttributeName:labelFont,NSForegroundColorAttributeName:labelColor,NSParagraphStyleAttributeName:style,NSBackgroundColorAttributeName:labelBackColor};
-
-        //小
-        if([code integerValue] < mixSection){
+        
+        if([code integerValue]%2 == 0){
             [COLOR(26, 152, 248)set];
             CGContextFillEllipseInRect(context, CGRectMake((self.width/4 -left)/2 + self.width/2, i*cellHeight + (cellHeight -24)/2,24,24));
             [code drawInRect:CGRectMake(self.width/2, i*cellHeight + top,self.width/2,self.height/self.codeList.count)withAttributes:dict];
@@ -130,7 +124,7 @@
             jilianchu = 0;
             //总次数
             ou++;
-        }else{  //大
+        }else{
             [COLOR(228, 87, 34)set];
             CGContextFillEllipseInRect(context, CGRectMake((self.width/4 -left)/2, i*cellHeight + (cellHeight -24)/2,24,24));
             [code drawInRect:CGRectMake(left, i*cellHeight + top,self.width/2,self.height/self.codeList.count)withAttributes:dict];
@@ -164,7 +158,7 @@
             }
         }
     }
-
+    
     for (NSInteger i = self.codeList.count; i < self.codeList.count + 4; i++) {
         UIFont  *labelFont = [UIFont systemFontOfSize:14];
         UIColor *labelBackColor = [UIColor clearColor];
@@ -189,5 +183,8 @@
         }
     }
 }
+
+#pragma mark - 懒加载
+
 
 @end

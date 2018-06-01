@@ -1,14 +1,32 @@
 //
-//  DSSumView.m
-//  DS_lottery
+//  DS_LotterySumView.m
+//  DS_AA6
 //
-//  Created by pro on 2018/5/10.
-//  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
+//  Created by 黄玉洲 on 2018/5/30.
+//  Copyright © 2018年 黄玉洲. All rights reserved.
 //
 
-#import "DSSumView.h"
+#import "DS_LotterySumView.h"
 
-@implementation DSSumView
+@interface DS_LotterySumView  () {
+    
+}
+
+@end
+
+@implementation DS_LotterySumView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if ([super initWithFrame:frame]) {
+        
+    }
+    return self;
+}
+
+#pragma mark - 界面
+- (void)layoutView {
+    
+}
 
 -(void)drawRect:(CGRect)rect{
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -18,10 +36,10 @@
     UIColor *labelBackColor = [UIColor clearColor];
     [COLOR(255, 242, 242) setFill];
     UIRectFill(rect);
-
+    
     NSInteger listCount = self.codeArray.count;
     CGFloat cellHeight = self.height/(listCount+4);
-
+    
     for (int i=0; i<listCount+4; i++) {
         if (i%2==1) {
             [[UIColor whiteColor] setFill];
@@ -47,5 +65,8 @@
     //开始绘制
     CGContextStrokePath(context);
 }
+
+#pragma mark - 懒加载
+
 
 @end

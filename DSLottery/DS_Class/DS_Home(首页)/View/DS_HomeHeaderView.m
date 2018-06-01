@@ -73,11 +73,11 @@
 /** 设置公告轮播 */
 - (void)setNoticeCycleArray:(NSArray <DS_NoticeModel *> *)notices {
     if ([DS_AreaLimitShare share].isAreaLimit) {
-        _noticeScrollView.titlesGroup = @[[NSString stringWithFormat:@"%@", DS_STRINGS(@"kNoticeContent")]];
+        _noticeScrollView.titlesGroup = @[DS_STRINGS(@"kNoticeContent")];
+        _noticeScrollView.autoScroll = NO;
     } else {
         if ([notices count] > 0) {
             _notices = [notices mutableCopy];
-            
             NSMutableArray * noticeArray = [NSMutableArray array];
             for (DS_NoticeModel * noticeModel in notices) {
                 [noticeArray addObject:[NSString stringWithFormat:@"%@",noticeModel.content]];

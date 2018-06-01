@@ -1,31 +1,40 @@
 //
-//  DSLotteryOpenCode.m
-//  DS_lottery
+//  DS_LotteryOpenCodeView.m
+//  DS_AA6
 //
-//  Created by pro on 2018/5/7.
-//  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
+//  Created by 黄玉洲 on 2018/5/30.
+//  Copyright © 2018年 黄玉洲. All rights reserved.
 //
 
-#import "DSLotteryOpenCode.h"
+#import "DS_LotteryOpenCodeView.h"
 
-@implementation DSLotteryOpenCode
+@interface DS_LotteryOpenCodeView  () {
+    
+}
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
+@end
 
+@implementation DS_LotteryOpenCodeView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if ([super initWithFrame:frame]) {
+        
     }
     return self;
 }
 
--(void)drawRect:(CGRect)rect{
+#pragma mark - 界面
+- (void)layoutView {
+    
+}
 
+- (void)drawRect:(CGRect)rect {
+    
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setAlignment:NSTextAlignmentCenter];
     [COLOR(255, 242, 242) setFill];
     UIRectFill(rect);
-
+    
     NSInteger listCount = self.codeList.count;
     CGFloat   cellHeight = self.height/(self.codeList.count +4);
     for (int i=0; i < listCount+4; i++) {
@@ -34,7 +43,7 @@
             UIRectFill(CGRectMake(0, i*cellHeight, self.width, cellHeight));
         }
     }
-     NSArray *codeArray = [[self.codeList firstObject] componentsSeparatedByString:@","];
+    NSArray *codeArray = [[self.codeList firstObject] componentsSeparatedByString:@","];
     //画竖线
     for (int i = 1; i <= codeArray.count; i++) {
         //获得处理的上下文
@@ -55,7 +64,7 @@
     for (int i = 0; i < self.codeList.count +4; i++) {
         if(i < self.codeList.count){
             for (int j = 0; j < codeArray.count; j++) {
-
+                
                 if([self.lotteryId isEqualToString:@"12"]){
                     UIColor*aColor = j == codeArray.count -1? COLOR( 26, 152, 248):COLOR(214, 31, 0);
                     [aColor set];
@@ -65,7 +74,7 @@
                     [aColor set];
                     CGContextFillEllipseInRect(context, CGRectMake(j*self.width/codeArray.count +(self.width/codeArray.count - 24)/2, i*cellHeight + (cellHeight-24)/2,24,24));
                 }
-
+                
                 NSArray *array = [self.codeList[i] componentsSeparatedByString:@","];
                 UIFont  *labelFont = [UIFont systemFontOfSize:14];
                 UIColor *labelColor = [UIColor whiteColor];
@@ -80,5 +89,8 @@
         left = 0;
     }
 }
+
+#pragma mark - 懒加载
+
 
 @end

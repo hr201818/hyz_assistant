@@ -9,10 +9,12 @@
 #import "DSLotteryChartsDrawViewController.h"
 #import "DSChartsView.h"
 #import "DSChartModal.h"
-#import "DSDrawingHezhiView.h" // 和值
-#import "DSDrawingHeweiView.h" // 和尾
-#import "DSDrawingDaxiaoView.h" // 大小
-#import "DSDrawingJiouView.h" // 奇偶
+
+/** view */
+#import "DS_HeZhiChartsView.h" // 和值
+#import "DS_HeWeiChartsView.h" // 和尾
+#import "DS_DaXiaoChartsView.h" // 大小
+#import "DS_JiOuChartsView.h" // 奇偶
 
 /** view */
 #import "DS_LotteryIssueView.h"
@@ -23,15 +25,19 @@
 @property (nonatomic, strong) DSChartsView * chartsView;
 
 // 和值
-@property (nonatomic, strong) DSDrawingHezhiView * hezhiView;
-// 和尾
-@property (nonatomic, strong) DSDrawingHeweiView * heweiView;
-// 大小
-@property (nonatomic, strong) DSDrawingDaxiaoView *  daxiaoView;
-// 奇偶
-@property (nonatomic, strong) DSDrawingJiouView *  jiouView;
+@property (nonatomic, strong) DS_HeZhiChartsView  * hezhiView;
 
-@property (nonatomic,strong) DS_LotteryIssueView * issueView;
+/** 和尾 */
+@property (nonatomic, strong) DS_HeWeiChartsView  * heweiView;
+
+/** 大小 */
+@property (nonatomic, strong) DS_DaXiaoChartsView *  daxiaoView;
+
+/** 奇偶 */
+@property (nonatomic, strong) DS_JiOuChartsView   *  jiouView;
+
+/** 底部期数选择 */
+@property (nonatomic,strong) DS_LotteryIssueView  * issueView;
 
 @end
 
@@ -126,26 +132,26 @@
 }
 
 
--(void)p_crateChartsViewWithModal:(DSChartModal *)modal{
+-(void)p_crateChartsViewWithModal:(id)model{
 
     CGRect  frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, Screen_WIDTH, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - IOS8_HEIGHT * DS_LotteryIssueViewHeight);
     if (self.chartType == DSChartsHezhiType){
           // 和值
-        self.hezhiView = [[DSDrawingHezhiView alloc] initWithFrame:frame model:modal lotteryID:self.playGroupId];
+        self.hezhiView = [[DS_HeZhiChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
         [self.view addSubview:self.hezhiView];
         
     }else if (self.chartType == DSChartsJiouType){
          // 奇偶
-        self.jiouView = [[DSDrawingJiouView alloc] initWithFrame:frame model:modal lotteryID:self.playGroupId];
+        self.jiouView = [[DS_JiOuChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
         [self.view addSubview:self.jiouView];
         
     }else if (self.chartType == DSChartsDaxiaoType){
          // 大小
-        self.daxiaoView = [[DSDrawingDaxiaoView alloc] initWithFrame:frame model:modal lotteryID:self.playGroupId];
+        self.daxiaoView = [[DS_DaXiaoChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
         [self.view addSubview:self.daxiaoView];
     }else if (self.chartType == DSChartsHeweiType){
          // 和尾
-        self.heweiView = [[DSDrawingHeweiView alloc] initWithFrame:frame model:modal lotteryID:self.playGroupId];
+        self.heweiView = [[DS_HeWeiChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
         [self.view addSubview:self.heweiView];
     }
     

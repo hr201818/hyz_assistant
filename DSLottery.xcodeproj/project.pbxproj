@@ -56,6 +56,19 @@
 		085865F52090612300F270D5 /* DSLotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865F42090612300F270D5 /* DSLotteryTests.m */; };
 		085866002090612300F270D5 /* DSLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 085865FF2090612300F270D5 /* DSLotteryUITests.m */; };
 		085B14602092B72000A87C5C /* DS_Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 085B145F2092B72000A87C5C /* DS_Strings.strings */; };
+		085CF6B020C0D73E00E58375 /* DS_LotteryPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6A420C0D73D00E58375 /* DS_LotteryPathView.m */; };
+		085CF6B120C0D73E00E58375 /* DS_LotteryOpenCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6A620C0D73D00E58375 /* DS_LotteryOpenCodeView.m */; };
+		085CF6B220C0D73E00E58375 /* DS_LotterySumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6A720C0D73D00E58375 /* DS_LotterySumView.m */; };
+		085CF6B320C0D73E00E58375 /* DS_HeWeiChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6AB20C0D73E00E58375 /* DS_HeWeiChartsView.m */; };
+		085CF6B420C0D73E00E58375 /* DS_HeZhiChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6AE20C0D73E00E58375 /* DS_HeZhiChartsView.m */; };
+		085CF6B520C0D73E00E58375 /* DS_LotteryPeriodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6AF20C0D73E00E58375 /* DS_LotteryPeriodsView.m */; };
+		085CF6B820C0D76E00E58375 /* DS_ChartsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6B720C0D76E00E58375 /* DS_ChartsListModel.m */; };
+		085CF6BB20C0DBD200E58375 /* DS_LotteryHeWeiPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6BA20C0DBD200E58375 /* DS_LotteryHeWeiPathView.m */; };
+		085CF6BF20C1183000E58375 /* DS_DaXiaoChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6BE20C1183000E58375 /* DS_DaXiaoChartsView.m */; };
+		085CF6C220C11DE500E58375 /* DS_JiOuDaxiaoTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6C120C11DE500E58375 /* DS_JiOuDaxiaoTopView.m */; };
+		085CF6C520C129B700E58375 /* DS_LotteryDaxiaoPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6C420C129B700E58375 /* DS_LotteryDaxiaoPathView.m */; };
+		085CF6C920C12B6D00E58375 /* DS_JiOuChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6C820C12B6D00E58375 /* DS_JiOuChartsView.m */; };
+		085CF6CC20C1335B00E58375 /* DS_LotteryJiOuPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085CF6CB20C1335B00E58375 /* DS_LotteryJiOuPathView.m */; };
 		085EA46C20BB8DEC00CBD18B /* DS_AreaLimitShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA46B20BB8DEC00CBD18B /* DS_AreaLimitShare.m */; };
 		085EA4A020BB987300CBD18B /* DSChartListModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47220BB987300CBD18B /* DSChartListModal.m */; };
 		085EA4A120BB987300CBD18B /* DSChartModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47420BB987300CBD18B /* DSChartModal.m */; };
@@ -66,19 +79,6 @@
 		085EA4A620BB987300CBD18B /* DSChartsRightCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA47F20BB987300CBD18B /* DSChartsRightCellView.m */; };
 		085EA4A720BB987300CBD18B /* DSChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48120BB987300CBD18B /* DSChartsView.m */; };
 		085EA4A820BB987300CBD18B /* DSScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48320BB987300CBD18B /* DSScrollMenu.m */; };
-		085EA4A920BB987300CBD18B /* DSDrawingDaxiaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48620BB987300CBD18B /* DSDrawingDaxiaoView.m */; };
-		085EA4AA20BB987300CBD18B /* DSDrawingHeweiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48820BB987300CBD18B /* DSDrawingHeweiView.m */; };
-		085EA4AB20BB987300CBD18B /* DSDrawingHezhiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48A20BB987300CBD18B /* DSDrawingHezhiView.m */; };
-		085EA4AC20BB987300CBD18B /* DSDrawingJiouView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48C20BB987300CBD18B /* DSDrawingJiouView.m */; };
-		085EA4AD20BB987300CBD18B /* DSJiouDaxiaoTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA48E20BB987300CBD18B /* DSJiouDaxiaoTopView.m */; };
-		085EA4AE20BB987300CBD18B /* DSLotteryDaxiaoPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49020BB987300CBD18B /* DSLotteryDaxiaoPathView.m */; };
-		085EA4AF20BB987300CBD18B /* DSLotteryHeweiPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49220BB987300CBD18B /* DSLotteryHeweiPathView.m */; };
-		085EA4B020BB987300CBD18B /* DSLotteryIssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49420BB987300CBD18B /* DSLotteryIssueView.m */; };
-		085EA4B120BB987300CBD18B /* DSLotteryJiouPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49620BB987300CBD18B /* DSLotteryJiouPathView.m */; };
-		085EA4B220BB987300CBD18B /* DSLotteryOpenCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49820BB987300CBD18B /* DSLotteryOpenCode.m */; };
-		085EA4B320BB987300CBD18B /* DSLotteryPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49A20BB987300CBD18B /* DSLotteryPathView.m */; };
-		085EA4B420BB987300CBD18B /* DSSumHeweiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49C20BB987300CBD18B /* DSSumHeweiView.m */; };
-		085EA4B520BB987300CBD18B /* DSSumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA49E20BB987300CBD18B /* DSSumView.m */; };
 		085EA4B820BB9CBB00CBD18B /* JJMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4B620BB9CBB00CBD18B /* JJMenuItemCell.m */; };
 		085EA4BB20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4B920BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m */; };
 		085EA4C320BBAF8600CBD18B /* DS_LotteryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4C220BBAF8600CBD18B /* DS_LotteryListViewController.m */; };
@@ -248,6 +248,32 @@
 		085866012090612300F270D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		085B145F2092B72000A87C5C /* DS_Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = DS_Strings.strings; sourceTree = "<group>"; };
 		085B149E20932B3700A87C5C /* DS_External.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_External.h; sourceTree = "<group>"; };
+		085CF6A220C0D73D00E58375 /* DS_LotteryPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_LotteryPathView.h; sourceTree = "<group>"; };
+		085CF6A320C0D73D00E58375 /* DS_LotteryOpenCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_LotteryOpenCodeView.h; sourceTree = "<group>"; };
+		085CF6A420C0D73D00E58375 /* DS_LotteryPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryPathView.m; sourceTree = "<group>"; };
+		085CF6A520C0D73D00E58375 /* DS_LotteryPeriodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_LotteryPeriodsView.h; sourceTree = "<group>"; };
+		085CF6A620C0D73D00E58375 /* DS_LotteryOpenCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryOpenCodeView.m; sourceTree = "<group>"; };
+		085CF6A720C0D73D00E58375 /* DS_LotterySumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_LotterySumView.m; sourceTree = "<group>"; };
+		085CF6A820C0D73E00E58375 /* DS_LotterySumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_LotterySumView.h; sourceTree = "<group>"; };
+		085CF6AA20C0D73E00E58375 /* DS_HeWeiChartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_HeWeiChartsView.h; sourceTree = "<group>"; };
+		085CF6AB20C0D73E00E58375 /* DS_HeWeiChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_HeWeiChartsView.m; sourceTree = "<group>"; };
+		085CF6AD20C0D73E00E58375 /* DS_HeZhiChartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_HeZhiChartsView.h; sourceTree = "<group>"; };
+		085CF6AE20C0D73E00E58375 /* DS_HeZhiChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_HeZhiChartsView.m; sourceTree = "<group>"; };
+		085CF6AF20C0D73E00E58375 /* DS_LotteryPeriodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryPeriodsView.m; sourceTree = "<group>"; };
+		085CF6B620C0D76E00E58375 /* DS_ChartsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DS_ChartsListModel.h; sourceTree = "<group>"; };
+		085CF6B720C0D76E00E58375 /* DS_ChartsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DS_ChartsListModel.m; sourceTree = "<group>"; };
+		085CF6B920C0DBD200E58375 /* DS_LotteryHeWeiPathView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryHeWeiPathView.h; sourceTree = "<group>"; };
+		085CF6BA20C0DBD200E58375 /* DS_LotteryHeWeiPathView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryHeWeiPathView.m; sourceTree = "<group>"; };
+		085CF6BD20C1183000E58375 /* DS_DaXiaoChartsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_DaXiaoChartsView.h; sourceTree = "<group>"; };
+		085CF6BE20C1183000E58375 /* DS_DaXiaoChartsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_DaXiaoChartsView.m; sourceTree = "<group>"; };
+		085CF6C020C11DE500E58375 /* DS_JiOuDaxiaoTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_JiOuDaxiaoTopView.h; sourceTree = "<group>"; };
+		085CF6C120C11DE500E58375 /* DS_JiOuDaxiaoTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_JiOuDaxiaoTopView.m; sourceTree = "<group>"; };
+		085CF6C320C129B700E58375 /* DS_LotteryDaxiaoPathView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryDaxiaoPathView.h; sourceTree = "<group>"; };
+		085CF6C420C129B700E58375 /* DS_LotteryDaxiaoPathView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryDaxiaoPathView.m; sourceTree = "<group>"; };
+		085CF6C720C12B6D00E58375 /* DS_JiOuChartsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_JiOuChartsView.h; sourceTree = "<group>"; };
+		085CF6C820C12B6D00E58375 /* DS_JiOuChartsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_JiOuChartsView.m; sourceTree = "<group>"; };
+		085CF6CA20C1335B00E58375 /* DS_LotteryJiOuPathView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryJiOuPathView.h; sourceTree = "<group>"; };
+		085CF6CB20C1335B00E58375 /* DS_LotteryJiOuPathView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryJiOuPathView.m; sourceTree = "<group>"; };
 		085EA46A20BB8DEC00CBD18B /* DS_AreaLimitShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_AreaLimitShare.h; sourceTree = "<group>"; };
 		085EA46B20BB8DEC00CBD18B /* DS_AreaLimitShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_AreaLimitShare.m; sourceTree = "<group>"; };
 		085EA47120BB987300CBD18B /* DSChartListModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChartListModal.h; sourceTree = "<group>"; };
@@ -268,32 +294,6 @@
 		085EA48120BB987300CBD18B /* DSChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChartsView.m; sourceTree = "<group>"; };
 		085EA48220BB987300CBD18B /* DSScrollMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSScrollMenu.h; sourceTree = "<group>"; };
 		085EA48320BB987300CBD18B /* DSScrollMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSScrollMenu.m; sourceTree = "<group>"; };
-		085EA48520BB987300CBD18B /* DSDrawingDaxiaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingDaxiaoView.h; sourceTree = "<group>"; };
-		085EA48620BB987300CBD18B /* DSDrawingDaxiaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingDaxiaoView.m; sourceTree = "<group>"; };
-		085EA48720BB987300CBD18B /* DSDrawingHeweiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingHeweiView.h; sourceTree = "<group>"; };
-		085EA48820BB987300CBD18B /* DSDrawingHeweiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingHeweiView.m; sourceTree = "<group>"; };
-		085EA48920BB987300CBD18B /* DSDrawingHezhiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingHezhiView.h; sourceTree = "<group>"; };
-		085EA48A20BB987300CBD18B /* DSDrawingHezhiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingHezhiView.m; sourceTree = "<group>"; };
-		085EA48B20BB987300CBD18B /* DSDrawingJiouView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDrawingJiouView.h; sourceTree = "<group>"; };
-		085EA48C20BB987300CBD18B /* DSDrawingJiouView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDrawingJiouView.m; sourceTree = "<group>"; };
-		085EA48D20BB987300CBD18B /* DSJiouDaxiaoTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSJiouDaxiaoTopView.h; sourceTree = "<group>"; };
-		085EA48E20BB987300CBD18B /* DSJiouDaxiaoTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSJiouDaxiaoTopView.m; sourceTree = "<group>"; };
-		085EA48F20BB987300CBD18B /* DSLotteryDaxiaoPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryDaxiaoPathView.h; sourceTree = "<group>"; };
-		085EA49020BB987300CBD18B /* DSLotteryDaxiaoPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryDaxiaoPathView.m; sourceTree = "<group>"; };
-		085EA49120BB987300CBD18B /* DSLotteryHeweiPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryHeweiPathView.h; sourceTree = "<group>"; };
-		085EA49220BB987300CBD18B /* DSLotteryHeweiPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryHeweiPathView.m; sourceTree = "<group>"; };
-		085EA49320BB987300CBD18B /* DSLotteryIssueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryIssueView.h; sourceTree = "<group>"; };
-		085EA49420BB987300CBD18B /* DSLotteryIssueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryIssueView.m; sourceTree = "<group>"; };
-		085EA49520BB987300CBD18B /* DSLotteryJiouPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryJiouPathView.h; sourceTree = "<group>"; };
-		085EA49620BB987300CBD18B /* DSLotteryJiouPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryJiouPathView.m; sourceTree = "<group>"; };
-		085EA49720BB987300CBD18B /* DSLotteryOpenCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryOpenCode.h; sourceTree = "<group>"; };
-		085EA49820BB987300CBD18B /* DSLotteryOpenCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryOpenCode.m; sourceTree = "<group>"; };
-		085EA49920BB987300CBD18B /* DSLotteryPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLotteryPathView.h; sourceTree = "<group>"; };
-		085EA49A20BB987300CBD18B /* DSLotteryPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryPathView.m; sourceTree = "<group>"; };
-		085EA49B20BB987300CBD18B /* DSSumHeweiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSumHeweiView.h; sourceTree = "<group>"; };
-		085EA49C20BB987300CBD18B /* DSSumHeweiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSumHeweiView.m; sourceTree = "<group>"; };
-		085EA49D20BB987300CBD18B /* DSSumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSumView.h; sourceTree = "<group>"; };
-		085EA49E20BB987300CBD18B /* DSSumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSumView.m; sourceTree = "<group>"; };
 		085EA4B620BB9CBB00CBD18B /* JJMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMenuItemCell.m; sourceTree = "<group>"; };
 		085EA4B720BB9CBB00CBD18B /* JJMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMenuItemCell.h; sourceTree = "<group>"; };
 		085EA4B920BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLotteryChartsDrawViewController.m; sourceTree = "<group>"; };
@@ -671,6 +671,52 @@
 			path = DSLotteryUITests;
 			sourceTree = "<group>";
 		};
+		085CF6A920C0D73E00E58375 /* HeWei(和尾走势) */ = {
+			isa = PBXGroup;
+			children = (
+				085CF6AA20C0D73E00E58375 /* DS_HeWeiChartsView.h */,
+				085CF6AB20C0D73E00E58375 /* DS_HeWeiChartsView.m */,
+				085CF6B920C0DBD200E58375 /* DS_LotteryHeWeiPathView.h */,
+				085CF6BA20C0DBD200E58375 /* DS_LotteryHeWeiPathView.m */,
+			);
+			path = "HeWei(和尾走势)";
+			sourceTree = "<group>";
+		};
+		085CF6AC20C0D73E00E58375 /* HeZhi(和值走势) */ = {
+			isa = PBXGroup;
+			children = (
+				085CF6A820C0D73E00E58375 /* DS_LotterySumView.h */,
+				085CF6A720C0D73D00E58375 /* DS_LotterySumView.m */,
+				085CF6AD20C0D73E00E58375 /* DS_HeZhiChartsView.h */,
+				085CF6AE20C0D73E00E58375 /* DS_HeZhiChartsView.m */,
+			);
+			path = "HeZhi(和值走势)";
+			sourceTree = "<group>";
+		};
+		085CF6BC20C1176700E58375 /* DaXiao(大小走势) */ = {
+			isa = PBXGroup;
+			children = (
+				085CF6BD20C1183000E58375 /* DS_DaXiaoChartsView.h */,
+				085CF6BE20C1183000E58375 /* DS_DaXiaoChartsView.m */,
+				085CF6C320C129B700E58375 /* DS_LotteryDaxiaoPathView.h */,
+				085CF6C420C129B700E58375 /* DS_LotteryDaxiaoPathView.m */,
+			);
+			path = "DaXiao(大小走势)";
+			sourceTree = "<group>";
+		};
+		085CF6C620C12B4300E58375 /* JiOu(奇偶走势) */ = {
+			isa = PBXGroup;
+			children = (
+				085CF6C020C11DE500E58375 /* DS_JiOuDaxiaoTopView.h */,
+				085CF6C120C11DE500E58375 /* DS_JiOuDaxiaoTopView.m */,
+				085CF6C720C12B6D00E58375 /* DS_JiOuChartsView.h */,
+				085CF6C820C12B6D00E58375 /* DS_JiOuChartsView.m */,
+				085CF6CA20C1335B00E58375 /* DS_LotteryJiOuPathView.h */,
+				085CF6CB20C1335B00E58375 /* DS_LotteryJiOuPathView.m */,
+			);
+			path = "JiOu(奇偶走势)";
+			sourceTree = "<group>";
+		};
 		085EA46D20BB987300CBD18B /* DSChartsDraw */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,32 +762,6 @@
 		085EA48420BB987300CBD18B /* DSChartsNext */ = {
 			isa = PBXGroup;
 			children = (
-				085EA48520BB987300CBD18B /* DSDrawingDaxiaoView.h */,
-				085EA48620BB987300CBD18B /* DSDrawingDaxiaoView.m */,
-				085EA48720BB987300CBD18B /* DSDrawingHeweiView.h */,
-				085EA48820BB987300CBD18B /* DSDrawingHeweiView.m */,
-				085EA48920BB987300CBD18B /* DSDrawingHezhiView.h */,
-				085EA48A20BB987300CBD18B /* DSDrawingHezhiView.m */,
-				085EA48B20BB987300CBD18B /* DSDrawingJiouView.h */,
-				085EA48C20BB987300CBD18B /* DSDrawingJiouView.m */,
-				085EA48D20BB987300CBD18B /* DSJiouDaxiaoTopView.h */,
-				085EA48E20BB987300CBD18B /* DSJiouDaxiaoTopView.m */,
-				085EA48F20BB987300CBD18B /* DSLotteryDaxiaoPathView.h */,
-				085EA49020BB987300CBD18B /* DSLotteryDaxiaoPathView.m */,
-				085EA49120BB987300CBD18B /* DSLotteryHeweiPathView.h */,
-				085EA49220BB987300CBD18B /* DSLotteryHeweiPathView.m */,
-				085EA49320BB987300CBD18B /* DSLotteryIssueView.h */,
-				085EA49420BB987300CBD18B /* DSLotteryIssueView.m */,
-				085EA49520BB987300CBD18B /* DSLotteryJiouPathView.h */,
-				085EA49620BB987300CBD18B /* DSLotteryJiouPathView.m */,
-				085EA49720BB987300CBD18B /* DSLotteryOpenCode.h */,
-				085EA49820BB987300CBD18B /* DSLotteryOpenCode.m */,
-				085EA49920BB987300CBD18B /* DSLotteryPathView.h */,
-				085EA49A20BB987300CBD18B /* DSLotteryPathView.m */,
-				085EA49B20BB987300CBD18B /* DSSumHeweiView.h */,
-				085EA49C20BB987300CBD18B /* DSSumHeweiView.m */,
-				085EA49D20BB987300CBD18B /* DSSumView.h */,
-				085EA49E20BB987300CBD18B /* DSSumView.m */,
 			);
 			path = DSChartsNext;
 			sourceTree = "<group>";
@@ -802,6 +822,8 @@
 		08FCD86420A286B8002E93F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				085CF6B620C0D76E00E58375 /* DS_ChartsListModel.h */,
+				085CF6B720C0D76E00E58375 /* DS_ChartsListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -809,6 +831,16 @@
 		08FCD86520A286B8002E93F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				085CF6C620C12B4300E58375 /* JiOu(奇偶走势) */,
+				085CF6BC20C1176700E58375 /* DaXiao(大小走势) */,
+				085CF6A920C0D73E00E58375 /* HeWei(和尾走势) */,
+				085CF6AC20C0D73E00E58375 /* HeZhi(和值走势) */,
+				085CF6A320C0D73D00E58375 /* DS_LotteryOpenCodeView.h */,
+				085CF6A620C0D73D00E58375 /* DS_LotteryOpenCodeView.m */,
+				085CF6A220C0D73D00E58375 /* DS_LotteryPathView.h */,
+				085CF6A420C0D73D00E58375 /* DS_LotteryPathView.m */,
+				085CF6A520C0D73D00E58375 /* DS_LotteryPeriodsView.h */,
+				085CF6AF20C0D73E00E58375 /* DS_LotteryPeriodsView.m */,
 				0882F3F020BCE57200A5938C /* DS_LotteryIssueView.h */,
 				0882F3F120BCE57200A5938C /* DS_LotteryIssueView.m */,
 			);
@@ -1281,7 +1313,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				085EA4AD20BB987300CBD18B /* DSJiouDaxiaoTopView.m in Sources */,
 				085EA4C620BBB02800CBD18B /* DS_LotteryListViewModel.m in Sources */,
 				08F56E1920AAB17900C47D37 /* DS_ShopTableViewCell.m in Sources */,
 				0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */,
@@ -1293,42 +1324,46 @@
 				084DC33920917C6900E2C996 /* DS_DataTool.m in Sources */,
 				085EA4A720BB987300CBD18B /* DSChartsView.m in Sources */,
 				08FCD8A820A2C68A002E93F5 /* DS_CategoryListModel.m in Sources */,
+				085CF6B220C0D73E00E58375 /* DS_LotterySumView.m in Sources */,
 				08FF51F920A44FC200E2D918 /* DS_AboutViewController.m in Sources */,
 				0835A88B20A3D038003E459A /* DS_InputView.m in Sources */,
-				085EA4B020BB987300CBD18B /* DSLotteryIssueView.m in Sources */,
 				0805AB1A209AC71C00F48F29 /* SGPageTitleView.m in Sources */,
+				085CF6B020C0D73E00E58375 /* DS_LotteryPathView.m in Sources */,
 				08F56E1C20AAB49200C47D37 /* DS_MapViewController.m in Sources */,
-				085EA4B220BB987300CBD18B /* DSLotteryOpenCode.m in Sources */,
+				085CF6B420C0D73E00E58375 /* DS_HeZhiChartsView.m in Sources */,
 				0873F42020B55D7900F8410B /* DS_News_NotImageCell.m in Sources */,
 				08FCD8AE20A2E118002E93F5 /* DS_AdvertTableViewCell.m in Sources */,
 				0873F41D20B55D6900F8410B /* DS_News_HaveImageCell.m in Sources */,
-				085EA4AC20BB987300CBD18B /* DSDrawingJiouView.m in Sources */,
 				085EA4A320BB987300CBD18B /* DSChartsLeftCellView.m in Sources */,
 				084DC32F20916BEB00E2C996 /* DS_PanGestureRecognizer.m in Sources */,
+				085CF6CC20C1335B00E58375 /* DS_LotteryJiOuPathView.m in Sources */,
 				08FCD87C20A2876C002E93F5 /* DS_HomeViewController.m in Sources */,
 				08FCD8AB20A2D7D0002E93F5 /* DS_NewsListModel.m in Sources */,
 				085865EB2090612300F270D5 /* main.m in Sources */,
-				085EA4B420BB987300CBD18B /* DSSumHeweiView.m in Sources */,
 				084316C0209068F700A3183A /* DS_BaseNavigationController.m in Sources */,
 				084B07FD20A96D0000F2C105 /* DS_LotteryNoticeDetailViewController.m in Sources */,
 				084B07F420A93BF700F2C105 /* DS_LotteryNoticeViewModel.m in Sources */,
+				085CF6C220C11DE500E58375 /* DS_JiOuDaxiaoTopView.m in Sources */,
 				0873F41420B53C8500F8410B /* YM_DrawDigitalRoundView.m in Sources */,
 				084DC3512091A1AD00E2C996 /* DS_FunctionTool.m in Sources */,
+				085CF6BF20C1183000E58375 /* DS_DaXiaoChartsView.m in Sources */,
 				0810B65020942005005D908D /* DS_RequestTool.m in Sources */,
 				08FCD87F20A2878C002E93F5 /* DS_ChartsViewController.m in Sources */,
 				0810B66720947C16005D908D /* DS_WebViewController.m in Sources */,
 				0882F3F220BCE57200A5938C /* DS_LotteryIssueView.m in Sources */,
 				085EA4BB20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m in Sources */,
+				085CF6C920C12B6D00E58375 /* DS_JiOuChartsView.m in Sources */,
 				08FCD8CE20A2F98E002E93F5 /* DS_UserModel.m in Sources */,
 				085671FC20B7A50300F00C41 /* DS_BaseAdvertView.m in Sources */,
 				0865F73620BD312800EA34C0 /* DS_LocalData.m in Sources */,
 				08FF51F620A4430100E2D918 /* DS_VersionViewController.m in Sources */,
-				085EA4AB20BB987300CBD18B /* DSDrawingHezhiView.m in Sources */,
 				08431710209088E800A3183A /* DS_TabbarInfo.m in Sources */,
 				084B07F720A93F2E00F2C105 /* DS_LotteryNoticeListModel.m in Sources */,
+				085CF6B120C0D73E00E58375 /* DS_LotteryOpenCodeView.m in Sources */,
 				085EA4A520BB987300CBD18B /* DSChartsRightCellHeaderView.m in Sources */,
 				08444A3420A91ACC0013F24D /* DS_NewsDetailViewModel.m in Sources */,
 				085EA4A020BB987300CBD18B /* DSChartListModal.m in Sources */,
+				085CF6B520C0D73E00E58375 /* DS_LotteryPeriodsView.m in Sources */,
 				08B8B2F120A6DA1E0074533E /* DS_NewsHeaderView.m in Sources */,
 				0805AB19209AC71C00F48F29 /* SGPageContentView.m in Sources */,
 				084316C720906A9100A3183A /* DS_BaseTabBarItem.m in Sources */,
@@ -1346,16 +1381,14 @@
 				0873F41720B5406800F8410B /* UIColor+MyColorCatagory.m in Sources */,
 				08FCD89C20A2C246002E93F5 /* UIButton+GraphicLayout.m in Sources */,
 				08FCD88820A287BA002E93F5 /* DS_ShopsViewController.m in Sources */,
+				085CF6C520C129B700E58375 /* DS_LotteryDaxiaoPathView.m in Sources */,
 				08B8B2FA20A6E51F0074533E /* DS_NewsDetailWebTableViewCell.m in Sources */,
 				084316B42090682500A3183A /* DS_BaseViewController.m in Sources */,
 				0805AB1B209AC71C00F48F29 /* SGPageTitleViewConfigure.m in Sources */,
-				085EA4B120BB987300CBD18B /* DSLotteryJiouPathView.m in Sources */,
 				08FCD89F20A2C57E002E93F5 /* DS_CategoryShare.m in Sources */,
-				085EA4AA20BB987300CBD18B /* DSDrawingHeweiView.m in Sources */,
 				084DC34520919E9E00E2C996 /* DS_BaseViewModel.m in Sources */,
 				085EA4A820BB987300CBD18B /* DSScrollMenu.m in Sources */,
 				08FCD88B20A28949002E93F5 /* DS_HomeViewModel.m in Sources */,
-				085EA4A920BB987300CBD18B /* DSDrawingDaxiaoView.m in Sources */,
 				08FCD89120A28E89002E93F5 /* DS_AdvertListModel.m in Sources */,
 				08A9F70D20B6925F003BC029 /* DS_AgreementViewController.m in Sources */,
 				08D0437120A67410006C01F5 /* DS_UserViewModel.m in Sources */,
@@ -1365,9 +1398,9 @@
 				08FCD88220A28799002E93F5 /* DS_LotteryNoticeViewController.m in Sources */,
 				0856720220B7B40300F00C41 /* DS_NewsCategoryView.m in Sources */,
 				085671FF20B7AC8A00F00C41 /* DS_NotBorderAdvertCell.m in Sources */,
+				085CF6B320C0D73E00E58375 /* DS_HeWeiChartsView.m in Sources */,
 				084B080620A9735C00F2C105 /* DS_LotteryNoticeDetailCell.m in Sources */,
 				0805AB18209AC71C00F48F29 /* SGPageContentScrollView.m in Sources */,
-				085EA4B320BB987300CBD18B /* DSLotteryPathView.m in Sources */,
 				085EA4C320BBAF8600CBD18B /* DS_LotteryListViewController.m in Sources */,
 				08FF51F320A43ADD00E2D918 /* DS_RegisterViewController.m in Sources */,
 				085EA4A620BB987300CBD18B /* DSChartsRightCellView.m in Sources */,
@@ -1378,17 +1411,16 @@
 				085EA4A120BB987300CBD18B /* DSChartModal.m in Sources */,
 				084316FD2090879000A3183A /* DS_BaseObject.m in Sources */,
 				08FCD8C220A2F308002E93F5 /* DS_UserViewController.m in Sources */,
-				085EA4B520BB987300CBD18B /* DSSumView.m in Sources */,
 				0805AB17209AC71C00F48F29 /* UIView+SGPagingView.m in Sources */,
-				085EA4AF20BB987300CBD18B /* DSLotteryHeweiPathView.m in Sources */,
-				085EA4AE20BB987300CBD18B /* DSLotteryDaxiaoPathView.m in Sources */,
 				084B080020A96DBD00F2C105 /* DS_LotteryNoticeDetailViewModel.m in Sources */,
 				08496F832099A39D00D40168 /* UIViewController+DSControllerHud.m in Sources */,
 				08FCD8C820A2F5CD002E93F5 /* DS_UserHeaderView.m in Sources */,
 				0835A88820A3CFDA003E459A /* DS_LoginViewController.m in Sources */,
 				08FCD88E20A289D5002E93F5 /* DS_HomeHeaderView.m in Sources */,
 				0810B65A20944A36005D908D /* SZKCleanCache.m in Sources */,
+				085CF6B820C0D76E00E58375 /* DS_ChartsListModel.m in Sources */,
 				085EA46C20BB8DEC00CBD18B /* DS_AreaLimitShare.m in Sources */,
+				085CF6BB20C0DBD200E58375 /* DS_LotteryHeWeiPathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

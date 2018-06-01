@@ -1,22 +1,21 @@
 //
-//  DSLotteryPathView.m
-//  DS_lottery
+//  DS_LotteryHeWeiPathView.m
+//  DSLottery
 //
-//  Created by pro on 2018/5/7.
+//  Created by 黄玉洲 on 2018/6/1.
 //  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
 //
 
-#import "DSLotteryHeweiPathView.h"
-@interface DSLotteryHeweiPathView()
+#import "DS_LotteryHeWeiPathView.h"
+
+@interface DS_LotteryHeWeiPathView ()
 
 @end
 
-@implementation DSLotteryHeweiPathView
+@implementation DS_LotteryHeWeiPathView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
+- (instancetype)initWithFrame:(CGRect)frame {
+    if ([super initWithFrame:frame]) {
         self.backgroundColor = COLOR(255, 245, 245);
         self.titleColor = COLOR(83, 83, 83);
         [self layoutView];
@@ -24,9 +23,11 @@
     return self;
 }
 
--(void)layoutView{
-
+#pragma mark - 界面
+- (void)layoutView {
+    
 }
+
 -(void)drawRect:(CGRect)rect{
     //设置分行颜色
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -54,7 +55,7 @@
         CGContextSetLineWidth(context, 0.5);
         //开始绘制
         CGContextStrokePath(context);
-
+        
         if(self.rowCount < 2){
             UIFont  *labelFont = [UIFont systemFontOfSize:12];
             UIColor *labelColor = self.titleColor;
@@ -63,11 +64,11 @@
             style.alignment = NSTextAlignmentCenter;
             NSDictionary *dict = @{NSFontAttributeName:labelFont,NSForegroundColorAttributeName:labelColor,NSParagraphStyleAttributeName:style,NSBackgroundColorAttributeName:labelBackColor};
             [self.listArray[i - 1] drawInRect:CGRectMake((i-1) * self.width/self.listArray.count, (cellHeight -15)/2,self.width/self.listArray.count,cellHeight)withAttributes:dict];
-
+            
         }
     }
-
-
+    
+    
     //连线
     NSMutableArray  * lineArray = [[NSMutableArray alloc]init];
     CGContextRef contextline = UIGraphicsGetCurrentContext();
@@ -83,7 +84,7 @@
                 [dic setValue:[NSString stringWithFormat:@"%f",i*self.width/self.listArray.count + self.width/self.listArray.count/2] forKey:@"x"];
                 [dic setValue:[NSString stringWithFormat:@"%f",j*cellHeight + cellHeight/2] forKey:@"y"];
                 [lineArray addObject:dic];
-
+                
                 break;
             }
         }
@@ -100,12 +101,12 @@
     CGContextSetStrokeColorWithColor(contextline, COLOR(214, 31, 0).CGColor);
     CGContextSetLineWidth(contextline, 1);
     CGContextStrokePath(contextline);
-
-
+    
+    
     //显示点
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGFloat top = (cellHeight-15)/2;
-
+    
     for (int j = 0; j < self.rowCount; j++) {
         for (int i = 0; i < self.sectionArray.count; i++) {
             NSInteger all = 0;
@@ -115,7 +116,7 @@
             if([self.sectionArray[i]integerValue] == [[[NSString stringWithFormat:@"%ld",all]substringFromIndex:[NSString stringWithFormat:@"%ld",all].length - 1]integerValue]){
                 [COLOR(214, 31, 0)set];
                 CGContextFillEllipseInRect(context, CGRectMake(i*self.width/self.listArray.count + (self.width/self.listArray.count - 24)/2 , j*cellHeight + (cellHeight -24)/2,24,24));
-
+                
                 //和值
                 UIFont  *labelFont = [UIFont systemFontOfSize:13];
                 UIColor *labelColor = [UIColor whiteColor];
@@ -124,7 +125,7 @@
                 style.alignment = NSTextAlignmentCenter;
                 NSDictionary *dict = @{NSFontAttributeName:labelFont,NSForegroundColorAttributeName:labelColor,NSParagraphStyleAttributeName:style,NSBackgroundColorAttributeName:labelBackColor};
                 [[[NSString stringWithFormat:@"%ld",all]substringFromIndex:[NSString stringWithFormat:@"%ld",all].length - 1] drawInRect:CGRectMake(i*self.width/self.listArray.count, j*cellHeight + top,self.width/self.listArray.count,cellHeight)withAttributes:dict];
-
+                
             }else{//随机生成一个数
                 NSInteger y = 0 +  (arc4random() % 10);
                 UIFont  *labelFont = [UIFont systemFontOfSize:14];
@@ -137,7 +138,7 @@
             }
         }
     }
-
+    
     NSMutableArray * arrs = [[NSMutableArray alloc]init];
     for (int i = 0; i < self.sectionArray.count; i++) {
         NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
@@ -180,11 +181,11 @@
         [dic setValue:[NSString stringWithFormat:@"%ld",gudinglianchu] forKey:@"lianchu"];
         [arrs addObject:dic];
     }
-
+    
     for (NSInteger j = self.rowCount; j < self.rowCount + 4; j++){
         for (int i = 0; i < self.sectionArray.count; i++) {
             UIFont  *labelFont = [UIFont systemFontOfSize:14];
-
+            
             UIColor *labelBackColor = [UIColor clearColor];
             NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
             style.alignment = NSTextAlignmentCenter;
@@ -210,5 +211,8 @@
         }
     }
 }
-@end
 
+#pragma mark - 懒加载
+
+
+@end

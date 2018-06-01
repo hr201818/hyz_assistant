@@ -1,14 +1,16 @@
 //
-//  DSLotteryJiouPathView.h
-//  DS_lottery
+//  DS_LotteryJiOuPathView.h
+//  DSLottery
 //
-//  Created by pro on 2018/5/10.
+//  Created by 黄玉洲 on 2018/6/1.
 //  Copyright © 2018年 海南达生实业有限公司. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DS_BaseView.h"
 
-@interface DSLotteryJiouPathView : UIView
+@interface DS_LotteryJiOuPathView : DS_BaseView
+
 /* 开奖码数组*/
 @property (strong, nonatomic) NSMutableArray * codeList;
+
 @end

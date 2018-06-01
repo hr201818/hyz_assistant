@@ -285,6 +285,11 @@
 - (DS_HomeHeaderView *)headerView {
     if (!_headerView) {
         _headerView = [[DS_HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, Screen_WIDTH, DS_HomeHeaderViewHeight)];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_headerView refreshBanner];
+            [_headerView setNoticeCycleArray:[_viewModel noticeList]];
+        });
     }
     return _headerView;
 }
