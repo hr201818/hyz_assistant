@@ -236,6 +236,9 @@
     }
     vc.playGroupId = _playGroupId;
     vc.isMeCharts = (sender.tag - 1000) > 3 ? YES : NO;
+//    if (sender.tag - 1000 == 1) {
+//        vc.isMeCharts = YES;
+//    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 

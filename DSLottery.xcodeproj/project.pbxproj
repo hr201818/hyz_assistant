@@ -84,6 +84,9 @@
 		085EA4C320BBAF8600CBD18B /* DS_LotteryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4C220BBAF8600CBD18B /* DS_LotteryListViewController.m */; };
 		085EA4C620BBB02800CBD18B /* DS_LotteryListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 085EA4C520BBB02800CBD18B /* DS_LotteryListViewModel.m */; };
 		0865F73620BD312800EA34C0 /* DS_LocalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0865F73520BD312800EA34C0 /* DS_LocalData.m */; };
+		0872241720C376D6007EBB48 /* DS_HaoMaChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0872241620C376D6007EBB48 /* DS_HaoMaChartsView.m */; };
+		0872241A20C37E0F007EBB48 /* DS_HaoMaTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0872241920C37E0F007EBB48 /* DS_HaoMaTagView.m */; };
+		0872241D20C38A64007EBB48 /* DS_LotteryHaoMaPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0872241C20C38A64007EBB48 /* DS_LotteryHaoMaPathView.m */; };
 		0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F40D20B5391200F8410B /* DS_HomeLotteryNoticeCell.m */; };
 		0873F41120B539FE00F8410B /* DS_HomeNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41020B539FE00F8410B /* DS_HomeNormalCell.m */; };
 		0873F41420B53C8500F8410B /* YM_DrawDigitalRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0873F41220B53C8500F8410B /* YM_DrawDigitalRoundView.m */; };
@@ -304,6 +307,12 @@
 		085EA4C520BBB02800CBD18B /* DS_LotteryListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryListViewModel.m; sourceTree = "<group>"; };
 		0865F73420BD312800EA34C0 /* DS_LocalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LocalData.h; sourceTree = "<group>"; };
 		0865F73520BD312800EA34C0 /* DS_LocalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LocalData.m; sourceTree = "<group>"; };
+		0872241520C376D6007EBB48 /* DS_HaoMaChartsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HaoMaChartsView.h; sourceTree = "<group>"; };
+		0872241620C376D6007EBB48 /* DS_HaoMaChartsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_HaoMaChartsView.m; sourceTree = "<group>"; };
+		0872241820C37E0F007EBB48 /* DS_HaoMaTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HaoMaTagView.h; sourceTree = "<group>"; };
+		0872241920C37E0F007EBB48 /* DS_HaoMaTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_HaoMaTagView.m; sourceTree = "<group>"; };
+		0872241B20C38A64007EBB48 /* DS_LotteryHaoMaPathView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_LotteryHaoMaPathView.h; sourceTree = "<group>"; };
+		0872241C20C38A64007EBB48 /* DS_LotteryHaoMaPathView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_LotteryHaoMaPathView.m; sourceTree = "<group>"; };
 		0873F40C20B5391200F8410B /* DS_HomeLotteryNoticeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HomeLotteryNoticeCell.h; sourceTree = "<group>"; };
 		0873F40D20B5391200F8410B /* DS_HomeLotteryNoticeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DS_HomeLotteryNoticeCell.m; sourceTree = "<group>"; };
 		0873F40F20B539FE00F8410B /* DS_HomeNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DS_HomeNormalCell.h; sourceTree = "<group>"; };
@@ -766,6 +775,19 @@
 			path = DSChartsNext;
 			sourceTree = "<group>";
 		};
+		0872241420C376A6007EBB48 /* HaoMa(号码走势) */ = {
+			isa = PBXGroup;
+			children = (
+				0872241520C376D6007EBB48 /* DS_HaoMaChartsView.h */,
+				0872241620C376D6007EBB48 /* DS_HaoMaChartsView.m */,
+				0872241820C37E0F007EBB48 /* DS_HaoMaTagView.h */,
+				0872241920C37E0F007EBB48 /* DS_HaoMaTagView.m */,
+				0872241B20C38A64007EBB48 /* DS_LotteryHaoMaPathView.h */,
+				0872241C20C38A64007EBB48 /* DS_LotteryHaoMaPathView.m */,
+			);
+			path = "HaoMa(号码走势)";
+			sourceTree = "<group>";
+		};
 		08FCD85C20A286B8002E93F5 /* DS_ Shops(投注站) */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +853,7 @@
 		08FCD86520A286B8002E93F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0872241420C376A6007EBB48 /* HaoMa(号码走势) */,
 				085CF6C620C12B4300E58375 /* JiOu(奇偶走势) */,
 				085CF6BC20C1176700E58375 /* DaXiao(大小走势) */,
 				085CF6A920C0D73E00E58375 /* HeWei(和尾走势) */,
@@ -1318,6 +1341,7 @@
 				0873F40E20B5391200F8410B /* DS_HomeLotteryNoticeCell.m in Sources */,
 				084DC33C20919CF900E2C996 /* DS_Networking.m in Sources */,
 				0835A3E120B5C309009FB94A /* DS_UserOperationView.m in Sources */,
+				0872241A20C37E0F007EBB48 /* DS_HaoMaTagView.m in Sources */,
 				085671ED20B79CEE00F00C41 /* DS_NewsListViewController.m in Sources */,
 				085EA4A420BB987300CBD18B /* DSChartsResultsTool.m in Sources */,
 				08B8B2EE20A6D9A60074533E /* DS_NewsDetailViewController.m in Sources */,
@@ -1341,6 +1365,7 @@
 				08FCD8AB20A2D7D0002E93F5 /* DS_NewsListModel.m in Sources */,
 				085865EB2090612300F270D5 /* main.m in Sources */,
 				084316C0209068F700A3183A /* DS_BaseNavigationController.m in Sources */,
+				0872241D20C38A64007EBB48 /* DS_LotteryHaoMaPathView.m in Sources */,
 				084B07FD20A96D0000F2C105 /* DS_LotteryNoticeDetailViewController.m in Sources */,
 				084B07F420A93BF700F2C105 /* DS_LotteryNoticeViewModel.m in Sources */,
 				085CF6C220C11DE500E58375 /* DS_JiOuDaxiaoTopView.m in Sources */,
@@ -1351,6 +1376,7 @@
 				08FCD87F20A2878C002E93F5 /* DS_ChartsViewController.m in Sources */,
 				0810B66720947C16005D908D /* DS_WebViewController.m in Sources */,
 				0882F3F220BCE57200A5938C /* DS_LotteryIssueView.m in Sources */,
+				0872241720C376D6007EBB48 /* DS_HaoMaChartsView.m in Sources */,
 				085EA4BB20BB9D4600CBD18B /* DSLotteryChartsDrawViewController.m in Sources */,
 				085CF6C920C12B6D00E58375 /* DS_JiOuChartsView.m in Sources */,
 				08FCD8CE20A2F98E002E93F5 /* DS_UserModel.m in Sources */,

@@ -11,10 +11,11 @@
 #import "DSChartModal.h"
 
 /** view */
-#import "DS_HeZhiChartsView.h" // 和值
-#import "DS_HeWeiChartsView.h" // 和尾
+#import "DS_HeZhiChartsView.h"  // 和值
+#import "DS_HeWeiChartsView.h"  // 和尾
 #import "DS_DaXiaoChartsView.h" // 大小
-#import "DS_JiOuChartsView.h" // 奇偶
+#import "DS_JiOuChartsView.h"   // 奇偶
+#import "DS_HaoMaChartsView.h"  // 号码走势
 
 /** view */
 #import "DS_LotteryIssueView.h"
@@ -35,6 +36,9 @@
 
 /** 奇偶 */
 @property (nonatomic, strong) DS_JiOuChartsView   *  jiouView;
+
+/** 号码 */
+@property (nonatomic, strong) DS_HaoMaChartsView  * haomaView;
 
 /** 底部期数选择 */
 @property (nonatomic,strong) DS_LotteryIssueView  * issueView;
@@ -137,22 +141,25 @@
     CGRect  frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, Screen_WIDTH, Screen_HEIGHT - NAVIGATIONBAR_HEIGHT - IOS8_HEIGHT * DS_LotteryIssueViewHeight);
     if (self.chartType == DSChartsHezhiType){
           // 和值
-        self.hezhiView = [[DS_HeZhiChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
-        [self.view addSubview:self.hezhiView];
+        _hezhiView = [[DS_HeZhiChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
+        [self.view addSubview:_hezhiView];
         
     }else if (self.chartType == DSChartsJiouType){
          // 奇偶
-        self.jiouView = [[DS_JiOuChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
-        [self.view addSubview:self.jiouView];
+        _jiouView = [[DS_JiOuChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
+        [self.view addSubview:_jiouView];
         
     }else if (self.chartType == DSChartsDaxiaoType){
          // 大小
-        self.daxiaoView = [[DS_DaXiaoChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
-        [self.view addSubview:self.daxiaoView];
+        _daxiaoView = [[DS_DaXiaoChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
+        [self.view addSubview:_daxiaoView];
     }else if (self.chartType == DSChartsHeweiType){
          // 和尾
-        self.heweiView = [[DS_HeWeiChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
-        [self.view addSubview:self.heweiView];
+        _heweiView = [[DS_HeWeiChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
+        [self.view addSubview:_heweiView];
+    } else if (self.chartType == DSChartsLocationType) {
+        _haomaView = [[DS_HaoMaChartsView alloc] initWithFrame:frame modelList:model lotteryID:_playGroupId];
+        [self.view addSubview:_haomaView];
     }
     
      [self.view bringSubviewToFront:self.issueView];
